@@ -4,12 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
-
-    <comp5216.sydney.edu.au.checkme.view.TitleBarLayout
-        android:id="@+id/mainTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
+    tools:context=".activity.SecondActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
