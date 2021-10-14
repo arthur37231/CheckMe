@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home"
+        android:icon="@drawable/ic_home_button_24"
+        android:title="@string/nav_home_text"/>
+
+    <item android:id="@+id/myCode"
+        android:icon="@drawable/ic_my_code_button_24"
+        android:title="@string/nav_my_code_text"/>
+
+    <item android:id="@+id/scan"
+        android:icon="@drawable/ic_scan_button_24"
+        android:title="@string/nav_scan_text"/>
+
+    <item android:id="@+id/history"
+        android:icon="@drawable/ic_history_button_24"
+        android:title="@string/nav_history_text"/>
+
+    <item android:id="@+id/account"
+        android:icon="@drawable/ic_account_button_24"
+        android:title="@string/nav_account_text"/>
+</menu>

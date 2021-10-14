@@ -37,8 +37,9 @@ public class TitleBarLayout extends LinearLayout {
      *
      * @param resId The android string resource id defined in resources directory.
      */
-    public void setupTitle(int resId) {
+    public TitleBarLayout setupTitle(int resId) {
         title.setText(resId);
+        return this;
     }
 
     /**
@@ -48,18 +49,20 @@ public class TitleBarLayout extends LinearLayout {
      * @param resId The android string resource id defined in resources directory.
      * @param onClickListener OnClick method when the operate button is clicked.
      */
-    public void setupOperate(int resId, OnClickListener onClickListener) {
+    public TitleBarLayout setupOperate(int resId, OnClickListener onClickListener) {
         operate.setText(resId);
         operate.setOnClickListener(onClickListener);
+        return this;
     }
 
     /**
      * Make the back button invisible. Generally used when the current activity does not allow to
      * go back.
      */
-    public void backInvisible() {
+    public TitleBarLayout backInvisible() {
         back.setVisibility(View.GONE);
         title.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+        return this;
     }
 
     /**
@@ -69,8 +72,9 @@ public class TitleBarLayout extends LinearLayout {
      * @param resId The android string resource id defined in resources directory.
      * @param onClickListener OnClick method when the back button is clicked.
      */
-    public void setupBack(int resId, OnClickListener onClickListener) {
+    public TitleBarLayout setupBack(int resId, OnClickListener onClickListener) {
         back.setText(resId);
         back.setOnClickListener(onClickListener);
+        return this;
     }
 }

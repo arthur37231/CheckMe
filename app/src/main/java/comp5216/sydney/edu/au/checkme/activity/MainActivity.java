@@ -2,7 +2,6 @@ package comp5216.sydney.edu.au.checkme.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -13,7 +12,7 @@ import comp5216.sydney.edu.au.checkme.activity.utils.ActivityResultCallbackFacto
 import comp5216.sydney.edu.au.checkme.activity.utils.MyActivityResultCallback;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
-public class MainActivity extends BaseActivity implements ActivityResultCallbackFactory {
+public class MainActivity extends BaseActivityWithNav implements ActivityResultCallbackFactory {
 
     private static final int SECOND_ACTIVITY_REQUEST_CODE = 100;
 
