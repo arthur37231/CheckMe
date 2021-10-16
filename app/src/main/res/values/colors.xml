@@ -11,6 +11,7 @@
     <color name="black30">#3F000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="sky_blue">#FF2383D5</color>
+    <color name="lake_blue">#FF03DAC5</color>
 
     <color name="theme">#6200EE</color>
     <color name="nav_button_inactive">#d6bdfa</color>
