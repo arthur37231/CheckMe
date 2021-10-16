@@ -22,25 +22,6 @@ public class MainActivity extends BaseActivityWithNav implements ActivityResultC
         setContentView(R.layout.activity_main);
     }
 
-    /**
-     * A template method to setup all components and corresponding listeners of customized
-     * action bar. All subclasses extend the BaseActivity are using the similar action bar design.
-     *
-     * @see TitleBarLayout
-     */
-    @Override
-    void setupTitle() {
-        TitleBarLayout titleBarLayout = findViewById(R.id.mainTitle);
-
-        titleBarLayout.backInvisible();
-        titleBarLayout.setupTitle(R.string.main_title_text);
-
-        ActivityResultLauncher<Intent> secondResultLauncher = registerSecondActivityRequest();
-
-        titleBarLayout.setupOperate(R.string.main_title_operate, view ->
-                navigateSecondActivity(secondResultLauncher));
-    }
-
     @Override
     public ActivityResultCallback<ActivityResult> produceCallback(int requestCode) {
         switch (requestCode) {

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CheckMe</string>
+
+    <string name="verification_code_resend">RESEND</string>
 </resources>

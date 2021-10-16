@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <comp5216.sydney.edu.au.checkme.view.TitleBarLayout
-        android:id="@+id/mainTitle"
+    <fragment
+        android:id="@+id/normalHome"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:name="comp5216.sydney.edu.au.checkme.activity.HomeNormalFragment"/>
 
     <comp5216.sydney.edu.au.checkme.view.NavigationBar
         android:id="@+id/navigationBar"

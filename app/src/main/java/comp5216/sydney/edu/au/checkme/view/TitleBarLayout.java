@@ -42,6 +42,11 @@ public class TitleBarLayout extends LinearLayout {
         return this;
     }
 
+    public TitleBarLayout operateInvisible() {
+        operate.setVisibility(View.GONE);
+        return this;
+    }
+
     /**
      * Set up the operate button text content and corresponding
      * {@link OnClickListener}.
