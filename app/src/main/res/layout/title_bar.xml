@@ -3,17 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:paddingHorizontal="5dp"
-    android:background="@drawable/title_bg">
+    android:background="@color/theme">
 
     <Button
         android:id="@+id/activityBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_back_placeholder"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:textAllCaps="false"
         android:layout_marginStart="5dp"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/back_bg"/>
+        android:background="@drawable/ic_arrow_back_24"/>
 
     <TextView
         android:id="@+id/activityTitle"
@@ -22,12 +21,12 @@
         android:text="@string/title_text_placeholder"
         android:textAllCaps="false"
         android:layout_weight="1"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="5dp"
         android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textSize="22sp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/activityOperation"
@@ -37,6 +36,6 @@
         android:textAllCaps="false"
         android:layout_marginStart="5dp"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/operate_bg"/>
+        android:background="@color/transparent"/>
 
 </LinearLayout>

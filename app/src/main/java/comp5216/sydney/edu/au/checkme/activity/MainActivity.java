@@ -1,68 +1,89 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
+import android.os.Bundle;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import comp5216.sydney.edu.au.checkme.R;
-import comp5216.sydney.edu.au.checkme.activity.utils.ActivityResultCallbackFactory;
-import comp5216.sydney.edu.au.checkme.activity.utils.MyActivityResultCallback;
-import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
+import comp5216.sydney.edu.au.checkme.view.NavigationBar;
 
-public class MainActivity extends BaseActivity implements ActivityResultCallbackFactory {
+public class MainActivity extends FragmentActivity {
 
-    private static final int SECOND_ACTIVITY_REQUEST_CODE = 100;
+    private ViewPager2 fragmentHolder;
+    private NavigationBar navigationBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    /**
-     * A template method to setup all components and corresponding listeners of customized
-     * action bar. All subclasses extend the BaseActivity are using the similar action bar design.
-     *
-     * @see TitleBarLayout
-     */
-    @Override
-    void setupTitle() {
-        TitleBarLayout titleBarLayout = findViewById(R.id.mainTitle);
+        this.fragmentHolder = findViewById(R.id.viewPager);
+        this.navigationBar = findViewById(R.id.navigationBar);
 
-        titleBarLayout.backInvisible();
-        titleBarLayout.setupTitle(R.string.main_title_text);
+        this.fragmentHolder.setAdapter(new ViewPagerAdapter(this));
+        this.fragmentHolder.registerOnPageChangeCallback(fragmentChangeCallback());
 
-        ActivityResultLauncher<Intent> secondResultLauncher = registerSecondActivityRequest();
-
-        titleBarLayout.setupOperate(R.string.main_title_operate, view ->
-                navigateSecondActivity(secondResultLauncher));
+        this.navigationBar.setFragmentHolder(this);
     }
 
     @Override
-    public ActivityResultCallback<ActivityResult> produceCallback(int requestCode) {
-        switch (requestCode) {
-            case SECOND_ACTIVITY_REQUEST_CODE:
-                return new MyActivityResultCallback() {
-                    @Override
-                    protected void callback() {
-                        System.out.println("DONE!!!");
-                    }
-                };
-            default:
-                return null;
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+    }
+
+    private ViewPager2.OnPageChangeCallback fragmentChangeCallback() {
+        return new ViewPager2.OnPageChangeCallback() {
+            /**
+             * This method will be invoked when a new page becomes selected. Animation is not
+             * necessarily complete.
+             *
+             * @param position Position index of the new selected page.
+             */
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                navigationBar.navigateTo(position);
+            }
+        };
+    }
+
+    public void navigateTo(int position) {
+        this.fragmentHolder.setCurrentItem(position, true);
+    }
+
+    static class ViewPagerAdapter extends FragmentStateAdapter {
+        private List<Fragment> fragments;
+
+        public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+            initFragments();
         }
-    }
 
-    private ActivityResultLauncher<Intent> registerSecondActivityRequest() {
-        return registerResultRequest(produceCallback(SECOND_ACTIVITY_REQUEST_CODE));
-    }
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            return this.fragments.get(position);
+        }
 
-    private void navigateSecondActivity(ActivityResultLauncher<Intent> resultLauncher) {
-        Intent intent = new Intent(this, SecondActivity.class);
-        requestActivityResult(intent, resultLauncher);
+        @Override
+        public int getItemCount() {
+            return this.fragments.size();
+        }
+
+        private void initFragments() {
+            this.fragments = new ArrayList<>();
+            this.fragments.add(new HomeNormalFragment());
+            this.fragments.add(new MyCodeFragment());
+            this.fragments.add(new ScanFragment());
+            this.fragments.add(new HistoryFragment());
+            this.fragments.add(new AccountFragment());
+        }
     }
 }

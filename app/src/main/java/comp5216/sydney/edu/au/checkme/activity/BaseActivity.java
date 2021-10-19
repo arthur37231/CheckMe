@@ -42,7 +42,9 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @see comp5216.sydney.edu.au.checkme.view.TitleBarLayout
      */
-    abstract void setupTitle();
+    void setupTitle() {
+
+    }
 
     /**
      * The single point for the activity launching another activity and obtaining activity results.
