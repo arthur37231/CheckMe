@@ -14,10 +14,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -127,52 +123,6 @@ public class Tools {
         DateFormat df = new SimpleDateFormat(pattern);
         String todayAsString = df.format(date);
         return todayAsString;
-
-    }
-
-    public static long timeDiffCalculator(Date d1, Date d2)
-    {
-        Instant dateOneInstant = d1.toInstant();
-        ZonedDateTime zoneTimeOne = dateOneInstant.atZone(ZoneId.systemDefault());
-
-        Instant dateTwoInstant = d2.toInstant();
-        ZonedDateTime zoneTimeTwo = dateTwoInstant.atZone(ZoneId.systemDefault());
-
-
-        long duration = 0;
-        duration= Duration.between(zoneTimeTwo, zoneTimeOne).toMinutes();
-        return duration;
-        /*
-        The below if statement responsible for the case that
-        the user input a date which is before the current date
-         */
-
-    }
-
-    public static String expireChekcer(Date d1, Date d2)
-    {
-        Instant dateOneInstant = d1.toInstant();
-        ZonedDateTime zoneTimeOne = dateOneInstant.atZone(ZoneId.systemDefault());
-
-        Instant dateTwoInstant = d2.toInstant();
-        ZonedDateTime zoneTimeTwo = dateTwoInstant.atZone(ZoneId.systemDefault());
-
-
-        long duration = 0;
-        duration= Duration.between(zoneTimeTwo, zoneTimeOne).toMinutes();
-        /*
-        The below if statement responsible for the case that
-        the user input a date which is before the current date
-         */
-        if (!d1.after(d2))
-        {
-            duration = 0-duration;
-            String remaintime = "Expired";
-            return  remaintime;
-        }
-
-        String remainTime = duration/(24*60)+"days "+duration/60%24+"hours "+duration%60+"minutes";
-        return remainTime;
 
     }
 

@@ -10,13 +10,10 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
-import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
-
 /*
 Represents a task with title and time
  */
 public class Event implements Comparable<Event>{
-    final String type = "checkMe";
     String eventId;
     String eventName;
     LatLng latLng;
@@ -24,7 +21,6 @@ public class Event implements Comparable<Event>{
     Date endTime;
     String qrCode;
     String coverImage;
-    boolean active = true;
 
 
     public Event(String eventName, LatLng latLng, Date startTime, Date endTime) {
@@ -34,11 +30,6 @@ public class Event implements Comparable<Event>{
         this.endTime = endTime;
         //this.coverImage = coverImage;
     }
-    public boolean getActive(){return this.active;}
-    public void setActive(boolean state){this.active=state;}
-    public Date getEndTime(){return this.endTime;}
-    public Date getStartTime(){return this.startTime;}
-    public String getType() {return  this.type;}
     public LatLng getLatLng()
     {
         return this.latLng;
@@ -83,22 +74,39 @@ public class Event implements Comparable<Event>{
     public void setEventId(String eventId) {
         this.eventId = eventId;
     }
-    public String getState(){return Tools.expireChekcer(this.endTime, this.startTime);}
-    public long getRemainingTime()
-    {
-        long remainingTime = Tools.timeDiffCalculator(this.endTime,this.startTime);
-        return remainingTime;
-    }
+    public String getState(){return timeDiffCalculator(this.endTime, this.startTime);}
 
     /*
     override the compareTo method so when sort an arraylist<Task>,
     the sorting will based on the date
      */
     @Override
-    public int compareTo(Event task) {
-        long currentRemainTime = getRemainingTime();
-        long taskRemainTime = task.getRemainingTime();
-        return Long.compare(taskRemainTime,currentRemainTime);
+    public int compareTo(Event code) {
+        return 0;
     }
+    public String timeDiffCalculator(Date d1, Date d2)
+    {
+        Instant dateOneInstant = d1.toInstant();
+        ZonedDateTime zoneTimeOne = dateOneInstant.atZone(ZoneId.systemDefault());
 
+        Instant dateTwoInstant = d2.toInstant();
+        ZonedDateTime zoneTimeTwo = dateTwoInstant.atZone(ZoneId.systemDefault());
+
+
+        long duration = 0;
+        duration= Duration.between(zoneTimeTwo, zoneTimeOne).toMinutes();
+        /*
+        The below if statement responsible for the case that
+        the user input a date which is before the current date
+         */
+        if (!d1.after(d2))
+        {
+            duration = 0-duration;
+            return  "expired";
+        }
+        return "active";
+
+
+
+    }
 }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -15,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.location.Address;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,10 +32,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
@@ -52,9 +49,6 @@ import java.util.concurrent.CompletableFuture;
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 import comp5216.sydney.edu.au.checkme.R;
-import comp5216.sydney.edu.au.checkme.activity.database.ToDoTask;
-import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDB;
-import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDao;
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
@@ -71,8 +65,6 @@ public class CreateEventFragment extends Fragment {
     private final static int PLACE_PICKER_REQUEST = 999;
     private final static int IMAGE_PICK_CODE = 1000;
     private final static int PERMISSION_CODE = 1001;
-    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-    private static final int PERMISSIONS_REQUEST_ACCESS_EXTERNAL_STORAGE= 2;
     ToDoTaskDB db;
     ToDoTaskDao toDoTaskDao;
     Date date = new Date();
@@ -103,26 +95,6 @@ public class CreateEventFragment extends Fragment {
 
                     } else {
                         Log.e(TAG, "onActivityResult: PERMISSION DENIED");
-                        ActivityCompat.requestPermissions(getActivity(),
-                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                                PERMISSIONS_REQUEST_ACCESS_EXTERNAL_STORAGE);
-                    }
-                }
-            });
-    private ActivityResultLauncher<String> mPermissionResultMap = registerForActivityResult(
-            new ActivityResultContracts.RequestPermission(),
-            new ActivityResultCallback<Boolean>() {
-                @Override
-                public void onActivityResult(Boolean result) {
-                    if(result) {
-                        permission = result;
-                        Log.e(TAG, "onActivityResult: PERMISSION GRANTED");
-
-                    } else {
-                        Log.e(TAG, "onActivityResult: PERMISSION DENIED");
-                        ActivityCompat.requestPermissions(getActivity(),
-                                new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                                PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
                     }
                 }
             });
@@ -152,7 +124,21 @@ public class CreateEventFragment extends Fragment {
                     HashMap<String,String> addresses = CoordinateToAddress(latLng, this.getActivity());
                     String address = addresses.get("address")+", "+addresses.get("others");
                     createAddress.setText(address);
+//                    Geocoder geocoder;
+//                    geocoder = new Geocoder(this.getActivity(), Locale.getDefault());
 
+//                    try {
+//                        addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+//                        String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+//                        String city = addresses.get(0).getLocality();
+//                        String state = addresses.get(0).getAdminArea();
+//                        String country = addresses.get(0).getCountryName();
+//                        String postalCode = addresses.get(0).getPostalCode();
+//                        String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+//                        createAddress.setText(address);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
                 }
             }
@@ -188,7 +174,6 @@ public class CreateEventFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_create_event, container, false);
         //setupTitle();
         db = ToDoTaskDB.getDatabase(getActivity().getApplicationContext());
-        //Button backButton;
         toDoTaskDao = db.toDoTaskDao();
         String dt = timeToString(date);
         startTime = new Date();
@@ -210,7 +195,6 @@ public class CreateEventFragment extends Fragment {
         ExtendedFloatingActionButton confirmEventInfo = view.findViewById(R.id.confirmEventInformation);
         confirmEventInfo.setOnClickListener(this::onClickConfirmEventInfo);
         Button backButton = view.findViewById(R.id.activityBack);
-        backButton.setOnClickListener(this::onBackCLick);
 
 
         createAddress.setOnClickListener(this::onCLickCreateEventAddress);
@@ -223,25 +207,10 @@ public class CreateEventFragment extends Fragment {
         intent.setType("image/*");
         mLaucher.launch(intent);
     }
-    private void onImageClick (View view) {
-
-        mPermissionResult.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
-        if(permission==true)
-        {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            mLaucher.launch(intent);
-        }
-
-    }
     private void onCLickCreateEventAddress(View view)
     {
-        mPermissionResultMap.launch(Manifest.permission.ACCESS_FINE_LOCATION);
-        if(permission==true)
-        {
-            Intent intent = new Intent(getActivity(),MapActivity.class);
-            mapLauncher.launch(intent);
-        }
+        Intent intent = new Intent(getActivity(), MapActivity.class);
+        mapLauncher.launch(intent);
     }
     private void onCreateStartTime(View view) {
         Calendar c = Calendar.getInstance();
@@ -369,7 +338,17 @@ public class CreateEventFragment extends Fragment {
     }
 
 
+    private void onImageClick (View view) {
 
+        mPermissionResult.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+        if(permission==true)
+        {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            mLaucher.launch(intent);
+        }
+
+    }
 
     private void onClickConfirmEventInfo(View view) {
         // TODO: create new event
@@ -381,8 +360,8 @@ public class CreateEventFragment extends Fragment {
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
         String ser_code = Tools.taskToString(code);
         QRGEncoder qrgEncoder = new QRGEncoder(ser_code, null, QRGContents.Type.TEXT, 1);
-        //qrgEncoder.setColorBlack(Color.BLACK);
-        //qrgEncoder.setColorWhite(Color.WHITE);
+        qrgEncoder.setColorBlack(Color.RED);
+        qrgEncoder.setColorWhite(Color.BLUE);
         // Getting QR-Code as Bitmap
         qrCode = qrgEncoder.getBitmap();
         String ser_bitmap = BitMapToString(qrCode);
@@ -390,57 +369,6 @@ public class CreateEventFragment extends Fragment {
         code.setCoverImage(ser_coverImage);
         // Setting Bitmap to ImageView
         saveTasksToDatabase(code);
-        MyCodeFragment myCodeFragment = new MyCodeFragment();
-        FragmentManager fragmentManager= getFragmentManager();
-        //fragmentManager.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
-        //int id = createEventFragment.getId();
-
-        //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
-        fragmentTransaction.replace(R.id.my_code_container1,myCodeFragment);
-        //fragmentTransaction.addToBackStack("MyCodeFragment");
-
-        fragmentTransaction.commit();
-    }
-
-
-    public void onBackCLick(View v) {
-        // create dialog
-        AlertDialog.Builder cancelAlertDialog = new AlertDialog.Builder(getActivity());
-        cancelAlertDialog.setCancelable(true);
-        cancelAlertDialog.setTitle("Unsaved Edit");
-        cancelAlertDialog.setMessage("Your QR code details have not saved yet. " +
-                "Do you want to continue discarding changes?");
-        // if the user click "No" (positive button) then stady in current
-        // activity
-        cancelAlertDialog.setPositiveButton("RESUME", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        // if the user click "Yes", then finish the current acitivy
-        // and pass "RESULT_CANCELED" back to previous activity
-        cancelAlertDialog.setNegativeButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                MyCodeFragment myCodeFragment = new MyCodeFragment();
-                FragmentManager fragmentManager= getFragmentManager();
-                //fragmentManager.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
-                //int id = createEventFragment.getId();
-
-                //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
-                fragmentTransaction.replace(R.id.my_code_container1,myCodeFragment);
-                //fragmentTransaction.addToBackStack("MyCodeFragment");
-
-                fragmentTransaction.commit();
-            }
-        });
-
-        cancelAlertDialog.show();
     }
     public static CreateEventFragment newInstance(String text)
     {

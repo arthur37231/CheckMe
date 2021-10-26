@@ -1,4 +1,4 @@
-package comp5216.sydney.edu.au.checkme.activity.database;
+package comp5216.sydney.edu.au.checkme.activity;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
