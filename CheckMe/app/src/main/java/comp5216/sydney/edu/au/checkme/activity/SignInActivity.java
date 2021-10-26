@@ -10,7 +10,7 @@ import android.widget.Toast;
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
-public class SignInActivity extends BaseActivity {
+public class SignInActivity extends BaseActivityWithoutNav {
 
     private RadioButton policyAgreementCheck;
     private Button loginButton;

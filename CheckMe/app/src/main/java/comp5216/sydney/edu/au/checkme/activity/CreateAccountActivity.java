@@ -5,7 +5,7 @@ import android.os.Bundle;
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
-public class CreateAccountActivity extends BaseActivity {
+public class CreateAccountActivity extends BaseActivityWithoutNav {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

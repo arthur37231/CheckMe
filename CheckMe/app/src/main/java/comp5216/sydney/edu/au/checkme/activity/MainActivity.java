@@ -1,12 +1,13 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
-
-import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,12 @@ public class MainActivity extends FragmentActivity {
         this.fragmentHolder.registerOnPageChangeCallback(fragmentChangeCallback());
 
         this.navigationBar.setFragmentHolder(this);
+
+        findViewById(R.id.scan).setOnClickListener(view -> {
+           Intent intent = new Intent();
+           intent.setClass(this, ScanActivity.class);
+           startActivity(intent);
+        });
     }
 
     @Override
@@ -80,10 +87,11 @@ public class MainActivity extends FragmentActivity {
         private void initFragments() {
             this.fragments = new ArrayList<>();
             this.fragments.add(new HomeNormalFragment());
-            this.fragments.add(new MyCodeContainerFragment());
+            this.fragments.add(new MyCodeFragment());
             this.fragments.add(new ScanFragment());
             this.fragments.add(new HistoryFragment());
             this.fragments.add(new AccountFragment());
         }
+
     }
 }

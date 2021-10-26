@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="comp5216.sydney.edu.au.checkme">
 
     <uses-permission android:name="packagename.permission.MAPS_RECEIVE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <permission
@@ -50,6 +52,12 @@
                 android:value="AIzaSyBjvOcCO8MkfZh1z957GK-NNfImLgp76gc" />
         </activity>
         <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
+
+
+        <activity
             android:name=".activity.SignInActivity"
             android:exported="true">
 
@@ -62,11 +70,24 @@
             android:name=".activity.CreateAccountActivity"
             android:exported="true">
 
+
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+        <activity
+            android:name=".activity.ScanActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activity.CaptureActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activity.SecondActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
