@@ -146,11 +146,12 @@ public class CaptureActivity extends BaseActivityWithoutNav implements Decorated
                         String endTime = jsonObject.getString("endTime");
                         String eventId = jsonObject.getString("eventId");
                         String eventName = jsonObject.getString("eventName");
+                        String latLng = jsonObject.getString("latLng");
                         // check if activity has active
-                        checkInSuccessful(startTime, endTime, eventId, eventName);
+                        checkInSuccessful(startTime, endTime, eventId, eventName, latLng);
 //                        if (checkActivity(startTime, endTime)) {
-//                            // check the scan location
-//                            checkInSuccessful(startTime, endTime, eventId, eventName);
+//                            // check the scan location, not implement
+//                            checkInSuccessful(startTime, endTime, eventId, eventName, latLng);
 //                        } else {
 //                            checkInFailed("Event not active");
 //                        }
@@ -230,12 +231,12 @@ public class CaptureActivity extends BaseActivityWithoutNav implements Decorated
                 .commit();
     }
 
-    public void checkInSuccessful(String startTime, String endTime, String eventId, String eventName) {
+    public void checkInSuccessful(String startTime, String endTime, String eventId, String eventName, String latLng) {
         findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);
         findViewById(R.id.capture_container).setVisibility(View.GONE);
         this.getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.fragment_container, new CheckInSuccessFragment(startTime, endTime, eventId, eventName), null)
+                .add(R.id.fragment_container, new CheckInSuccessFragment(startTime, endTime, eventId, eventName, latLng), null)
                 .addToBackStack(null)
                 .commit();
     }

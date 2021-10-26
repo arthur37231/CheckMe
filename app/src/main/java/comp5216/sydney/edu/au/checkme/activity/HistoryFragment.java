@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import java.util.List;
@@ -62,16 +63,28 @@ public class HistoryFragment extends Fragment {
         readItemsFromDatabase();
         historyList = view.findViewById(R.id.history_list);
         itemAdapter = new HistoryItemAdapter(getContext(), R.layout.history_items, items);
-//        setupListViewListener();
+        setupListViewListener();
         historyList.setAdapter(itemAdapter);
         return view;
     }
 
-//    private void setupListViewListener() {
-//        historyList.setOnItemClickListener((parent, view, position, id) -> {
-//            HashMap<String, String> updateItem = (HashMap<String, String>) itemAdapter.getItem(position);
-//        });
-//    }
+    private void setupListViewListener() {
+        historyList.setOnItemClickListener((parent, view, position, id) -> {
+            AlertDialog.Builder normalDialog = new AlertDialog.Builder(getContext());
+            HistoryItem item = items.get(position);
+            String eventId = item.getEventId();
+            String eventName = item.getEventName();
+            String visitTime = item.getVisitingTime();
+            String eventAddr = item.getEventAddr();
+            String eventContent = "Event Name: " + eventName + "\n"
+                    + "Visit Time: " + visitTime
+                    + "\n" + "Event Address: " + eventAddr;
+            normalDialog.setTitle("Event ID: " + eventId);
+            normalDialog.setMessage(eventContent);
+            normalDialog.setPositiveButton("OK", (dialog, which) -> {});
+            normalDialog.show();
+        });
+    }
 
     private void readItemsFromDatabase()
     {
@@ -79,16 +92,6 @@ public class HistoryFragment extends Fragment {
             CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
                 List<HistoryItem> itemsFromDB = historyItemDao.listAll();
                 items = itemsFromDB;
-                // if there're some data on the database, then load
-//                if (itemsFromDB != null & itemsFromDB.size() > 0) {
-//                    for (HistoryItem item : itemsFromDB) {
-//                        String eventId = item.getEventId();
-//                        String visitingTime = item.getVisitingTime();
-//                        String eventAddr = item.getEventAddr();
-//                        String riskLevel = item.getRiskLevel();
-//                    }
-//                }
-//                sortResult();
             });
             future.get();
         }

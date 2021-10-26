@@ -14,7 +14,7 @@ public class HistoryItem {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    @ColumnInfo(name = "c")
+    @ColumnInfo(name = "ID")
     private int ID;
 
     @ColumnInfo(name = "eventId")
@@ -47,9 +47,7 @@ public class HistoryItem {
         return visitingTime;
     }
 
-    public String getEventAddr() {
-        return eventAddr;
-    }
+    public String getEventAddr() { return eventAddr; }
 
     public String getRiskLevel() {
         return riskLevel;

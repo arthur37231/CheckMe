@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Dao
 public interface HistoryItemDao {
-    @Query("SELECT * FROM historyitemlist")
+    @Query("SELECT * FROM historyitemlist ORDER BY ID DESC")
     List<HistoryItem> listAll();
 
     @Insert

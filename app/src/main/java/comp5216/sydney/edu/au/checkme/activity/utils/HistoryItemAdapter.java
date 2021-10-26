@@ -34,7 +34,7 @@ public class HistoryItemAdapter extends ArrayAdapter<HistoryItem> {
         View view = LayoutInflater.from(getContext()).inflate(layoutId, parent, false);
 
         TextView tvEventId = view.findViewById(R.id.event_id);
-        tvEventId.setText(item.getEventId());
+        tvEventId.setText(item.getEventId() + ": " + item.getEventName());
         TextView tvVisitTime = view.findViewById(R.id.visiting_time);
         tvVisitTime.setText(item.getVisitingTime());
         TextView tvEventAddr = view.findViewById(R.id.event_addr);
