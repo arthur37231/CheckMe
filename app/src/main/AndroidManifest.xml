@@ -52,6 +52,7 @@
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyBjvOcCO8MkfZh1z957GK-NNfImLgp76gc" />
         </activity>
+
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
@@ -81,6 +82,10 @@
             android:name=".activity.ScanActivity"
             android:exported="true">
         </activity>
+<<<<<<< Updated upstream:app/src/main/AndroidManifest.xml
+=======
+
+>>>>>>> Stashed changes:CheckMe/app/src/main/AndroidManifest.xml
         <activity
             android:name=".activity.CaptureActivity"
             android:exported="true">
@@ -88,7 +93,10 @@
         <activity
             android:name=".activity.SecondActivity"
             android:exported="true" />
+<<<<<<< Updated upstream:app/src/main/AndroidManifest.xml
 
+=======
+>>>>>>> Stashed changes:CheckMe/app/src/main/AndroidManifest.xml
     </application>
 
 </manifest>

@@ -22,7 +22,7 @@
                 android:id="@+id/event_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Event ID: Event Name" />
+                android:text="Event ID" />
 
             <TextView
                 android:id="@+id/visiting_time"
@@ -54,14 +54,13 @@
                 android:layout_height="36dp"
                 android:layout_below="@+id/risk_level"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_icon_action_check_circle_outline_24" />
+                android:src="@drawable/ic_icon_navigation_close_24" />
 
             <TextView
                 android:id="@+id/risk_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/check_in_success"
-                android:text="Low risk" />
+                android:text="High risk" />
 
         </RelativeLayout>
     </RelativeLayout>

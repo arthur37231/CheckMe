@@ -34,9 +34,15 @@ public class MainActivity extends FragmentActivity {
         this.navigationBar.setFragmentHolder(this);
 
         findViewById(R.id.scan).setOnClickListener(view -> {
+<<<<<<< Updated upstream:app/src/main/java/comp5216/sydney/edu/au/checkme/activity/MainActivity.java
            Intent intent = new Intent();
            intent.setClass(this, ScanActivity.class);
            startActivity(intent);
+=======
+            Intent intent = new Intent();
+            intent.setClass(this, ScanActivity.class);
+            startActivity(intent);
+>>>>>>> Stashed changes:CheckMe/app/src/main/java/comp5216/sydney/edu/au/checkme/activity/MainActivity.java
         });
     }
 

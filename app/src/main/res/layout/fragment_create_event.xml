@@ -35,7 +35,7 @@
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif"
-                    android:text="@string/auth_activity_name"/>
+                    android:text="@string/auth_phone_number"/>
 
                 <EditText
                     android:id="@+id/createEventName"

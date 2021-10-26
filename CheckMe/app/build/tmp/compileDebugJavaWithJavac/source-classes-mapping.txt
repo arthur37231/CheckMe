@@ -1,0 +1,91 @@
+comp5216/sydney/edu/au/checkme/activity/database/DB.java
+ comp5216.sydney.edu.au.checkme.activity.database.DB
+comp5216/sydney/edu/au/checkme/activity/SecondActivity.java
+ comp5216.sydney.edu.au.checkme.activity.SecondActivity
+comp5216/sydney/edu/au/checkme/activity/MyCodeContainerFragment.java
+ comp5216.sydney.edu.au.checkme.activity.MyCodeContainerFragment
+comp5216/sydney/edu/au/checkme/activity/database/ToDoTask.java
+ comp5216.sydney.edu.au.checkme.activity.database.ToDoTask
+comp5216/sydney/edu/au/checkme/activity/BaseActivityWithNav.java
+ comp5216.sydney.edu.au.checkme.activity.BaseActivityWithNav
+comp5216/sydney/edu/au/checkme/activity/HistoryFragment.java
+ comp5216.sydney.edu.au.checkme.activity.HistoryFragment
+comp5216/sydney/edu/au/checkme/activity/MyCodeFragment.java
+ comp5216.sydney.edu.au.checkme.activity.MyCodeFragment
+ comp5216.sydney.edu.au.checkme.activity.MyCodeFragment$1
+ comp5216.sydney.edu.au.checkme.activity.MyCodeFragment$2
+ comp5216.sydney.edu.au.checkme.activity.MyCodeFragment$3
+ comp5216.sydney.edu.au.checkme.activity.MyCodeFragment$4
+ comp5216.sydney.edu.au.checkme.activity.MyCodeFragment$4$1
+ comp5216.sydney.edu.au.checkme.activity.MyCodeFragment$4$2
+ comp5216.sydney.edu.au.checkme.activity.MyCodeFragment$5
+comp5216/sydney/edu/au/checkme/BuildConfig.java
+ comp5216.sydney.edu.au.checkme.BuildConfig
+comp5216/sydney/edu/au/checkme/activity/utils/Tools.java
+ comp5216.sydney.edu.au.checkme.activity.utils.Tools
+comp5216/sydney/edu/au/checkme/activity/BaseActivityWithoutNav.java
+ comp5216.sydney.edu.au.checkme.activity.BaseActivityWithoutNav
+comp5216/sydney/edu/au/checkme/activity/CaptureActivity.java
+ comp5216.sydney.edu.au.checkme.activity.CaptureActivity
+ comp5216.sydney.edu.au.checkme.activity.CaptureActivity$1
+ comp5216.sydney.edu.au.checkme.activity.CaptureActivity$2
+comp5216/sydney/edu/au/checkme/activity/database/ToDoTaskDB.java
+ comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDB
+comp5216/sydney/edu/au/checkme/activity/Event.java
+ comp5216.sydney.edu.au.checkme.activity.Event
+comp5216/sydney/edu/au/checkme/activity/ScanFragment.java
+ comp5216.sydney.edu.au.checkme.activity.ScanFragment
+comp5216/sydney/edu/au/checkme/activity/CreateAccountActivity.java
+ comp5216.sydney.edu.au.checkme.activity.CreateAccountActivity
+comp5216/sydney/edu/au/checkme/activity/utils/HistoryItemAdapter.java
+ comp5216.sydney.edu.au.checkme.activity.utils.HistoryItemAdapter
+comp5216/sydney/edu/au/checkme/activity/utils/ActivityResultCallbackFactory.java
+ comp5216.sydney.edu.au.checkme.activity.utils.ActivityResultCallbackFactory
+comp5216/sydney/edu/au/checkme/activity/HomeNormalFragment.java
+ comp5216.sydney.edu.au.checkme.activity.HomeNormalFragment
+comp5216/sydney/edu/au/checkme/activity/CreateEventFragment.java
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$1
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$10
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$2
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$3
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$4
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$5
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$6
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$7
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$8
+ comp5216.sydney.edu.au.checkme.activity.CreateEventFragment$9
+comp5216/sydney/edu/au/checkme/activity/utils/MyActivityResultCallback.java
+ comp5216.sydney.edu.au.checkme.activity.utils.MyActivityResultCallback
+comp5216/sydney/edu/au/checkme/activity/AccountFragment.java
+ comp5216.sydney.edu.au.checkme.activity.AccountFragment
+comp5216/sydney/edu/au/checkme/activity/MapActivity.java
+ comp5216.sydney.edu.au.checkme.activity.MapActivity
+comp5216/sydney/edu/au/checkme/activity/BaseActivity.java
+ comp5216.sydney.edu.au.checkme.activity.BaseActivity
+comp5216/sydney/edu/au/checkme/activity/database/HistoryItemDao.java
+ comp5216.sydney.edu.au.checkme.activity.database.HistoryItemDao
+comp5216/sydney/edu/au/checkme/activity/CustomArrayAdapter.java
+ comp5216.sydney.edu.au.checkme.activity.CustomArrayAdapter
+comp5216/sydney/edu/au/checkme/activity/ViewEventFragment.java
+ comp5216.sydney.edu.au.checkme.activity.ViewEventFragment
+comp5216/sydney/edu/au/checkme/view/TitleBarLayout.java
+ comp5216.sydney.edu.au.checkme.view.TitleBarLayout
+comp5216/sydney/edu/au/checkme/activity/database/ToDoTaskDao.java
+ comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDao
+comp5216/sydney/edu/au/checkme/activity/database/HistoryItem.java
+ comp5216.sydney.edu.au.checkme.activity.database.HistoryItem
+comp5216/sydney/edu/au/checkme/view/NavigationBar.java
+ comp5216.sydney.edu.au.checkme.view.NavigationBar
+comp5216/sydney/edu/au/checkme/activity/SignInActivity.java
+ comp5216.sydney.edu.au.checkme.activity.SignInActivity
+comp5216/sydney/edu/au/checkme/activity/CheckInSuccessFragment.java
+ comp5216.sydney.edu.au.checkme.activity.CheckInSuccessFragment
+comp5216/sydney/edu/au/checkme/activity/ScanActivity.java
+ comp5216.sydney.edu.au.checkme.activity.ScanActivity
+comp5216/sydney/edu/au/checkme/activity/MainActivity.java
+ comp5216.sydney.edu.au.checkme.activity.MainActivity
+ comp5216.sydney.edu.au.checkme.activity.MainActivity$1
+ comp5216.sydney.edu.au.checkme.activity.MainActivity$ViewPagerAdapter
+comp5216/sydney/edu/au/checkme/activity/CheckInFailFragment.java
+ comp5216.sydney.edu.au.checkme.activity.CheckInFailFragment

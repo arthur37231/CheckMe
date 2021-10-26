@@ -58,5 +58,8 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
     // Scan QR
     implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
+<<<<<<< Updated upstream:app/build.gradle
 
+=======
+>>>>>>> Stashed changes:CheckMe/app/build.gradle
 }

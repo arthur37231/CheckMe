@@ -1,0 +1,336 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="comp5216.sydney.edu.au.checkme"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+8-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="packagename.permission.MAPS_RECEIVE" />
+11-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:5:5-74
+11-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:5:22-72
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:6:5-66
+12-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:7:5-65
+13-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:7:22-62
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:8:5-80
+14-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:8:22-78
+15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+15-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:9:5-79
+15-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:9:22-77
+16
+17    <permission
+17-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:10:5-12:46
+18        android:name="packagename.permission.MAPS_RECEIVE"
+18-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:11:9-59
+19        android:protectionLevel="signature" />
+19-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:12:9-44
+20
+21    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+21-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:13:5-97
+21-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:13:22-95
+22    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+22-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:14:5-80
+22-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:14:22-78
+23    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+23-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:15:5-78
+23-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:15:22-76
+24    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+24-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:16:5-78
+24-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:16:22-76
+25
+26    <uses-feature
+26-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:17:5-19:34
+27        android:glEsVersion="0x00020000"
+27-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:18:9-41
+28        android:required="true" />
+28-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:19:9-32
+29
+30    <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+31    <uses-feature
+31-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:24:5-26:36
+32        android:name="android.hardware.camera"
+32-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:25:9-47
+33        android:required="false" />
+33-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:26:9-33
+34    <uses-feature
+34-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:27:5-29:36
+35        android:name="android.hardware.camera.front"
+35-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:28:9-53
+36        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+36-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:29:9-33
+37    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+38    <uses-feature
+38-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:32:5-34:36
+39        android:name="android.hardware.camera.autofocus"
+39-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:33:9-57
+40        android:required="false" />
+40-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:34:9-33
+41    <uses-feature
+41-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:35:5-37:36
+42        android:name="android.hardware.camera.flash"
+42-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:36:9-53
+43        android:required="false" />
+43-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:37:9-33
+44    <uses-feature
+44-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:38:5-40:36
+45        android:name="android.hardware.screen.landscape"
+45-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:39:9-57
+46        android:required="false" />
+46-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:40:9-33
+47    <uses-feature
+47-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:41:5-43:36
+48        android:name="android.hardware.wifi"
+48-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:42:9-45
+49        android:required="false" />
+49-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:43:9-33
+50
+51    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+51-->[com.google.android.libraries.places:places:1.1.0] C:\Users\fangp\.gradle\caches\transforms-3\ff76d04ddb4a9b17d318a3a3e8adbe0b\transformed\jetified-places-1.1.0\AndroidManifest.xml:10:5-76
+51-->[com.google.android.libraries.places:places:1.1.0] C:\Users\fangp\.gradle\caches\transforms-3\ff76d04ddb4a9b17d318a3a3e8adbe0b\transformed\jetified-places-1.1.0\AndroidManifest.xml:10:22-73
+52    <uses-permission android:name="android.permission.WAKE_LOCK" />
+52-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\8279e5940323bcbb580b7ded49294563\transformed\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:24:5-68
+52-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\8279e5940323bcbb580b7ded49294563\transformed\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:24:22-65
+53    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+53-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:26:5-110
+53-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:26:22-107
+54
+55    <application
+55-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:21:5-84:19
+56        android:allowBackup="true"
+56-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:22:9-35
+57        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+57-->[androidx.core:core:1.5.0] C:\Users\fangp\.gradle\caches\transforms-3\d33d5ab73d534c7716def459f5f136ef\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
+58        android:debuggable="true"
+59        android:extractNativeLibs="false"
+60        android:icon="@mipmap/ic_launcher"
+60-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:23:9-43
+61        android:label="@string/app_name"
+61-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:24:9-41
+62        android:roundIcon="@mipmap/ic_launcher_round"
+62-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:25:9-54
+63        android:supportsRtl="true"
+63-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:26:9-35
+64        android:testOnly="true"
+65        android:theme="@style/Theme.CheckMe" >
+65-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:27:9-45
+66        <meta-data
+66-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:28:9-30:71
+67            android:name="com.google.android.geo.API_KEY"
+67-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:29:13-58
+68            android:value="AIzaSyBjvOcCO8MkfZh1z957GK-NNfImLgp76gc" />
+68-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:30:13-68
+69        <meta-data
+69-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:31:9-32:69
+70            android:name="com.google.android.gms.version"
+70-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:31:20-65
+71            android:value="@integer/google_play_services_version" />
+71-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:32:13-66
+72
+73        <activity
+73-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:33:9-44:20
+74            android:name="comp5216.sydney.edu.au.checkme.activity.MainActivity"
+74-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:34:13-50
+75            android:exported="true" >
+75-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:35:13-36
+76            <meta-data
+76-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:28:9-30:71
+77                android:name="com.google.android.geo.API_KEY"
+77-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:29:13-58
+78                android:value="AIzaSyBjvOcCO8MkfZh1z957GK-NNfImLgp76gc" />
+78-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:30:13-68
+79
+80            <intent-filter>
+80-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:39:13-43:29
+81                <action android:name="android.intent.action.MAIN" />
+81-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:40:17-69
+81-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:40:25-66
+82
+83                <category android:name="android.intent.category.LAUNCHER" />
+83-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:42:17-77
+83-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:42:27-74
+84            </intent-filter>
+85        </activity>
+86        <activity
+86-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:46:9-52:20
+87            android:name="comp5216.sydney.edu.au.checkme.activity.MapActivity"
+87-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:47:13-49
+88            android:exported="true" >
+88-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:48:13-36
+89            <meta-data
+89-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:28:9-30:71
+90                android:name="com.google.android.geo.API_KEY"
+90-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:29:13-58
+91                android:value="AIzaSyBjvOcCO8MkfZh1z957GK-NNfImLgp76gc" />
+91-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:30:13-68
+92        </activity>
+93        <activity
+93-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:54:9-62:20
+94            android:name="comp5216.sydney.edu.au.checkme.activity.SignInActivity"
+94-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:55:13-52
+95            android:exported="true" >
+95-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:56:13-36
+96
+97            <!-- <intent-filter> -->
+98            <!-- <action android:name="android.intent.action.MAIN" /> -->
+99            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+100            <!-- </intent-filter> -->
+101        </activity>
+102        <activity
+102-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:63:9-71:20
+103            android:name="comp5216.sydney.edu.au.checkme.activity.CreateAccountActivity"
+103-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:64:13-59
+104            android:exported="true" >
+104-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:65:13-36
+105
+106            <!-- <intent-filter> -->
+107            <!-- <action android:name="android.intent.action.MAIN" /> -->
+108            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+109            <!-- </intent-filter> -->
+110        </activity>
+111        <activity
+111-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:72:9-75:20
+112            android:name="comp5216.sydney.edu.au.checkme.activity.ScanActivity"
+112-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:73:13-50
+113            android:exported="true" >
+113-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:74:13-36
+114        </activity>
+115        <activity
+115-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:77:9-80:20
+116            android:name="comp5216.sydney.edu.au.checkme.activity.CaptureActivity"
+116-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:78:13-53
+117            android:exported="true" >
+117-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:79:13-36
+118        </activity>
+119        <activity
+119-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:81:9-83:39
+120            android:name="comp5216.sydney.edu.au.checkme.activity.SecondActivity"
+120-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:82:13-52
+121            android:exported="true" />
+121-->F:\CheckMe-create_qrcode\CheckMe-create_qrcode\app\src\main\AndroidManifest.xml:83:13-36
+122        <activity
+122-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:46:9-52:63
+123            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+123-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:47:13-74
+124            android:clearTaskOnLaunch="true"
+124-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:48:13-45
+125            android:screenOrientation="sensorLandscape"
+125-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:49:13-56
+126            android:stateNotNeeded="true"
+126-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:50:13-42
+127            android:theme="@style/zxing_CaptureTheme"
+127-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:51:13-54
+128            android:windowSoftInputMode="stateAlwaysHidden" /> <!-- Autocomplete -->
+128-->[com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\fangp\.gradle\caches\transforms-3\44d0a8027d8079684f97990e105f5f53\transformed\jetified-zxing-android-embedded-3.5.0\AndroidManifest.xml:52:13-60
+129        <activity
+129-->[com.google.android.libraries.places:places:1.1.0] C:\Users\fangp\.gradle\caches\transforms-3\ff76d04ddb4a9b17d318a3a3e8adbe0b\transformed\jetified-places-1.1.0\AndroidManifest.xml:16:9-23:20
+130            android:name="com.google.android.libraries.places.widget.AutocompleteActivity"
+130-->[com.google.android.libraries.places:places:1.1.0] C:\Users\fangp\.gradle\caches\transforms-3\ff76d04ddb4a9b17d318a3a3e8adbe0b\transformed\jetified-places-1.1.0\AndroidManifest.xml:17:13-91
+131            android:exported="false"
+131-->[com.google.android.libraries.places:places:1.1.0] C:\Users\fangp\.gradle\caches\transforms-3\ff76d04ddb4a9b17d318a3a3e8adbe0b\transformed\jetified-places-1.1.0\AndroidManifest.xml:18:13-37
+132            android:hardwareAccelerated="true"
+132-->[com.google.android.libraries.places:places:1.1.0] C:\Users\fangp\.gradle\caches\transforms-3\ff76d04ddb4a9b17d318a3a3e8adbe0b\transformed\jetified-places-1.1.0\AndroidManifest.xml:19:13-47
+133            android:label="@string/places_autocomplete_label"
+133-->[com.google.android.libraries.places:places:1.1.0] C:\Users\fangp\.gradle\caches\transforms-3\ff76d04ddb4a9b17d318a3a3e8adbe0b\transformed\jetified-places-1.1.0\AndroidManifest.xml:20:13-62
+134            android:theme="@style/PlacesAutocompleteThemeOverlay"
+134-->[com.google.android.libraries.places:places:1.1.0] C:\Users\fangp\.gradle\caches\transforms-3\ff76d04ddb4a9b17d318a3a3e8adbe0b\transformed\jetified-places-1.1.0\AndroidManifest.xml:21:13-66
+135            android:windowSoftInputMode="stateAlwaysVisible|adjustPan" >
+135-->[com.google.android.libraries.places:places:1.1.0] C:\Users\fangp\.gradle\caches\transforms-3\ff76d04ddb4a9b17d318a3a3e8adbe0b\transformed\jetified-places-1.1.0\AndroidManifest.xml:22:13-71
+136        </activity> <!-- Needs to be explicitly declared on P+ -->
+137        <uses-library
+137-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\fangp\.gradle\caches\transforms-3\c367c16a4fab67f47fda442deac71e02\transformed\jetified-play-services-maps-16.1.0\AndroidManifest.xml:33:9-35:40
+138            android:name="org.apache.http.legacy"
+138-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\fangp\.gradle\caches\transforms-3\c367c16a4fab67f47fda442deac71e02\transformed\jetified-play-services-maps-16.1.0\AndroidManifest.xml:34:13-50
+139            android:required="false" />
+139-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\fangp\.gradle\caches\transforms-3\c367c16a4fab67f47fda442deac71e02\transformed\jetified-play-services-maps-16.1.0\AndroidManifest.xml:35:13-37
+140
+141        <service
+141-->[androidx.room:room-runtime:2.3.0] C:\Users\fangp\.gradle\caches\transforms-3\8d08fe06d7f08b861dca7670ab58f726\transformed\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
+142            android:name="androidx.room.MultiInstanceInvalidationService"
+142-->[androidx.room:room-runtime:2.3.0] C:\Users\fangp\.gradle\caches\transforms-3\8d08fe06d7f08b861dca7670ab58f726\transformed\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
+143            android:directBootAware="true"
+143-->[androidx.room:room-runtime:2.3.0] C:\Users\fangp\.gradle\caches\transforms-3\8d08fe06d7f08b861dca7670ab58f726\transformed\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
+144            android:exported="false" />
+144-->[androidx.room:room-runtime:2.3.0] C:\Users\fangp\.gradle\caches\transforms-3\8d08fe06d7f08b861dca7670ab58f726\transformed\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
+145        <service
+145-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\8279e5940323bcbb580b7ded49294563\transformed\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:27:9-33:19
+146            android:name="com.google.firebase.components.ComponentDiscoveryService"
+146-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\8279e5940323bcbb580b7ded49294563\transformed\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:28:13-84
+147            android:directBootAware="true"
+147-->[com.google.firebase:firebase-common:20.0.0] C:\Users\fangp\.gradle\caches\transforms-3\4687e3762a8b928592f41c378ea1266b\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
+148            android:exported="false" >
+148-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\8279e5940323bcbb580b7ded49294563\transformed\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:29:13-37
+149            <meta-data
+149-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\8279e5940323bcbb580b7ded49294563\transformed\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:30:13-32:85
+150                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+150-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\8279e5940323bcbb580b7ded49294563\transformed\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:31:17-139
+151                android:value="com.google.firebase.components.ComponentRegistrar" />
+151-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\8279e5940323bcbb580b7ded49294563\transformed\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:32:17-82
+152            <meta-data
+152-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\fangp\.gradle\caches\transforms-3\b90d9004cc4eddbba53eef1f18243081\transformed\jetified-firebase-installations-17.0.0\AndroidManifest.xml:18:13-20:85
+153                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+153-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\fangp\.gradle\caches\transforms-3\b90d9004cc4eddbba53eef1f18243081\transformed\jetified-firebase-installations-17.0.0\AndroidManifest.xml:19:17-127
+154                android:value="com.google.firebase.components.ComponentRegistrar" />
+154-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\fangp\.gradle\caches\transforms-3\b90d9004cc4eddbba53eef1f18243081\transformed\jetified-firebase-installations-17.0.0\AndroidManifest.xml:20:17-82
+155        </service>
+156
+157        <provider
+157-->[com.google.firebase:firebase-common:20.0.0] C:\Users\fangp\.gradle\caches\transforms-3\4687e3762a8b928592f41c378ea1266b\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:26:9-31:39
+158            android:name="com.google.firebase.provider.FirebaseInitProvider"
+158-->[com.google.firebase:firebase-common:20.0.0] C:\Users\fangp\.gradle\caches\transforms-3\4687e3762a8b928592f41c378ea1266b\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:27:13-77
+159            android:authorities="comp5216.sydney.edu.au.checkme.firebaseinitprovider"
+159-->[com.google.firebase:firebase-common:20.0.0] C:\Users\fangp\.gradle\caches\transforms-3\4687e3762a8b928592f41c378ea1266b\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:28:13-72
+160            android:directBootAware="true"
+160-->[com.google.firebase:firebase-common:20.0.0] C:\Users\fangp\.gradle\caches\transforms-3\4687e3762a8b928592f41c378ea1266b\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:29:13-43
+161            android:exported="false"
+161-->[com.google.firebase:firebase-common:20.0.0] C:\Users\fangp\.gradle\caches\transforms-3\4687e3762a8b928592f41c378ea1266b\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:30:13-37
+162            android:initOrder="100" />
+162-->[com.google.firebase:firebase-common:20.0.0] C:\Users\fangp\.gradle\caches\transforms-3\4687e3762a8b928592f41c378ea1266b\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:31:13-36
+163
+164        <activity
+164-->[com.google.android.gms:play-services-base:16.1.0] C:\Users\fangp\.gradle\caches\transforms-3\620067d90a759669b4de6791903b6b9f\transformed\jetified-play-services-base-16.1.0\AndroidManifest.xml:23:9-26:75
+165            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+165-->[com.google.android.gms:play-services-base:16.1.0] C:\Users\fangp\.gradle\caches\transforms-3\620067d90a759669b4de6791903b6b9f\transformed\jetified-play-services-base-16.1.0\AndroidManifest.xml:24:13-79
+166            android:exported="false"
+166-->[com.google.android.gms:play-services-base:16.1.0] C:\Users\fangp\.gradle\caches\transforms-3\620067d90a759669b4de6791903b6b9f\transformed\jetified-play-services-base-16.1.0\AndroidManifest.xml:25:13-37
+167            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+167-->[com.google.android.gms:play-services-base:16.1.0] C:\Users\fangp\.gradle\caches\transforms-3\620067d90a759669b4de6791903b6b9f\transformed\jetified-play-services-base-16.1.0\AndroidManifest.xml:26:13-72
+168
+169        <receiver
+169-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:29:9-33:20
+170            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+170-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:30:13-85
+171            android:enabled="true"
+171-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:31:13-35
+172            android:exported="false" >
+172-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:32:13-37
+173        </receiver>
+174
+175        <service
+175-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:35:9-38:40
+176            android:name="com.google.android.gms.measurement.AppMeasurementService"
+176-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:36:13-84
+177            android:enabled="true"
+177-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:37:13-35
+178            android:exported="false" />
+178-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:38:13-37
+179        <service
+179-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:39:9-43:72
+180            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+180-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:40:13-87
+181            android:enabled="true"
+181-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:41:13-35
+182            android:exported="false"
+182-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:42:13-37
+183            android:permission="android.permission.BIND_JOB_SERVICE" />
+183-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\fangp\.gradle\caches\transforms-3\0a3954450951696ddd97f57983c3f0f6\transformed\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:43:13-69
+184    </application>
+185
+186</manifest>

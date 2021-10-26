@@ -1,0 +1,250 @@
+[
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_scan_result.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\activity_scan_result.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_app_logo.png.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\app_logo.png"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_view_created_event.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_view_created_event.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_cloud_download_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_cloud_download_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_scan_button_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_scan_button_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_map_container.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_map_container.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_second.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\activity_second.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\menu_navigation_bar_menu.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\menu\\navigation_bar_menu.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_create_event.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_create_event.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_sign_in.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\activity_sign_in.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_checkin_failed.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_checkin_failed.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_gallery.png.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\gallery.png"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_my_code_button_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_my_code_button_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_my_code_container.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\my_code_container.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_history_button_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_history_button_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_visit_count_background.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_visit_count_background.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_button_resend_background.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\button_resend_background.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_home_normal.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_home_normal.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_my_code_container.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_my_code_container.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_navigation_bar.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\navigation_bar.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_checkin_successfully.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_checkin_successfully.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_account_button_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_account_button_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_custom_listview.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\custom_listview.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_history.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_history.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_flashlight.png.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\flashlight.png"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\anim_right_to_left_slide.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\anim\\right_to_left_slide.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_history_items.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\history_items.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_button_auth_background.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\button_auth_background.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_icon_alert_error_outline_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_icon_alert_error_outline_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_scan.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_scan.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_home_button_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_home_button_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_title_bar.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\title_bar.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_icon_action_check_circle_outline_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_icon_action_check_circle_outline_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_my_code.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_my_code.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\anim_left_to_right_slide.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\anim\\left_to_right_slide.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_map_fragment.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\map_fragment.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_account.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_account.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_created_event2.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\fragment_created_event2.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_arrow_back_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_arrow_back_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_create_account.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\activity_create_account.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_scan.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\activity_scan.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_nav_button_selector.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\nav_button_selector.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_map.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\activity_map.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_custom_confirm_address.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\custom_confirm_address.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_launcher_background.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_report_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_report_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_add_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_add_24.xml"
+    },
+    {
+        "merged": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_icon_navigation_close_24.xml.flat",
+        "source": "F:\\CheckMe-create_qrcode\\CheckMe-create_qrcode\\app\\src\\main\\res\\drawable-v24\\ic_icon_navigation_close_24.xml"
+    }
+]
