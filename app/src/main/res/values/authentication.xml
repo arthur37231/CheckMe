@@ -15,7 +15,12 @@
     <string name="login_account_prompt">Don\'t have an account?&#160;</string>
     <string name="login_account_to_register">Create an account</string>
 
-    <string name="auth_phone_number">PHONE NUMBER</string>
+    <string name="auth_activity_name">ACTIVITY NAME</string>
     <string name="auth_password">PASSWORD</string>
+    <string name="auth_start_time">START TIME</string>
+    <string name="auth_expired_time">EXPIRED TIME</string>
+    <string name="auth_address">ADDRESS</string>
+    <string name="auth_phone_number">PHONE NUMBER</string>
+    <string name="auth_cover_image">COVER_IMAGE</string>
     <string name="auth_verification_code">VERIFICATION CODE</string>
 </resources>

@@ -1,19 +1,34 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
 import comp5216.sydney.edu.au.checkme.R;
+
+import comp5216.sydney.edu.au.checkme.activity.database.DB;
+import comp5216.sydney.edu.au.checkme.activity.database.HistoryItem;
+import comp5216.sydney.edu.au.checkme.activity.database.HistoryItemDao;
+import comp5216.sydney.edu.au.checkme.activity.utils.HistoryItemAdapter;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
 public class HistoryFragment extends Fragment {
     private View view;
+    private ListView historyList;
+    private List<HistoryItem> items;
+    private DB db;
+    private HistoryItemDao historyItemDao;
+    private HistoryItemAdapter itemAdapter;
 
     /**
      * Called to have the fragment instantiate its user interface view.
@@ -42,11 +57,50 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_history, container, false);
         setupTitle();
+        db = DB.getDatabase(getContext());
+        historyItemDao = db.historyItemDao();
+        readItemsFromDatabase();
+        historyList = view.findViewById(R.id.history_list);
+        itemAdapter = new HistoryItemAdapter(getContext(), R.layout.history_items, items);
+//        setupListViewListener();
+        historyList.setAdapter(itemAdapter);
         return view;
+    }
+
+//    private void setupListViewListener() {
+//        historyList.setOnItemClickListener((parent, view, position, id) -> {
+//            HashMap<String, String> updateItem = (HashMap<String, String>) itemAdapter.getItem(position);
+//        });
+//    }
+
+    private void readItemsFromDatabase()
+    {
+        try {
+            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+                List<HistoryItem> itemsFromDB = historyItemDao.listAll();
+                items = itemsFromDB;
+                // if there're some data on the database, then load
+//                if (itemsFromDB != null & itemsFromDB.size() > 0) {
+//                    for (HistoryItem item : itemsFromDB) {
+//                        String eventId = item.getEventId();
+//                        String visitingTime = item.getVisitingTime();
+//                        String eventAddr = item.getEventAddr();
+//                        String riskLevel = item.getRiskLevel();
+//                    }
+//                }
+//                sortResult();
+            });
+            future.get();
+        }
+        catch(Exception ex) {
+            Log.e("readItemsFromDatabase", ex.getStackTrace().toString());
+        }
     }
 
     private void setupTitle() {
         TitleBarLayout titleBarLayout = view.findViewById(R.id.historyTitle);
         titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.history_title);
     }
+
+
 }
