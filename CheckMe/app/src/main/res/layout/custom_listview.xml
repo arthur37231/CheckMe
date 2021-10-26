@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/custom_adapter_title"
+        android:layout_width="146dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp" />
+
+    <TextView
+        android:id="@+id/list_address"
+        android:layout_width="263dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/custom_adapter_title"
+        android:layout_alignEnd="@+id/list_start_time"
+        android:layout_alignBottom="@id/custom_adapter_title"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="-40dp" />
+
+    <TextView
+        android:id="@+id/list_others"
+        android:layout_width="269dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/custom_adapter_title"
+        android:layout_alignEnd="@+id/list_start_time"
+        android:layout_alignBottom="@id/custom_adapter_title"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="-77dp" />
+
+    <TextView
+        android:id="@+id/list_active"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/custom_adapter_title"
+        android:layout_alignEnd="@+id/list_start_time"
+        android:layout_alignBottom="@id/custom_adapter_title"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="285dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="-78dp" />
+
+    <TextView
+        android:id="@+id/list_start_time"
+        android:layout_width="208dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_toRightOf="@+id/custom_adapter_title" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="108dp" />
+
+
+</RelativeLayout>
