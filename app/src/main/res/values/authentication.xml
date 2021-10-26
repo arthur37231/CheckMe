@@ -18,4 +18,8 @@
     <string name="auth_phone_number">PHONE NUMBER</string>
     <string name="auth_password">PASSWORD</string>
     <string name="auth_verification_code">VERIFICATION CODE</string>
+    <string name="auth_start_time">START TIME</string>
+    <string name="auth_expired_time">EXPIRED TIME</string>
+    <string name="auth_address">ADDRESS</string>
+    <string name="auth_cover_image">FILES</string>
 </resources>

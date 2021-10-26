@@ -4,4 +4,7 @@
     <string name="verification_code_resend">RESEND</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="check_in_success">Check-In<br></br>Successful</string>
+    <string name="check_in_fail">Check-In Failed</string>
+    <string name="open_flashlight">Open flashlight</string>
 </resources>

@@ -1,19 +1,35 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
 import comp5216.sydney.edu.au.checkme.R;
+
+import comp5216.sydney.edu.au.checkme.activity.database.DB;
+import comp5216.sydney.edu.au.checkme.activity.database.HistoryItem;
+import comp5216.sydney.edu.au.checkme.activity.database.HistoryItemDao;
+import comp5216.sydney.edu.au.checkme.activity.utils.HistoryItemAdapter;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
 public class HistoryFragment extends Fragment {
     private View view;
+    private ListView historyList;
+    private List<HistoryItem> items;
+    private DB db;
+    private HistoryItemDao historyItemDao;
+    private HistoryItemAdapter itemAdapter;
 
     /**
      * Called to have the fragment instantiate its user interface view.
@@ -42,11 +58,52 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_history, container, false);
         setupTitle();
+        db = DB.getDatabase(getContext());
+        historyItemDao = db.historyItemDao();
+        readItemsFromDatabase();
+        historyList = view.findViewById(R.id.history_list);
+        itemAdapter = new HistoryItemAdapter(getContext(), R.layout.history_items, items);
+        setupListViewListener();
+        historyList.setAdapter(itemAdapter);
         return view;
+    }
+
+    private void setupListViewListener() {
+        historyList.setOnItemClickListener((parent, view, position, id) -> {
+            AlertDialog.Builder normalDialog = new AlertDialog.Builder(getContext());
+            HistoryItem item = items.get(position);
+            String eventId = item.getEventId();
+            String eventName = item.getEventName();
+            String visitTime = item.getVisitingTime();
+            String eventAddr = item.getEventAddr();
+            String eventContent = "Event Name: " + eventName + "\n"
+                    + "Visit Time: " + visitTime
+                    + "\n" + "Event Address: " + eventAddr;
+            normalDialog.setTitle("Event ID: " + eventId);
+            normalDialog.setMessage(eventContent);
+            normalDialog.setPositiveButton("OK", (dialog, which) -> {});
+            normalDialog.show();
+        });
+    }
+
+    private void readItemsFromDatabase()
+    {
+        try {
+            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+                List<HistoryItem> itemsFromDB = historyItemDao.listAll();
+                items = itemsFromDB;
+            });
+            future.get();
+        }
+        catch(Exception ex) {
+            Log.e("readItemsFromDatabase", ex.getStackTrace().toString());
+        }
     }
 
     private void setupTitle() {
         TitleBarLayout titleBarLayout = view.findViewById(R.id.historyTitle);
         titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.history_title);
     }
+
+
 }
