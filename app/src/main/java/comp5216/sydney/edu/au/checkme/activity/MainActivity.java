@@ -6,7 +6,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,12 @@ public class MainActivity extends FragmentActivity {
         this.fragmentHolder.registerOnPageChangeCallback(fragmentChangeCallback());
 
         this.navigationBar.setFragmentHolder(this);
+
+        findViewById(R.id.scan).setOnClickListener(view -> {
+           Intent intent = new Intent();
+           intent.setClass(this, ScanActivity.class);
+           startActivity(intent);
+        });
     }
 
     @Override
@@ -85,5 +94,6 @@ public class MainActivity extends FragmentActivity {
             this.fragments.add(new HistoryFragment());
             this.fragments.add(new AccountFragment());
         }
+
     }
 }

@@ -9,12 +9,12 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="?android:attr/windowBackground"
         app:itemBackground="@color/theme"
         app:itemIconTint="@drawable/nav_button_selector"
         app:itemTextColor="@drawable/nav_button_selector"
-        app:menu="@menu/navigation_bar_menu"
-        app:labelVisibilityMode="labeled"/>
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/navigation_bar_menu" />
 
 </LinearLayout>
