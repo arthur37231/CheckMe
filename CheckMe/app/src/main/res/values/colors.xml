@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="black87">#DF000000</color>
+    <color name="black50">#87000000</color>
+    <color name="black30">#3F000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="sky_blue">#FF2383D5</color>
+    <color name="lake_blue">#FF03DAC5</color>
+
+    <color name="theme">#6200EE</color>
+    <color name="nav_button_inactive">#d6bdfa</color>
+    <color name="nav_button_active">#FFFFFFFF</color>
+
+    <color name="home_counter_text">#00AC4F</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="light_grey">#20888888</color>
+
+    <color name="check_in_success">#30a342</color>
+    <color name="check_in_fail">#eac82e</color>
+</resources>
