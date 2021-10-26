@@ -1,5 +1,7 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -31,6 +34,9 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import comp5216.sydney.edu.au.checkme.R;
+import comp5216.sydney.edu.au.checkme.activity.database.ToDoTask;
+import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDB;
+import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDao;
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
@@ -87,6 +93,7 @@ public class MyCodeFragment extends Fragment{
                 //Fragment fragment =  new CreateEventFragment();
                 FragmentManager fragmentManager= getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
                 //int id = createEventFragment.getId();
 
                 //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
@@ -117,6 +124,7 @@ public class MyCodeFragment extends Fragment{
         TitleBarLayout titleBarLayout = view.findViewById(R.id.myCodeTitle);
         titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.my_code_title);
     }
+
     private void readTasksFromDatabase(ArrayList<Event> codes) {
         try{
             CompletableFuture<Void> future = CompletableFuture.runAsync(new Runnable() {
@@ -175,7 +183,42 @@ public class MyCodeFragment extends Fragment{
         return convetedTask;
     }
 
+    /*
+setup the long click listener and click listener on licview.
+ */
     public void setUpListViewLisener(){
+        taskListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position,
+                                           long rowId) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Delete a task")
+                        .setMessage("Do you want to delete this event?")
+                        .setPositiveButton("Delete", new
+                                DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        tasks.remove(position);
+                                        taskArrayAdapter.notifyDataSetChanged();
+
+                                        saveTasksToDatabase();
+                                    }
+                                })
+                        .setNegativeButton("Cancel", new
+                                DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                });
+                builder.create().show();
+                return true;
+            }
+        });
+        /*
+        if user click any of the task, then jump to
+        TaskEdit view and pass the current task information
+         */
         taskListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -187,6 +230,7 @@ public class MyCodeFragment extends Fragment{
                 viewEventFragment.setArguments(bundle);
                 FragmentManager fragmentManager= getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
                 //int id = createEventFragment.getId();
 
                 //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
@@ -197,6 +241,30 @@ public class MyCodeFragment extends Fragment{
             }
         });
     }
+
+//    public void setUpListViewLisener(){
+//        taskListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+//                Event clickedEvent = taskArrayAdapter.getItem(position);   // get the clicked task
+//                String ser_task = Tools.taskToString(clickedEvent);    // serialize the task to string
+//                ViewEventFragment viewEventFragment = new ViewEventFragment();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("event", ser_task);
+//                viewEventFragment.setArguments(bundle);
+//                FragmentManager fragmentManager= getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
+//                //int id = createEventFragment.getId();
+//
+//                //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
+//                fragmentTransaction.replace(R.id.my_code_container1,viewEventFragment);
+//                //fragmentTransaction.addToBackStack("MyCodeFragment");
+//
+//                fragmentTransaction.commit();
+//            }
+//        });
+//    }
     public String BitMapToString(Bitmap bitmap){
         ByteArrayOutputStream baos=new  ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);

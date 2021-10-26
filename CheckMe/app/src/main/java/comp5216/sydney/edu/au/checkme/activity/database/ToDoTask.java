@@ -1,4 +1,4 @@
-package comp5216.sydney.edu.au.checkme.activity;
+package comp5216.sydney.edu.au.checkme.activity.database;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

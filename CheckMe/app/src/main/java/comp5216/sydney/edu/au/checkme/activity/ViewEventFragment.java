@@ -16,10 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-
-import com.google.gson.Gson;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
 
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
@@ -57,17 +57,32 @@ public class ViewEventFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //container = R.id.my_code_container;
-        view = inflater.inflate(R.layout.fragment_created_event, container, false);
+        view = inflater.inflate(R.layout.fragment_view_created_event, container, false);
         ImageView QRcode = view.findViewById(R.id.imageView);
+        TextView view_event_id = view.findViewById(R.id.view_event_id);
+        TextView view_event_name = view.findViewById(R.id.view_event_name);
+        TextView view_start_time = view.findViewById(R.id.view_start_time);
+        TextView view_address = view.findViewById(R.id.view_address);
+        TextView view_end_time = view.findViewById(R.id.view_end_time);
+
         Bundle bundle = this.getArguments();
         String ser_event = bundle.getString("event");
         Event event = Tools.stringToTask(ser_event);
+        Button backButton = view.findViewById(R.id.activityBack);
+        backButton.setOnClickListener(this::onBackCLick);
 
         //FragmentManager manager = getFragmentManager();
         //FragmentTransaction ft = manager.beginTransaction();
         //Fragment bottomFragment = manager.findFragmentById(this.getId());
         //ft.hide(this)
-        Bitmap b = Tools.StringToBitMap(event.getCoverImage());
+        Bitmap b = Tools.StringToBitMap(event.getQrCode());
+        HashMap<String, String> address = Tools.CoordinateToAddress(event.getLatLng(),getActivity());
+        String addressString = address.get("address")+", "+address.get("others");
+        view_event_id.setText(event.getEventId());
+        view_event_name.setText(event.getEventName());
+        view_start_time.setText(Tools.timeToString(event.getStartTime()));
+        view_address.setText(addressString);
+        view_end_time.setText(Tools.timeToString(event.getEndTime()));
         QRcode.setImageBitmap(b);
         return view;
     }
@@ -77,6 +92,20 @@ public class ViewEventFragment extends Fragment {
         byte [] b=baos.toByteArray();
         String temp= Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
+    }
+    public void onBackCLick(View v) {
+        MyCodeFragment myCodeFragment = new MyCodeFragment();
+        FragmentManager fragmentManager= getFragmentManager();
+        //fragmentManager.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
+        //int id = createEventFragment.getId();
+
+        //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
+        fragmentTransaction.replace(R.id.my_code_container1,myCodeFragment);
+        //fragmentTransaction.addToBackStack("MyCodeFragment");
+
+        fragmentTransaction.commit();
     }
 
     /**

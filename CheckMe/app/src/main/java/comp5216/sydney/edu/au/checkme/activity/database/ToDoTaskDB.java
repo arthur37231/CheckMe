@@ -1,4 +1,4 @@
-package comp5216.sydney.edu.au.checkme.activity;
+package comp5216.sydney.edu.au.checkme.activity.database;
 
 import android.content.Context;
 
@@ -9,12 +9,12 @@ import androidx.room.RoomDatabase;
 /*
 Represents database
  */
-@Database(entities = {comp5216.sydney.edu.au.checkme.activity.ToDoTask.class}, version = 1, exportSchema = false)
+@Database(entities = {ToDoTask.class}, version = 1, exportSchema = false)
 public abstract class ToDoTaskDB extends RoomDatabase{
     private static final String DATABASE_NAME = "todotask_db";
     private static ToDoTaskDB DBINSTANCE;
 
-    public abstract comp5216.sydney.edu.au.checkme.activity.ToDoTaskDao toDoTaskDao();
+    public abstract ToDoTaskDao toDoTaskDao();
 
     public static ToDoTaskDB getDatabase(Context context){
         if (DBINSTANCE == null) {
