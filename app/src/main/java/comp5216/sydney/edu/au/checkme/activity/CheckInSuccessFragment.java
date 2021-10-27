@@ -90,12 +90,11 @@ public class CheckInSuccessFragment extends Fragment {
             String lat = jsonObject.getString("latitude");
             String lnt = jsonObject.getString("longitude");
             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-            List<Address> address = geocoder.getFromLocation(Double.parseDouble(lat), Double.parseDouble(lat), 1);
+            List<Address> address = geocoder.getFromLocation(Double.parseDouble(lat), Double.parseDouble(lnt), 1);
 
             String city = address.get(0).getLocality();
-            String street2 = address.get(0).getAddressLine(1);
-            String street1 = address.get(0).getAddressLine(0);
-            return street1 + ", " + street2 + ", " + city;
+            String street = address.get(0).getAddressLine(0);
+            return street + ", " + city;
         } catch (JSONException | IOException e){
             return "";
         }

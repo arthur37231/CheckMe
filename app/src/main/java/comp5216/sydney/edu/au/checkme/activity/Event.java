@@ -96,9 +96,22 @@ public class Event implements Comparable<Event>{
      */
     @Override
     public int compareTo(Event task) {
-        long currentRemainTime = getRemainingTime();
-        long taskRemainTime = task.getRemainingTime();
-        return Long.compare(taskRemainTime,currentRemainTime);
+        if (this.active!=task.getActive())
+        {
+            if(this.active==false)
+            {
+                return -1;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        else
+        {
+            return Integer.compare(Integer.valueOf(this.eventId), Integer.valueOf(task.getEventId()) );
+        }
+
     }
 
 }
