@@ -16,6 +16,7 @@
     <string name="login_account_to_register">Create an account</string>
 
     <string name="auth_phone_number">PHONE NUMBER</string>
+    <string name="auth_event_name">EVENT NAME</string>
     <string name="auth_password">PASSWORD</string>
     <string name="auth_verification_code">VERIFICATION CODE</string>
     <string name="auth_start_time">START TIME</string>
