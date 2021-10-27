@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.wifi.WifiManager;
 import android.util.Base64;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -94,10 +95,13 @@ public class Tools {
 
     public static HashMap<String, String> CoordinateToAddress(LatLng latLng, Context context)
     {
+//        WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+//        wifiManager.setWifiEnabled(false);
+//        wifiManager.setWifiEnabled(true);
         List<Address> addresses;
         HashMap<String,String> addressBook = new HashMap<String,String>();
         Geocoder geocoder;
-        geocoder = new Geocoder(context, Locale.getDefault());
+        geocoder = new Geocoder(context.getApplicationContext(), Locale.getDefault());
 
         try {
             addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5

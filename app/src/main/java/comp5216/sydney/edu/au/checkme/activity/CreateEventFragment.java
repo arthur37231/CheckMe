@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 
@@ -17,6 +18,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.location.Address;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -119,6 +121,10 @@ public class CreateEventFragment extends Fragment {
                 public void onActivityResult(Boolean result) {
                     if(result) {
                         permission = result;
+                        WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
+                        wifiManager.setWifiEnabled(false);
+                        wifiManager.setWifiEnabled(true);
                         Intent intent = new Intent(getActivity(),MapActivity.class);
                         mapLauncher.launch(intent);
                         Log.e(TAG, "onActivityResult: PERMISSION GRANTED");
@@ -223,11 +229,7 @@ public class CreateEventFragment extends Fragment {
         Button submitButton = view.findViewById(R.id.confirmEventInformation);
         return view;
     }
-    private void pickImageFromGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        mLaucher.launch(intent);
-    }
+
     private void onImageClick (View view) {
 
         mPermissionResult.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
