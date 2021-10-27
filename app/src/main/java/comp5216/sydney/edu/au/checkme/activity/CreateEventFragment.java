@@ -99,6 +99,9 @@ public class CreateEventFragment extends Fragment {
                 public void onActivityResult(Boolean result) {
                     if(result) {
                         permission = result;
+                        Intent intent = new Intent(Intent.ACTION_PICK);
+                        intent.setType("image/*");
+                        mLaucher.launch(intent);
                         Log.e(TAG, "onActivityResult: PERMISSION GRANTED");
 
                     } else {
@@ -116,6 +119,8 @@ public class CreateEventFragment extends Fragment {
                 public void onActivityResult(Boolean result) {
                     if(result) {
                         permission = result;
+                        Intent intent = new Intent(getActivity(),MapActivity.class);
+                        mapLauncher.launch(intent);
                         Log.e(TAG, "onActivityResult: PERMISSION GRANTED");
 
                     } else {
@@ -226,22 +231,22 @@ public class CreateEventFragment extends Fragment {
     private void onImageClick (View view) {
 
         mPermissionResult.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
-        if(permission==true)
-        {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            mLaucher.launch(intent);
-        }
+//        if(permission==true)
+//        {
+//            Intent intent = new Intent(Intent.ACTION_PICK);
+//            intent.setType("image/*");
+//            mLaucher.launch(intent);
+//        }
 
     }
     private void onCLickCreateEventAddress(View view)
     {
         mPermissionResultMap.launch(Manifest.permission.ACCESS_FINE_LOCATION);
-        if(permission==true)
-        {
-            Intent intent = new Intent(getActivity(),MapActivity.class);
-            mapLauncher.launch(intent);
-        }
+//        if(permission==true)
+//        {
+//            Intent intent = new Intent(getActivity(),MapActivity.class);
+//            mapLauncher.launch(intent);
+//        }
     }
     private void onCreateStartTime(View view) {
         Calendar c = Calendar.getInstance();
@@ -388,6 +393,15 @@ public class CreateEventFragment extends Fragment {
         String ser_bitmap = BitMapToString(qrCode);
         code.setQrCode(ser_bitmap);
         code.setCoverImage(ser_coverImage);
+        if(!Tools.expireChekcer(endTime, startTime).equals("Expired"))
+        {
+            code.setActive(true);
+        }
+        else
+        {
+            code.setActive(false);
+        }
+
         // Setting Bitmap to ImageView
         saveTasksToDatabase(code);
         MyCodeFragment myCodeFragment = new MyCodeFragment();

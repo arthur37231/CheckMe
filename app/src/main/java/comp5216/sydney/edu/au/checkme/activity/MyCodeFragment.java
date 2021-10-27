@@ -192,7 +192,7 @@ setup the long click listener and click listener on licview.
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position,
                                            long rowId) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Delete a task")
+                builder.setTitle("Delete an event")
                         .setMessage("Do you want to delete this event?")
                         .setPositiveButton("Delete", new
                                 DialogInterface.OnClickListener() {

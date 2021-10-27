@@ -1,6 +1,7 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -24,7 +25,7 @@ public class Event implements Comparable<Event>{
     Date endTime;
     String qrCode;
     String coverImage;
-    boolean active = true;
+    boolean active;
 
 
     public Event(String eventName, LatLng latLng, Date startTime, Date endTime) {
@@ -96,22 +97,31 @@ public class Event implements Comparable<Event>{
      */
     @Override
     public int compareTo(Event task) {
+        int result=0;
+        //Log.i("fangpei",this.eventId+" "+task.getEventId()+" compare result: "+ result);
+        if (this.eventName.equals("3")&&task.getEventName().equals("2"))
+        {
+            boolean a = this.active!=task.getActive();
+        }
+
         if (this.active!=task.getActive())
         {
             if(this.active==false)
             {
-                return -1;
+                result= 1;
             }
-            else
+            else if (task.getActive()==false)
             {
-                return 1;
+                result= -1;
             }
         }
-        else
+        if (result==0)
         {
-            return Integer.compare(Integer.valueOf(this.eventId), Integer.valueOf(task.getEventId()) );
+            result = Integer.compare(Integer.valueOf(task.getEventId()),Integer.valueOf(this.eventId) );
         }
 
+        Log.i("fangpei",this.eventName+" "+task.getEventName()+" compare result: "+ result);
+        return result;
     }
 
 }
