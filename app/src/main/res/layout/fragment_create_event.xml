@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:id = "@+id/createEventFragmentID"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -34,7 +35,7 @@
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif"
-                    android:text="@string/auth_phone_number"/>
+                    android:text="@string/auth_event_name"/>
 
                 <EditText
                     android:id="@+id/createEventName"
@@ -63,9 +64,9 @@
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif"
-                    android:text="@string/auth_phone_number"/>
+                    android:text="@string/auth_start_time"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/createEventStartTime"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -92,9 +93,9 @@
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif"
-                    android:text="@string/auth_phone_number"/>
+                    android:text="@string/auth_expired_time"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/createEventExpireTime"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -121,9 +122,9 @@
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif"
-                    android:text="@string/auth_phone_number"/>
+                    android:text="@string/auth_address"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/createEventAddress"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -150,13 +151,13 @@
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif"
-                    android:text="@string/auth_phone_number"/>
+                    android:text="@string/auth_cover_image"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/createEventCoverImage"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:maxLines="1"/>
+                    android:maxLines="1" />
 
             </LinearLayout>
 

@@ -46,6 +46,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    abstract void setupNavigator();
+
     /**
      * The single point for the activity launching another activity and obtaining activity results.
      * Reduce coupling and avoiding official API deprecating risk.
