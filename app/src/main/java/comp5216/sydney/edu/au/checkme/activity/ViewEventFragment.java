@@ -23,10 +23,11 @@ import java.util.HashMap;
 
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
+import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ViewEventFragment#newInstance} factory method to
+ * Use the {ViewEventFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ViewEventFragment extends Fragment {
@@ -58,6 +59,7 @@ public class ViewEventFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //container = R.id.my_code_container;
         view = inflater.inflate(R.layout.fragment_view_created_event, container, false);
+        setupTitle();
         ImageView QRcode = view.findViewById(R.id.imageView);
         TextView view_event_id = view.findViewById(R.id.view_event_id);
         TextView view_event_name = view.findViewById(R.id.view_event_name);
@@ -76,8 +78,10 @@ public class ViewEventFragment extends Fragment {
         //Fragment bottomFragment = manager.findFragmentById(this.getId());
         //ft.hide(this)
         Bitmap b = Tools.StringToBitMap(event.getQrCode());
+
         HashMap<String, String> address = Tools.CoordinateToAddress(event.getLatLng(),getActivity());
         String addressString = address.get("address")+", "+address.get("others");
+
         view_event_id.setText(event.getEventId());
         view_event_name.setText(event.getEventName());
         view_start_time.setText(Tools.timeToString(event.getStartTime()));
@@ -86,6 +90,7 @@ public class ViewEventFragment extends Fragment {
         QRcode.setImageBitmap(b);
         return view;
     }
+
     public String BitMapToString(Bitmap bitmap){
         ByteArrayOutputStream baos=new  ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
@@ -93,6 +98,7 @@ public class ViewEventFragment extends Fragment {
         String temp= Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
     }
+
     public void onBackCLick(View v) {
         MyCodeFragment myCodeFragment = new MyCodeFragment();
         FragmentManager fragmentManager= getFragmentManager();
@@ -121,5 +127,11 @@ public class ViewEventFragment extends Fragment {
             e.getMessage();
             return null;
         }
+    }
+
+    private void setupTitle() {
+        TitleBarLayout titleBarLayout = view.findViewById(R.id.myEventTitle);
+        titleBarLayout.setupTitle(R.string.view_event_code_title)
+                .operateInvisible();
     }
 }

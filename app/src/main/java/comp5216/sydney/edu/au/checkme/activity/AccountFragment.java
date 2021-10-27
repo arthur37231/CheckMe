@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
@@ -42,11 +46,21 @@ public class AccountFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_account, container, false);
         setupTitle();
+
+        temp();
+
         return view;
     }
 
     private void setupTitle() {
         TitleBarLayout titleBarLayout = view.findViewById(R.id.accountTitle);
         titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.account_title);
+    }
+
+    private void temp() {
+        Button logout = view.findViewById(R.id.temp);
+        logout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+        });
     }
 }

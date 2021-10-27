@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 
@@ -18,7 +17,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.location.Address;
 import android.net.Uri;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -121,10 +119,10 @@ public class CreateEventFragment extends Fragment {
                 public void onActivityResult(Boolean result) {
                     if(result) {
                         permission = result;
-                        WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-
-                        wifiManager.setWifiEnabled(false);
-                        wifiManager.setWifiEnabled(true);
+//                        WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+//
+//                        wifiManager.setWifiEnabled(false);
+//                        wifiManager.setWifiEnabled(true);
                         Intent intent = new Intent(getActivity(),MapActivity.class);
                         mapLauncher.launch(intent);
                         Log.e(TAG, "onActivityResult: PERMISSION GRANTED");
@@ -197,7 +195,7 @@ public class CreateEventFragment extends Fragment {
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_create_event, container, false);
-        //setupTitle();
+        setupTitle();
         db = DB.getDatabase(getActivity().getApplicationContext());
         //Button backButton;
         toDoTaskDao = db.toDoTaskDao();
@@ -486,9 +484,10 @@ public class CreateEventFragment extends Fragment {
 
 
     private void setupTitle() {
-        TitleBarLayout titleBarLayout = view.findViewById(R.id.myCodeTitle);
-        titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.my_code_title);
+        TitleBarLayout titleBarLayout = view.findViewById(R.id.createEventTitle);
+        titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.create_event_title);
     }
+
     private void readTasksFromDatabase(ArrayList<Event> codes) {
         try{
             CompletableFuture<Void> future = CompletableFuture.runAsync(new Runnable() {

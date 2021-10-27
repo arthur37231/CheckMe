@@ -29,7 +29,7 @@ import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MyCodeContainerFragment#newInstance} factory method to
+ * Use the {MyCodeContainerFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class MyCodeContainerFragment extends Fragment {

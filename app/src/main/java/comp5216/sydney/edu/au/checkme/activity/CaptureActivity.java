@@ -52,7 +52,7 @@ import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
  * https://www.imooc.com/article/20974
  */
 
-public class CaptureActivity extends BaseActivityWithoutNav implements DecoratedBarcodeView.TorchListener {
+public class CaptureActivity extends BaseActivity implements DecoratedBarcodeView.TorchListener {
     private DecoratedBarcodeView barcodeScannerView;
     private CaptureManager capture;
     private ImageView gallery;

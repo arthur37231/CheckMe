@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +40,8 @@ public class MainActivity extends FragmentActivity {
             intent.setClass(this, ScanActivity.class);
             startActivity(intent);
         });
+
+        System.out.println(FirebaseAuth.getInstance().getCurrentUser() == null);
     }
 
     @Override

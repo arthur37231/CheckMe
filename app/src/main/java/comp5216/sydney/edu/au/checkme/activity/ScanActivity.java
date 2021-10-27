@@ -15,7 +15,7 @@ import comp5216.sydney.edu.au.checkme.R;
  * @author tyson
  * Created 2021/10/24 at 12:39 上午
  */
-public class ScanActivity extends BaseActivityWithoutNav{
+public class ScanActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

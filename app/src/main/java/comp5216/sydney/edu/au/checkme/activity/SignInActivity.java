@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -72,6 +73,21 @@ public class SignInActivity extends AuthActivity {
         loginButton.setEnabled(true);
     }
 
+    private void signInWithEmailPassword(String emailAddress, String password) {
+        mAuth.signInWithEmailAndPassword(emailAddress, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            Log.d(TAG, "signInWithEmail: success");
+                            navigateToHomePage();
+                        } else {
+                            Log.e(TAG, "signInWithEmail: failure", task.getException());
+                        }
+                    }
+                });
+    }
+
     private void onClickLogin(View view) {
         if(!policyAgreementCheck.isChecked()) {
             Toast.makeText(this, "You must agree the privacy policy first", Toast.LENGTH_SHORT).show();
@@ -88,8 +104,10 @@ public class SignInActivity extends AuthActivity {
                             Log.d(TAG, "onComplete: " + snapshot.getData());
 
                             User userInfo = snapshot.toObject(User.class);
-                            if(loginPassword.getText().toString().equals(userInfo.getPassword())) {
-                                navigateToHomePage();
+                            String inputPassword = loginPassword.getText().toString();
+
+                            if(inputPassword.equals(userInfo.getPassword())) {
+                                signInWithEmailPassword(userInfo.getEmail(), inputPassword);
                             } else {
                                 Toast.makeText(getApplicationContext(), "Password is wrong", Toast.LENGTH_SHORT).show();
                             }

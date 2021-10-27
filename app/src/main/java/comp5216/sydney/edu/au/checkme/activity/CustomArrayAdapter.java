@@ -51,8 +51,8 @@ public class CustomArrayAdapter extends ArrayAdapter {
         listItem = LayoutInflater.from(this.context).inflate(R.layout.custom_listview, parent,
                 false);
         Event currentCode = this.codeList.get(position);
-        HashMap<String, String> addresses = Tools.CoordinateToAddress(currentCode.getLatLng(),this.context);
         Date endTime = currentCode.getEndTime();
+        HashMap<String, String> addresses = Tools.CoordinateToAddress(currentCode.getLatLng(),this.context);
         String address = addresses.get("address");
         String others = addresses.get("others");
         Bitmap coverImage = Tools.StringToBitMap(currentCode.getCoverImage());

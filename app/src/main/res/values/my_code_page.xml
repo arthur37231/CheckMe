@@ -12,4 +12,11 @@
     <string name="create_event_address">ADDRESS</string>
     <string name="create_event_cover_image">COVER IMAGE</string>
     <string name="create_event_button">CREATE</string>
+
+    <string name="view_event_code_title">Event QR Code</string>
+    <string name="view_event_name">Event:&#160;</string>
+    <string name="view_event_id">Event ID:&#160;</string>
+    <string name="view_event_start_time">Start Time:&#160;</string>
+    <string name="view_event_address">Address:&#160;</string>
+    <string name="view_event_expire_time">Expire At:&#160;</string>
 </resources>

@@ -1,14 +1,9 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
-import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Date;
 
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;

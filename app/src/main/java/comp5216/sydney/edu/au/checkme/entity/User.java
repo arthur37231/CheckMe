@@ -7,6 +7,7 @@ public class User {
     private String phoneNumber;
     private String password;
     private String email;
+    private String contactEmail;
     private String address;
 
     public User() {
@@ -58,6 +59,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
     }
 
     @Override

@@ -15,7 +15,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -29,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.entity.User;
+import comp5216.sydney.edu.au.checkme.utils.CommonUtils;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
 public class CreateAccountActivity extends AuthActivity {
@@ -127,13 +132,18 @@ public class CreateAccountActivity extends AuthActivity {
     }
 
     private void createUserEntity() {
+        String phoneNumber = firebaseUser.getPhoneNumber();
         String inputPassword = signupPassword.getText().toString();
         if(inputPassword.length() >= 6 && Character.isAlphabetic(inputPassword.charAt(0))) {
+            String emailAddress = CommonUtils.phoneNumberToEmail(phoneNumber);
+            firebaseUser.linkWithCredential(createEmailAuthCredential(emailAddress, inputPassword));
+            Log.d(TAG, "createUserEntity: Email Address: " + emailAddress);
+
             User createdUser = new User(
                     null,
-                    firebaseUser.getPhoneNumber(),
-                    signupPassword.getText().toString(),
-                    null,
+                    phoneNumber,
+                    inputPassword,
+                    emailAddress,
                     null
             );
             db.collection("users").document(createdUser.getPhoneNumber())
@@ -143,6 +153,25 @@ public class CreateAccountActivity extends AuthActivity {
         } else {
             Toast.makeText(this, "Password complexity is insufficient", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private AuthCredential createEmailAuthCredential(String emailAddress, String password) {
+        Log.d(TAG, "createEmailAuthCredential: Using Password: " + password);
+        mAuth.createUserWithEmailAndPassword(
+                emailAddress,
+                password
+        ).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    Log.d(TAG, "Create user with email: success");
+                    mAuth.getCurrentUser().updateEmail(emailAddress);
+                } else {
+                    Log.d(TAG, "Create user with email: failure");
+                }
+            }
+        });
+        return EmailAuthProvider.getCredential(emailAddress, password);
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
