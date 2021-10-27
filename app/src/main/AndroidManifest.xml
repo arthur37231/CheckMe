@@ -10,7 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CheckMe">
         <activity
+            android:name=".activity.UserPrivacyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ForgotPasswordActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.MainActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activity.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,11 +28,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.SignInActivity"
-            android:exported="true"/>
-        <activity
             android:name=".activity.CreateAccountActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>

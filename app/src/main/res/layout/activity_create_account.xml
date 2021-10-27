@@ -49,6 +49,7 @@
             android:id="@+id/signupPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:inputType="phone"
             android:maxLines="1"/>
 
     </LinearLayout>
@@ -85,6 +86,7 @@
                 android:id="@+id/signupVerificationCode"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:inputType="number"
                 android:maxLines="1"/>
 
         </LinearLayout>
@@ -93,11 +95,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/createAccountResendCode"
+            android:id="@+id/createAccountSendCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_resend_background"
-            android:text="@string/verification_code_resend"
+            android:text="@string/verification_code_send"
             android:textColor="@color/theme"
             android:textSize="14sp"/>
 
@@ -128,7 +130,8 @@
             android:id="@+id/signupPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:inputType="textPassword" />
 
     </LinearLayout>
 
@@ -138,6 +141,7 @@
         android:background="@color/black30"/>
 
     <Button
+        android:id="@+id/signup"
         android:layout_marginTop="10dp"
         style="@style/auth_button"
         android:text="@string/create_account_button_text"/>
@@ -154,10 +158,13 @@
             android:text="@string/create_account_prompt"/>
 
         <TextView
+            android:id="@+id/toLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/create_account_to_login"
-            android:textColor="@color/sky_blue"/>
+            android:textColor="@color/sky_blue"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"/>
 
     </LinearLayout>
 

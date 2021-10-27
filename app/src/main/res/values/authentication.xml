@@ -5,6 +5,10 @@
     <string name="create_account_button_text">SIGN UP</string>
     <string name="create_account_prompt">Already have an account?&#160;</string>
     <string name="create_account_to_login">Sign In</string>
+    <string name="create_account_fail_title">Verification Failed</string>
+    <string name="create_account_fail_message">Your input verification code cannot be matched with
+        what was sent</string>
+    <string name="create_account_fail_retry">Retry</string>
 
     <string name="login_title">Login</string>
     <string name="login_text">Sign In with Phone Number</string>

@@ -74,11 +74,9 @@ public class TitleBarLayout extends LinearLayout {
      * Setup the back button text content and corresponding
      * {@link OnClickListener}.
      *
-     * @param resId The android string resource id defined in resources directory.
      * @param onClickListener OnClick method when the back button is clicked.
      */
-    public TitleBarLayout setupBack(int resId, OnClickListener onClickListener) {
-        back.setText(resId);
+    public TitleBarLayout setupBack(OnClickListener onClickListener) {
         back.setOnClickListener(onClickListener);
         return this;
     }
