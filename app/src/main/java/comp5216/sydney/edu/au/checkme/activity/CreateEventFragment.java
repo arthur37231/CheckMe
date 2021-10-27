@@ -54,7 +54,6 @@ import androidmads.library.qrgenearator.QRGEncoder;
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.activity.database.DB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTask;
-import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDao;
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
@@ -74,7 +73,7 @@ public class CreateEventFragment extends Fragment {
     private final static int PERMISSION_CODE = 1001;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private static final int PERMISSIONS_REQUEST_ACCESS_EXTERNAL_STORAGE= 2;
-    ToDoTaskDB db;
+    DB db;
     ToDoTaskDao toDoTaskDao;
     Date date = new Date();
     Date startTime;
@@ -188,7 +187,7 @@ public class CreateEventFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_create_event, container, false);
         //setupTitle();
-        db = ToDoTaskDB.getDatabase(getActivity().getApplicationContext());
+        db = DB.getDatabase(getActivity().getApplicationContext());
         //Button backButton;
         toDoTaskDao = db.toDoTaskDao();
         String dt = timeToString(date);

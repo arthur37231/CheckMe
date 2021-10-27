@@ -236,7 +236,7 @@ public class CaptureActivity extends BaseActivityWithoutNav implements Decorated
         findViewById(R.id.capture_container).setVisibility(View.GONE);
         this.getSupportFragmentManager()
                 .beginTransaction()
-                //.add(R.id.fragment_container, new CheckInSuccessFragment(startTime, endTime, eventId, eventName, latLng), null)
+                .add(R.id.fragment_container, new CheckInSuccessFragment(startTime, endTime, eventId, eventName, latLng), null)
                 .addToBackStack(null)
                 .commit();
     }
