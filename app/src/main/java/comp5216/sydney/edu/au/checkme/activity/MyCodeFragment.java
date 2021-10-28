@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 //import com.google.android.material.floatingactionbutton.FloaT;
 
 
@@ -136,7 +137,11 @@ public class MyCodeFragment extends Fragment{
                     if (taskFromDB != null & taskFromDB.size()>0){
                         for (ToDoTask task : taskFromDB){
                             //task.getToDoTaskID();
-                            codes.add(stringToTask(task.getToDoTaskContent()));
+                            try {
+                                codes.add(stringToTask(task.getToDoTaskContent()));
+                            } catch (JsonSyntaxException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }
@@ -173,17 +178,14 @@ public class MyCodeFragment extends Fragment{
     }
     public String taskToString (Event task)
     {
-        Gson gson = new Gson();
-        String serializeTask = gson.toJson(task);
-        return  serializeTask;
+        return Tools.taskToString(task);
     }
     /*
     A static method transforms received String to Task object
      */
     public Event stringToTask (String serializeTask)
     {
-        Event convetedTask = new Gson().fromJson(serializeTask, Event.class);
-        return convetedTask;
+        return Tools.stringToTask(serializeTask);
     }
 
     /*
