@@ -157,7 +157,8 @@ public class HomeNormalFragment extends Fragment {
             highRiskAreaData.setEventAddress(historyItem.getEventAddr());
             highRiskAreaData.setHighRiskDate(historyItem.getVisitingDate());
 
-            String documentPath = SimpleDateFormat.getDateInstance().format(new Date());
+            String documentPath = new SimpleDateFormat(Constants.HIGH_RISK_DATA_DATE_FORMAT).format(new Date());
+//            String documentPath = SimpleDateFormat.getDateInstance().format(new Date());
             FirebaseFirestore.getInstance().collection(Constants.HIGH_RISK_DATA_COLLECTION)
                     .document(documentPath)
                     .update("data", FieldValue.arrayUnion(highRiskAreaData))
@@ -230,7 +231,8 @@ public class HomeNormalFragment extends Fragment {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) - i);
 
-            String queryDate = SimpleDateFormat.getDateInstance().format(calendar.getTime());
+            String queryDate = new SimpleDateFormat(Constants.HIGH_RISK_DATA_DATE_FORMAT).format(calendar.getTime());
+//            String queryDate = SimpleDateFormat.getDateInstance().format(calendar.getTime());
             FirebaseFirestore.getInstance().collection(Constants.HIGH_RISK_DATA_COLLECTION)
                     .document(queryDate)
                     .get()
