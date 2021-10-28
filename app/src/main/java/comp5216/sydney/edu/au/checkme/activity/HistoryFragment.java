@@ -65,10 +65,8 @@ public class HistoryFragment extends Fragment {
         historyList = view.findViewById(R.id.history_list);
         itemAdapter = new HistoryItemAdapter(getContext(), R.layout.history_items, items);
         historyList.setAdapter(itemAdapter);
-        Log.d("History", "onCreateView: 0");
         readItemsFromDatabase();
         setupListViewListener();
-//        historyList.setAdapter(itemAdapter);
         return view;
     }
 
@@ -93,18 +91,11 @@ public class HistoryFragment extends Fragment {
     private void readItemsFromDatabase()
     {
         try {
-            Log.d("History", "onCreateView: 1");
             CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
                 itemAdapter.clear();
                 itemAdapter.addAll(historyItemDao.listAll());
-//                items.clear();
-//                items.addAll(historyItemDao.listAll());
             });
-            Log.d("History", "onCreateView: 2");
             future.get();
-
-            Log.d("History", "onCreateView: 3");
-            Log.d("History", "readItemsFromDatabase: " + items);
             itemAdapter.notifyDataSetChanged();
         }
         catch(Exception ex) {

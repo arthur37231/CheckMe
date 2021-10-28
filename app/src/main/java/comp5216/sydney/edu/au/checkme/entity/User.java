@@ -1,5 +1,7 @@
 package comp5216.sydney.edu.au.checkme.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class User {
@@ -9,16 +11,19 @@ public class User {
     private String email;
     private String contactEmail;
     private String address;
+    private String registerTime;
 
     public User() {
     }
 
-    public User(String fullName, String phoneNumber, String password, String email, String address) {
+    public User(String fullName, String phoneNumber, String password, String email, String contactEmail, String address) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.email = email;
+        this.contactEmail = contactEmail;
         this.address = address;
+        this.registerTime = SimpleDateFormat.getDateTimeInstance().format(new Date());
     }
 
     public String getFullName() {
@@ -67,6 +72,14 @@ public class User {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(String registerTime) {
+        this.registerTime = registerTime;
     }
 
     @Override

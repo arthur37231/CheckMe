@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="account_title">My Account</string>
+    <string name="account_edit_button">EDIT</string>
+    <string name="account_name">NAME</string>
+    <string name="account_phone_number">PHONE NUMBER</string>
+    <string name="account_register_time">REGISTER TIME</string>
+    <string name="account_living_address">LIVING ADDRESS</string>
+    <string name="account_email">EMAIL</string>
 </resources>

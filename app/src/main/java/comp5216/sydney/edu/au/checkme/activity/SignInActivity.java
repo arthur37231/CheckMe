@@ -73,13 +73,14 @@ public class SignInActivity extends AuthActivity {
         loginButton.setEnabled(true);
     }
 
-    private void signInWithEmailPassword(String emailAddress, String password) {
+    private void signInWithEmailPassword(String emailAddress, String password, String phoneNumber) {
         mAuth.signInWithEmailAndPassword(emailAddress, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            Log.d(TAG, "signInWithEmail: success");
+                            Log.d(TAG, "signInWithEmail: success, and user's phone number is "
+                                    + mAuth.getCurrentUser().getPhoneNumber());
                             navigateToHomePage();
                         } else {
                             Log.e(TAG, "signInWithEmail: failure", task.getException());
@@ -93,8 +94,9 @@ public class SignInActivity extends AuthActivity {
             Toast.makeText(this, "You must agree the privacy policy first", Toast.LENGTH_SHORT).show();
         } else {
             // TODO: login algorithms
+            String inputPhoneNumber = Constants.PHONE_COUNTRY_CODE + loginPhoneNumber.getText().toString();
             DocumentReference docRef = db.collection("users")
-                    .document(Constants.PHONE_COUNTRY_CODE + loginPhoneNumber.getText().toString());
+                    .document(inputPhoneNumber);
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -107,7 +109,7 @@ public class SignInActivity extends AuthActivity {
                             String inputPassword = loginPassword.getText().toString();
 
                             if(inputPassword.equals(userInfo.getPassword())) {
-                                signInWithEmailPassword(userInfo.getEmail(), inputPassword);
+                                signInWithEmailPassword(userInfo.getEmail(), inputPassword, inputPhoneNumber);
                             } else {
                                 Toast.makeText(getApplicationContext(), "Password is wrong", Toast.LENGTH_SHORT).show();
                             }

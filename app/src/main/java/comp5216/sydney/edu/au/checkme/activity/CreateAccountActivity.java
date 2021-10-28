@@ -17,9 +17,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -27,8 +25,6 @@ import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import comp5216.sydney.edu.au.checkme.R;
@@ -136,15 +132,28 @@ public class CreateAccountActivity extends AuthActivity {
         String inputPassword = signupPassword.getText().toString();
         if(inputPassword.length() >= 6 && Character.isAlphabetic(inputPassword.charAt(0))) {
             String emailAddress = CommonUtils.phoneNumberToEmail(phoneNumber);
-            firebaseUser.linkWithCredential(createEmailAuthCredential(emailAddress, inputPassword));
+            AuthCredential emailAuthCredential = createEmailAuthCredential(emailAddress, inputPassword);
+            firebaseUser.linkWithCredential(emailAuthCredential)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()) {
+                                Log.d(TAG, "Linking Email and Phone Number to the user account");
+                                FirebaseUser user = task.getResult().getUser();
+                            } else {
+                                Log.d(TAG, "Linking Email and Phone failed");
+                            }
+                        }
+                    });
             Log.d(TAG, "createUserEntity: Email Address: " + emailAddress);
 
             User createdUser = new User(
-                    null,
+                    "",
                     phoneNumber,
                     inputPassword,
                     emailAddress,
-                    null
+                    "",
+                    ""
             );
             db.collection("users").document(createdUser.getPhoneNumber())
                     .set(createdUser);
@@ -157,20 +166,6 @@ public class CreateAccountActivity extends AuthActivity {
 
     private AuthCredential createEmailAuthCredential(String emailAddress, String password) {
         Log.d(TAG, "createEmailAuthCredential: Using Password: " + password);
-        mAuth.createUserWithEmailAndPassword(
-                emailAddress,
-                password
-        ).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    Log.d(TAG, "Create user with email: success");
-                    mAuth.getCurrentUser().updateEmail(emailAddress);
-                } else {
-                    Log.d(TAG, "Create user with email: failure");
-                }
-            }
-        });
         return EmailAuthProvider.getCredential(emailAddress, password);
     }
 
@@ -202,14 +197,12 @@ public class CreateAccountActivity extends AuthActivity {
     }
 
     private void onClickCreateAccountSendCode(View view) {
-        // TODO: Send the verification code to the user's phone number
         String phoneNumber = "+86 " + signupPhoneNumber.getText().toString();
         sendVerificationCode(phoneNumber);
         createAccountSendCode.setText(R.string.verification_code_resend);
     }
 
     private void onClickSignup(View view) {
-        // TODO: Verify the verification code and create an account based on user's phone number and password
         String verificationCode = signupVerificationCode.getText().toString();
         PhoneAuthCredential phoneAuthCredential = verifyPhoneNumberAndCode(storedVerificationId, verificationCode);
         signInWithPhoneAuthCredential(phoneAuthCredential);

@@ -1,21 +1,34 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -29,6 +42,12 @@ public class AccountFragment extends Fragment {
     private static String TAG = "AccountFragment";
 
     private View view;
+    private EditText accountName;
+    private TextView accountPhoneNumber;
+    private TextView accountRegisterTime;
+    private EditText livingAddress;
+    private EditText contactEmail;
+    private FirebaseUser firebaseUser;
 
     /**
      * Called to have the fragment instantiate its user interface view.
@@ -58,9 +77,19 @@ public class AccountFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_account, container, false);
         setupTitle();
 
-        temp();
-        logout();
-        clear();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        accountName = view.findViewById(R.id.accountName);
+        accountPhoneNumber = view.findViewById(R.id.accountPhoneNumber);
+        accountRegisterTime = view.findViewById(R.id.accountRegisterTime);
+        livingAddress = view.findViewById(R.id.accountLivingAddress);
+        contactEmail = view.findViewById(R.id.accountEmail);
+        Button confirmEdit = view.findViewById(R.id.confirmEditProfile);
+
+        confirmEdit.setOnClickListener(this::onClickConfirmEditProfile);
+        accountPhoneNumber.setOnLongClickListener(this::signOut);
+
+        initAccountInfo();
 
         return view;
     }
@@ -70,50 +99,51 @@ public class AccountFragment extends Fragment {
         titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.account_title);
     }
 
-    private List<HistoryItem> historyItems;
+    private void initAccountInfo() {
+        FirebaseFirestore.getInstance().collection("users")
+                .document(firebaseUser.getPhoneNumber())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()) {
+                            Map<String, Object> userInfo = task.getResult().getData();
+                            Log.d(TAG, "The current user information " + userInfo);
 
-    private void temp() {
-        Button logout = view.findViewById(R.id.temp);
-        logout.setOnClickListener(v -> {
-            HistoryItemDao historyItemDao = DB.getDatabase(getContext()).historyItemDao();
-
-            try {
-                CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
-                    HistoryItem historyItem = new HistoryItem();
-                    Date visitingDate = new Date();
-                    historyItem.setEventId(String.valueOf(visitingDate.getTime()));
-                    historyItem.setEventName("Testing Event");
-                    historyItem.setEventAddr(null);
-                    historyItem.setRiskLevel("Low Risk");
-                    historyItem.setVisitingDate(visitingDate);
-                    historyItemDao.insert(historyItem);
-                    Log.d(TAG, "temp: " + historyItem.toString());
+                            accountName.setText((String) userInfo.get("fullName"));
+                            accountPhoneNumber.setText(firebaseUser.getPhoneNumber());
+                            accountRegisterTime.setText((String) userInfo.get("registerTime"));
+                            contactEmail.setText((String) userInfo.get("contactEmail"));
+                            livingAddress.setText((String) userInfo.get("address"));
+                        } else {
+                            Log.d(TAG, "Cannot update user's info because cannot find " +
+                                    "current user in the auth database");
+                        }
+                    }
                 });
-                future.get();
-            } catch (ExecutionException | InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
-    private void logout() {
-        Button logout = view.findViewById(R.id.logout);
-        logout.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
-        });
+    private void onClickConfirmEditProfile(View v) {
+        String authPhoneNumber = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+        Map<String, Object> updateFields = new HashMap<>();
+        updateFields.put("fullName", accountName.getText().toString());
+        updateFields.put("address", livingAddress.getText().toString());
+        updateFields.put("contactEmail", contactEmail.getText().toString());
+
+        FirebaseFirestore.getInstance().collection("users")
+                .document(authPhoneNumber)
+                .update(updateFields);
+
+        ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE))
+                .hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+        Toast.makeText(getContext(), "Profile updated", Toast.LENGTH_SHORT).show();
     }
 
-    private void clear() {
-        Button clear = view.findViewById(R.id.clearAll);
-        clear.setOnClickListener(v -> {
-            HistoryItemDao historyItemDao = DB.getDatabase(getContext()).historyItemDao();
-
-            try {
-                CompletableFuture<Void> future = CompletableFuture.runAsync(historyItemDao::deleteAll);
-                future.get();
-            } catch (ExecutionException | InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
+    private boolean signOut(View v) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getContext(), SignInActivity.class));
+        getActivity().finish();
+        return true;
     }
 }

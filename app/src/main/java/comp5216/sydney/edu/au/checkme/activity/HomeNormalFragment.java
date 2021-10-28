@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -243,7 +242,6 @@ public class HomeNormalFragment extends Fragment {
                                 if(document.exists()) {
                                     Log.d(TAG, "Download Data: success " + document.getData().get("data"));
 
-                                    GenericTypeIndicator<Map<String, Object>> indicator = new GenericTypeIndicator<Map<String, Object>>() {};
                                     for(Map<String, Object> object : (ArrayList<Map<String, Object>>) document.getData().get("data")) {
                                         HighRiskAreaData data = new HighRiskAreaData();
                                         data.setEventId((String) object.get("eventId"));
