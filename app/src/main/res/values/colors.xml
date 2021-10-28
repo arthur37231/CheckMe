@@ -18,6 +18,7 @@
     <color name="nav_button_active">#FFFFFFFF</color>
 
     <color name="home_counter_text">#00AC4F</color>
+    <color name="high_risk_warning">#FF2B2B</color>
 
     <color name="transparent">#00000000</color>
     <color name="light_grey">#20888888</color>

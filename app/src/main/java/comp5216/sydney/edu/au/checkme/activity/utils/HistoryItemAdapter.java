@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,8 +40,21 @@ public class HistoryItemAdapter extends ArrayAdapter<HistoryItem> {
         tvVisitTime.setText(item.getVisitingTime());
         TextView tvEventAddr = view.findViewById(R.id.event_addr);
         tvEventAddr.setText(item.getEventAddr());
+
+        ImageView tvEventIcon = view.findViewById(R.id.risk_level_icon);
         TextView tvRiskLevel = view.findViewById(R.id.risk_level);
         tvRiskLevel.setText(item.getRiskLevel());
+        switch (item.getRiskLevel()) {
+            case "Low Risk":
+                tvRiskLevel.setTextColor(getContext().getColor(R.color.home_counter_text));
+                tvEventIcon.setImageResource(R.drawable.ic_icon_action_check_circle_outline_24);
+                break;
+            case "High Risk":
+                tvRiskLevel.setTextColor(getContext().getColor(R.color.high_risk_warning));
+                tvEventIcon.setImageResource(R.drawable.ic_icon_navigation_close_24);
+                break;
+        }
+
 //        ImageView imageView = view.findViewById(R.id.item_img);
 //        imageView.setImageResource(item.getImgId());
         return view;

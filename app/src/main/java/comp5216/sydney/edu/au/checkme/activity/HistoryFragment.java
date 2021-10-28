@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -26,7 +27,7 @@ import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 public class HistoryFragment extends Fragment {
     private View view;
     private ListView historyList;
-    private List<HistoryItem> items;
+    private List<HistoryItem> items = new ArrayList<>();
     private DB db;
     private HistoryItemDao historyItemDao;
     private HistoryItemAdapter itemAdapter;
@@ -56,15 +57,18 @@ public class HistoryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d("HistoryFragment", "onCreateView: Entered");
         view = inflater.inflate(R.layout.fragment_history, container, false);
         setupTitle();
         db = DB.getDatabase(getContext());
         historyItemDao = db.historyItemDao();
-        readItemsFromDatabase();
         historyList = view.findViewById(R.id.history_list);
         itemAdapter = new HistoryItemAdapter(getContext(), R.layout.history_items, items);
-        setupListViewListener();
         historyList.setAdapter(itemAdapter);
+        Log.d("History", "onCreateView: 0");
+        readItemsFromDatabase();
+        setupListViewListener();
+//        historyList.setAdapter(itemAdapter);
         return view;
     }
 
@@ -89,11 +93,19 @@ public class HistoryFragment extends Fragment {
     private void readItemsFromDatabase()
     {
         try {
+            Log.d("History", "onCreateView: 1");
             CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
-                List<HistoryItem> itemsFromDB = historyItemDao.listAll();
-                items = itemsFromDB;
+                itemAdapter.clear();
+                itemAdapter.addAll(historyItemDao.listAll());
+//                items.clear();
+//                items.addAll(historyItemDao.listAll());
             });
+            Log.d("History", "onCreateView: 2");
             future.get();
+
+            Log.d("History", "onCreateView: 3");
+            Log.d("History", "readItemsFromDatabase: " + items);
+            itemAdapter.notifyDataSetChanged();
         }
         catch(Exception ex) {
             Log.e("readItemsFromDatabase", ex.getStackTrace().toString());
@@ -104,6 +116,4 @@ public class HistoryFragment extends Fragment {
         TitleBarLayout titleBarLayout = view.findViewById(R.id.historyTitle);
         titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.history_title);
     }
-
-
 }

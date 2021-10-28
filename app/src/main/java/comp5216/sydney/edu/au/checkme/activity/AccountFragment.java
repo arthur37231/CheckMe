@@ -1,6 +1,7 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,20 @@ import androidx.fragment.app.Fragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
 import comp5216.sydney.edu.au.checkme.R;
+import comp5216.sydney.edu.au.checkme.activity.database.DB;
+import comp5216.sydney.edu.au.checkme.activity.database.HistoryItem;
+import comp5216.sydney.edu.au.checkme.activity.database.HistoryItemDao;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
 public class AccountFragment extends Fragment {
+    private static String TAG = "AccountFragment";
+
     private View view;
 
     /**
@@ -48,6 +59,8 @@ public class AccountFragment extends Fragment {
         setupTitle();
 
         temp();
+        logout();
+        clear();
 
         return view;
     }
@@ -57,10 +70,50 @@ public class AccountFragment extends Fragment {
         titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.account_title);
     }
 
+    private List<HistoryItem> historyItems;
+
     private void temp() {
         Button logout = view.findViewById(R.id.temp);
         logout.setOnClickListener(v -> {
+            HistoryItemDao historyItemDao = DB.getDatabase(getContext()).historyItemDao();
+
+            try {
+                CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+                    HistoryItem historyItem = new HistoryItem();
+                    Date visitingDate = new Date();
+                    historyItem.setEventId(String.valueOf(visitingDate.getTime()));
+                    historyItem.setEventName("Testing Event");
+                    historyItem.setEventAddr(null);
+                    historyItem.setRiskLevel("Low Risk");
+                    historyItem.setVisitingDate(visitingDate);
+                    historyItemDao.insert(historyItem);
+                    Log.d(TAG, "temp: " + historyItem.toString());
+                });
+                future.get();
+            } catch (ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void logout() {
+        Button logout = view.findViewById(R.id.logout);
+        logout.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
+        });
+    }
+
+    private void clear() {
+        Button clear = view.findViewById(R.id.clearAll);
+        clear.setOnClickListener(v -> {
+            HistoryItemDao historyItemDao = DB.getDatabase(getContext()).historyItemDao();
+
+            try {
+                CompletableFuture<Void> future = CompletableFuture.runAsync(historyItemDao::deleteAll);
+                future.get();
+            } catch (ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+            }
         });
     }
 }

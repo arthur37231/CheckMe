@@ -38,6 +38,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import android.Manifest;
 
@@ -382,7 +383,7 @@ public class CreateEventFragment extends Fragment {
         Toast.makeText(view.getContext(), "Created a new event", Toast.LENGTH_SHORT).show();
         String ser_coverImage = Tools.BitMapToString(coverImage);
         Event code = new Event(eventName,latLng,startTime, endTime);
-        code.setEventId(Integer.toString(Tools.getId()));
+        code.setEventId(Integer.toString(Tools.getId()) + new Date().getTime());
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
         String ser_code = Tools.taskToString(code);
         QRGEncoder qrgEncoder = new QRGEncoder(ser_code, null, QRGContents.Type.TEXT, 1);

@@ -10,13 +10,20 @@ import androidx.room.RoomDatabase;
  * @author tyson
  * Created 2021/10/26 at 9:33 PM
  */
-@Database(entities = {HistoryItem.class, ToDoTask.class}, version = 1, exportSchema = false)
+@Database(entities = {
+        HistoryItem.class,
+        ToDoTask.class,
+        HighRiskAreaData.class,
+        HighRiskDataDownloadDate.class
+}, version = 1, exportSchema = false)
 public abstract class DB extends RoomDatabase {
     private static final String DATABASE_NAME = "db";
     private static DB DBINSTANCE;
 
     public abstract HistoryItemDao historyItemDao();
     public abstract ToDoTaskDao toDoTaskDao();
+    public abstract HighRiskAreaDataDao highRiskAreaDataDao();
+    public abstract HighRiskDataDownloadDateDao highRiskDataDownloadDateDao();
 
     public static DB getDatabase(Context context) {
         if (DBINSTANCE == null) {
