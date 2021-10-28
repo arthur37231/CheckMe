@@ -383,15 +383,6 @@ public class CreateEventFragment extends Fragment {
         Toast.makeText(view.getContext(), "Created a new event", Toast.LENGTH_SHORT).show();
         String ser_coverImage = Tools.BitMapToString(coverImage);
         Event code = new Event(eventName,latLng,startTime, endTime);
-        if(!Tools.expireChekcer(endTime, startTime).equals("Expired"))
-        {
-            code.setActive(false);
-        }
-        else
-        {
-            code.setActive(true);
-        }
-
         code.setEventId(Integer.toString(Tools.getId()) + new Date().getTime());
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
         String ser_code = Tools.taskToString(code);
@@ -403,6 +394,14 @@ public class CreateEventFragment extends Fragment {
         String ser_bitmap = BitMapToString(qrCode);
         code.setQrCode(ser_bitmap);
         code.setCoverImage(ser_coverImage);
+        if(!Tools.expireChekcer(endTime, startTime).equals("Expired"))
+        {
+            code.setActive(true);
+        }
+        else
+        {
+            code.setActive(false);
+        }
 
         // Setting Bitmap to ImageView
         saveTasksToDatabase(code);
