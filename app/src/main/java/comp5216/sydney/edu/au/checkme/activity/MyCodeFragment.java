@@ -36,6 +36,7 @@ import java.util.concurrent.CompletableFuture;
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.activity.database.DB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTask;
+import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDao;
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
@@ -47,7 +48,7 @@ public class MyCodeFragment extends Fragment{
     ListView taskListView;
     ArrayAdapter<Event> taskArrayAdapter;
     ArrayList<Event> tasks;
-    DB db;
+    ToDoTaskDB db;
     ToDoTaskDao toDoTaskDao;
 
     /**
@@ -105,11 +106,12 @@ public class MyCodeFragment extends Fragment{
         });
         taskListView = view.findViewById(R.id.codeListView);
         tasks = new ArrayList<Event>();
-        db = DB.getDatabase(getActivity().getApplication().getApplicationContext());
+        db = ToDoTaskDB.getDatabase(getActivity().getApplication().getApplicationContext());
         toDoTaskDao = db.toDoTaskDao();
         //toDoTaskDao.deleteAll();
         //saveTasksToDatabase();
         readTasksFromDatabase(tasks);   // read existing tasks from local database
+
         Tools.setId(tasks.size()-1);
         Collections.sort(tasks);    // sort tasks accoding to date
 

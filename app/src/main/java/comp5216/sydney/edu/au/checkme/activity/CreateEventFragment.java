@@ -55,6 +55,7 @@ import androidmads.library.qrgenearator.QRGEncoder;
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.activity.database.DB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTask;
+import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDao;
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
@@ -74,7 +75,7 @@ public class CreateEventFragment extends Fragment {
     private final static int PERMISSION_CODE = 1001;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private static final int PERMISSIONS_REQUEST_ACCESS_EXTERNAL_STORAGE= 2;
-    DB db;
+    ToDoTaskDB db;
     ToDoTaskDao toDoTaskDao;
     Date date = new Date();
     Date startTime;
@@ -197,7 +198,7 @@ public class CreateEventFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_create_event, container, false);
         setupTitle();
-        db = DB.getDatabase(getActivity().getApplicationContext());
+        db = ToDoTaskDB.getDatabase(getActivity().getApplicationContext());
         //Button backButton;
         toDoTaskDao = db.toDoTaskDao();
         String dt = timeToString(date);
@@ -383,6 +384,14 @@ public class CreateEventFragment extends Fragment {
         Toast.makeText(view.getContext(), "Created a new event", Toast.LENGTH_SHORT).show();
         String ser_coverImage = Tools.BitMapToString(coverImage);
         Event code = new Event(eventName,latLng,startTime, endTime);
+        if(!Tools.expireChekcer(endTime, startTime).equals("Expired"))
+        {
+            code.setActive(true);
+        }
+        else
+        {
+            code.setActive(false);
+        }
         code.setEventId(Integer.toString(Tools.getId()) + new Date().getTime());
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
         String ser_code = Tools.taskToString(code);
@@ -394,14 +403,7 @@ public class CreateEventFragment extends Fragment {
         String ser_bitmap = BitMapToString(qrCode);
         code.setQrCode(ser_bitmap);
         code.setCoverImage(ser_coverImage);
-        if(!Tools.expireChekcer(endTime, startTime).equals("Expired"))
-        {
-            code.setActive(true);
-        }
-        else
-        {
-            code.setActive(false);
-        }
+
 
         // Setting Bitmap to ImageView
         saveTasksToDatabase(code);
