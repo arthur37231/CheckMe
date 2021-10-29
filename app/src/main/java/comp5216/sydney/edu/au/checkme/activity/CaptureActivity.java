@@ -11,6 +11,7 @@ import android.graphics.Matrix;
 import android.location.Location;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,8 +27,11 @@ import com.google.zxing.FormatException;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Result;
+import com.google.zxing.ResultPoint;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
+import com.journeyapps.barcodescanner.BarcodeCallback;
+import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
@@ -38,6 +42,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
@@ -87,6 +92,8 @@ public class CaptureActivity extends BaseActivity implements DecoratedBarcodeVie
             }
         });
 
+
+
         // Set the click event of flash button
         flashTip = findViewById(R.id.flash_tip);
         if (!hasFlash()) {
@@ -97,7 +104,7 @@ public class CaptureActivity extends BaseActivity implements DecoratedBarcodeVie
         flash.bringToFront();
         flash.setOnClickListener(v -> switchFlashlight(v));
 
-        barcodeScannerView = (DecoratedBarcodeView) findViewById(R.id.zxing_barcode_scanner);
+        barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
         capture = new CaptureManager(this, barcodeScannerView);
         capture.initializeFromIntent(getIntent(), savedInstanceState);
         capture.decode();
