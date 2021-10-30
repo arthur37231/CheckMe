@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import comp5216.sydney.edu.au.checkme.utils.DateTimeUtils;
+
 public class User {
     private String fullName;
     private String phoneNumber;
@@ -23,7 +25,7 @@ public class User {
         this.email = email;
         this.contactEmail = contactEmail;
         this.address = address;
-        this.registerTime = SimpleDateFormat.getDateTimeInstance().format(new Date());
+        this.registerTime = DateTimeUtils.formatDate(new Date());
     }
 
     public String getFullName() {

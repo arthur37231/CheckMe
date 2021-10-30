@@ -108,8 +108,7 @@ public class HomeNormalFragment extends Fragment {
         if(dataDownloadDate == null) {
             dataUpdatedTime.setText(Constants.NOTHING);
         } else {
-            dataUpdatedTime.setText(SimpleDateFormat.getDateTimeInstance()
-                    .format(dataDownloadDate.getDownloadDate()));
+            dataUpdatedTime.setText(DateTimeUtils.formatDate(dataDownloadDate.getDownloadDate()));
         }
     }
 
@@ -158,7 +157,6 @@ public class HomeNormalFragment extends Fragment {
             highRiskAreaData.setHighRiskDate(historyItem.getVisitingDate());
 
             String documentPath = new SimpleDateFormat(Constants.HIGH_RISK_DATA_DATE_FORMAT).format(new Date());
-//            String documentPath = SimpleDateFormat.getDateInstance().format(new Date());
             FirebaseFirestore.getInstance().collection(Constants.HIGH_RISK_DATA_COLLECTION)
                     .document(documentPath)
                     .update("data", FieldValue.arrayUnion(highRiskAreaData))
@@ -232,7 +230,6 @@ public class HomeNormalFragment extends Fragment {
             calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) - i);
 
             String queryDate = new SimpleDateFormat(Constants.HIGH_RISK_DATA_DATE_FORMAT).format(calendar.getTime());
-//            String queryDate = SimpleDateFormat.getDateInstance().format(calendar.getTime());
             FirebaseFirestore.getInstance().collection(Constants.HIGH_RISK_DATA_COLLECTION)
                     .document(queryDate)
                     .get()
