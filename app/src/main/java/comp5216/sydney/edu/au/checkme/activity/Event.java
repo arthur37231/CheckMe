@@ -112,7 +112,7 @@ public class Event implements Comparable<Event>{
         }
         if (result==0)
         {
-            result = Integer.compare(Integer.valueOf(task.getEventId()),Integer.valueOf(this.eventId) );
+            result = Long.compare(Long.parseLong(task.getEventId()), Long.parseLong(this.eventId));
         }
 
         Log.i("fangpei",this.eventName+" "+task.getEventName()+" compare result: "+ result);

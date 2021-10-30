@@ -7,9 +7,11 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.wifi.WifiManager;
 import android.util.Base64;
+import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -28,6 +30,7 @@ import comp5216.sydney.edu.au.checkme.activity.Event;
 
 public class Tools {
     public static int id;
+    public static String EVENT_TIME_FORMAT = "MM/dd/yyyy HH:mm";
 
     public static void setId(int num)
     {
@@ -66,7 +69,7 @@ public class Tools {
 
     public static String taskToString (Event task)
     {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setDateFormat(EVENT_TIME_FORMAT).create();
         String serializeTask = gson.toJson(task);
         return  serializeTask;
     }
@@ -89,8 +92,8 @@ public class Tools {
      */
     public static Event stringToTask (String serializeTask)
     {
-        Event convetedTask = new Gson().fromJson(serializeTask, Event.class);
-        return convetedTask;
+        Event convertedTask = new GsonBuilder().setDateFormat(EVENT_TIME_FORMAT).create().fromJson(serializeTask, Event.class);
+        return convertedTask;
     }
 
     public static HashMap<String, String> CoordinateToAddress(LatLng latLng, Context context)

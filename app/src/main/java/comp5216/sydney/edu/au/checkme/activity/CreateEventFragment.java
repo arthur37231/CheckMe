@@ -392,7 +392,9 @@ public class CreateEventFragment extends Fragment {
         {
             code.setActive(false);
         }
-        code.setEventId(Integer.toString(Tools.getId()) + new Date().getTime());
+        String timestamp = String.valueOf(new Date().getTime()).substring(3);
+        Log.d(TAG, "onClickConfirmEventInfo: 时间戳" + timestamp);
+        code.setEventId(Tools.getId() + timestamp);
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
         String ser_code = Tools.taskToString(code);
         QRGEncoder qrgEncoder = new QRGEncoder(ser_code, null, QRGContents.Type.TEXT, 1);
@@ -508,7 +510,7 @@ public class CreateEventFragment extends Fragment {
             future.get();
         }
         catch (Exception ex) {
-            Log.e("readItemsFromDatabase", ex.getStackTrace().toString());
+            ex.printStackTrace();
         }
     }
     /*
@@ -528,7 +530,7 @@ public class CreateEventFragment extends Fragment {
             future.get();
         }
         catch (Exception ex){
-
+            ex.printStackTrace();
         }
     }
 

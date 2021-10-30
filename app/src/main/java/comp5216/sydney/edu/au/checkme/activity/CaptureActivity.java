@@ -175,15 +175,12 @@ public class CaptureActivity extends BaseActivity implements DecoratedBarcodeVie
     }
 
     private boolean checkActivity(String startTime, String endTime) {
-        DateFormat fmt = new SimpleDateFormat("MMM dd, yyyy h:mm:ss a");
+        DateFormat fmt = new SimpleDateFormat(Tools.EVENT_TIME_FORMAT);
         try {
             Date start = fmt.parse(startTime);
             Date end = fmt.parse(endTime);
             Date now = new Date();
-            if (start.getTime() > now.getTime() || end.getTime() < now.getTime()) {
-                return false;
-            }
-            return true;
+            return start.before(now) && end.after(now);
         } catch (ParseException e) {
             e.printStackTrace();
             return false;
