@@ -21,7 +21,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -169,7 +171,7 @@ public class HomeNormalFragment extends Fragment {
                             } else {
                                 Log.d(TAG, "Data Upload: Failure");
                                 Map<String, Object> initData = new HashMap<>();
-                                initData.put("data", highRiskAreaData);
+                                initData.put("data", Collections.singletonList(highRiskAreaData));
                                 FirebaseFirestore.getInstance()
                                         .collection(Constants.HIGH_RISK_DATA_COLLECTION)
                                         .document(documentPath)

@@ -15,7 +15,7 @@ import androidx.room.RoomDatabase;
         ToDoTask.class,
         HighRiskAreaData.class,
         HighRiskDataDownloadDate.class
-}, version = 1, exportSchema = false)
+}, version = 2, exportSchema = false)
 public abstract class DB extends RoomDatabase {
     private static final String DATABASE_NAME = "db";
     private static DB DBINSTANCE;
