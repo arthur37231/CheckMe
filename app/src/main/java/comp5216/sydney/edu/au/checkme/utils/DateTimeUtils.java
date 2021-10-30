@@ -1,6 +1,8 @@
 package comp5216.sydney.edu.au.checkme.utils;
 
 import androidx.room.TypeConverter;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -9,6 +11,7 @@ import java.util.TimeZone;
  * All utilities related to date and time are defined in the class.
  */
 public class DateTimeUtils {
+    private static final String DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
     /**
      * The single entry to get preset timezone. Time zone unifies all task deadline and remaining
      * time. Prevent system faults if the users' time zone changed.
@@ -51,6 +54,10 @@ public class DateTimeUtils {
                 dateTime.get(Calendar.MONTH) + 1,
                 dateTime.get(Calendar.YEAR)
         );
+    }
+
+    public static String formatDate(Date date) {
+        return new SimpleDateFormat(DATE_FORMAT).format(date);
     }
 
     /**
