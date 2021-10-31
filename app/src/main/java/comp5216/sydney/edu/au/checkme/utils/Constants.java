@@ -7,9 +7,9 @@ public class Constants {
 
         public static String getFullPhoneNumber(String phoneNumber) {
             if(phoneNumber.length() == 11) {
-                return china + " " + phoneNumber;
+                return china + phoneNumber;
             }
-            return australia + " " + phoneNumber;
+            return australia + phoneNumber;
         }
     }
     public static final String NOTHING = "NaN";
