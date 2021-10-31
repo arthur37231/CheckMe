@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_back_placeholder">Back</string>
+    <string name="title_text_placeholder">Activity</string>
+    <string name="title_operate_placeholder">Do</string>
+</resources>
