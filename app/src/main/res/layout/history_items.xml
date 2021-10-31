@@ -19,17 +19,17 @@
             android:layout_alignParentLeft="true">
 
             <TextView
-                android:id="@+id/event_id"
+                android:id="@+id/event_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Event ID" />
+                android:text="Event Name" />
 
             <TextView
                 android:id="@+id/visiting_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_below="@+id/event_id"
+                android:layout_below="@+id/event_name"
                 android:text="Visiting Time" />
 
             <TextView

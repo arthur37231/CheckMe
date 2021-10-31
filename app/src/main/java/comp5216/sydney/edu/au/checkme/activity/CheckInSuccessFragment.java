@@ -74,7 +74,7 @@ public class CheckInSuccessFragment extends Fragment {
         String address = resolveAddress();
         // hard code here
         String riskLevel = "Low risk";
-        HistoryItem item = new HistoryItem(this.eventId, this.eventId, now, address, riskLevel, date);
+        HistoryItem item = new HistoryItem(this.eventId, this.eventName, now, address, riskLevel, date);
         saveItemsToDatabase(item);
         return view;
     }

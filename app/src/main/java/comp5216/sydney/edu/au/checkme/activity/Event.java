@@ -64,7 +64,7 @@ public class Event implements Comparable<Event>{
     /*
     set task's title
      */
-    public void setTitle(String eventName) {
+    public void setEventName(String eventName) {
         this.eventName = eventName;
     }
     /*
