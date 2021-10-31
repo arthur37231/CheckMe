@@ -94,7 +94,8 @@ public class SignInActivity extends AuthActivity {
             Toast.makeText(this, "You must agree the privacy policy first", Toast.LENGTH_SHORT).show();
         } else {
             // TODO: login algorithms
-            String inputPhoneNumber = Constants.PHONE_COUNTRY_CODE + loginPhoneNumber.getText().toString();
+            String inputPhoneNumber = Constants.CountryCode
+                    .getFullPhoneNumber(loginPhoneNumber.getText().toString());
             DocumentReference docRef = db.collection("users")
                     .document(inputPhoneNumber);
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
