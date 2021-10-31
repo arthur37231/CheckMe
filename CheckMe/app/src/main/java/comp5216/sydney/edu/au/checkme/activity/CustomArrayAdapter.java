@@ -58,8 +58,7 @@ public class CustomArrayAdapter extends ArrayAdapter {
         Bitmap coverImage = Tools.StringToBitMap(currentCode.getCoverImage());
         String startTime = Tools.timeToString(currentCode.startTime);
         String endTimeStr = Tools.timeToString(currentCode.endTime);
-
-        TextView t = (TextView) listItem.findViewById(R.id.textView);
+        
 
         ImageView viewCoverImage = (ImageView)listItem.findViewById(R.id.view_cover_image) ;
         viewCoverImage.setImageBitmap(coverImage);

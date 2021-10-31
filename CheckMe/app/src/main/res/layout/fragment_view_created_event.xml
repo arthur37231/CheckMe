@@ -5,56 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/view_event_id6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_event_expire_time"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view_end_time"
-        app:layout_constraintEnd_toStartOf="@+id/view_end_time"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view_event_id0"
-        app:layout_constraintTop_toBottomOf="@+id/view_event_id0"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/view_event_id"
-        android:layout_width="186dp"
-        android:layout_height="17dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.697"
-        app:layout_constraintStart_toEndOf="@+id/view_event_id2"
-        app:layout_constraintBaseline_toBaselineOf="@id/view_event_id2"
-        app:layout_constraintVertical_bias="0.201" />
-
-    <TextView
-        android:id="@+id/view_event_id4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_event_start_time"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view_address"
-        app:layout_constraintEnd_toStartOf="@+id/view_start_time"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view_event_id3"
-        app:layout_constraintTop_toBottomOf="@+id/view_event_id3"
-        app:layout_constraintVertical_bias="0.571" />
-
-    <TextView
-        android:id="@+id/view_event_id3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_event_name"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view_event_name"
-        app:layout_constraintEnd_toStartOf="@+id/view_event_name"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view_event_id2"
-        app:layout_constraintTop_toBottomOf="@+id/view_event_id2"
-        app:layout_constraintVertical_bias="1.0" />
-
     <comp5216.sydney.edu.au.checkme.view.TitleBarLayout
         android:id="@+id/myEventTitle"
         android:layout_width="match_parent"
@@ -66,79 +16,138 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="326dp"
-        android:layout_height="219dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.808"
-        app:srcCompat="@android:mipmap/sym_def_app_icon" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="654dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/myEventTitle"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="7dp">
 
-    <TextView
-        android:id="@+id/view_event_id0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_event_address"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view_address"
-        app:layout_constraintEnd_toStartOf="@+id/view_address"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view_event_id4"
-        app:layout_constraintTop_toBottomOf="@+id/view_event_id4"
-        app:layout_constraintVertical_bias="1.0" />
+        <RelativeLayout
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="73dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginRight="31dp">
 
-    <TextView
-        android:id="@+id/view_address"
-        android:layout_width="193dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintHorizontal_bias="0.678"
-        app:layout_constraintStart_toEndOf="@id/view_event_id0"
-        app:layout_constraintBaseline_toBaselineOf="@id/view_event_id0" />
+            <TextView
+                android:id="@+id/view_event_id3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_event_id2"
+                android:layout_marginTop="12dp"
+                android:text="Event"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/view_end_time"
-        android:layout_width="206dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintHorizontal_bias="0.775"
-        app:layout_constraintStart_toEndOf="@id/view_event_id6"
-        app:layout_constraintBaseline_toBaselineOf="@id/view_event_id6"/>
+            <TextView
+                android:id="@+id/view_event_id6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_event_id0"
+                android:layout_marginTop="15dp"
+                android:text="Expire At"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/view_start_time"
-        android:layout_width="200dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintHorizontal_bias="0.81"
-        app:layout_constraintStart_toEndOf="@id/view_event_id4"
-        app:layout_constraintBaseline_toBaselineOf="@id/view_event_id4"/>
+            <TextView
+                android:id="@+id/view_event_id0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_event_id4"
+                android:layout_marginTop="12dp"
+                android:text="Address"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/view_event_name"
-        android:layout_width="180dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="12dp"
-        android:textAlignment="viewStart"
-        app:layout_constraintHorizontal_bias="0.601"
-        app:layout_constraintStart_toEndOf="@id/view_event_id3"
-        app:layout_constraintBaseline_toBaselineOf="@+id/view_event_id3" />
+            <TextView
+                android:id="@+id/view_event_id2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="9dp"
+                android:text="Event ID"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/view_event_id2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_event_id"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203" />
+            <TextView
+                android:id="@+id/view_event_id4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_event_id3"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="5dp"
+                android:text="Star time"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/view_event_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_event_id"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_toEndOf="@+id/view_event_id2"
+                android:text="EventName" />
+
+            <TextView
+                android:id="@+id/view_event_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="9dp"
+                android:layout_toEndOf="@+id/view_event_id3"
+                android:text="Event ID" />
+
+            <TextView
+                android:id="@+id/view_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_event_name"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/view_event_id4"
+                android:text="Start time" />
+
+            <TextView
+                android:id="@+id/view_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_start_time"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/view_event_id0"
+                android:text="Address" />
+
+            <TextView
+                android:id="@+id/view_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_address"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="13dp"
+                android:layout_toEndOf="@+id/view_event_id6"
+                android:text="Expire at" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="162dp"
+            android:layout_height="184dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="96dp"
+            android:layout_marginBottom="206dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@android:mipmap/sym_def_app_icon" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

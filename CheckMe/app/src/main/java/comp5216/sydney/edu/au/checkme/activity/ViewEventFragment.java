@@ -80,7 +80,7 @@ public class ViewEventFragment extends Fragment {
         Bitmap b = Tools.StringToBitMap(event.getQrCode());
 
         HashMap<String, String> address = Tools.CoordinateToAddress(event.getLatLng(),getActivity());
-        String addressString = address.get("address")+", "+address.get("others");
+        String addressString = address.get("address");
 
         view_event_id.setText(event.getEventId());
         view_event_name.setText(event.getEventName());

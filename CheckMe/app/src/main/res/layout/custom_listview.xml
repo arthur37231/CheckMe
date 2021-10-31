@@ -5,89 +5,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="407dp"
-        android:layout_height="49dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="20dp">
 
-    <TextView
-        android:id="@+id/custom_adapter_title"
-        android:layout_width="139dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:textSize="17dp"
-        android:inputType="text"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/view_cover_image"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="77dp"
+            android:layout_marginTop="0dp">
 
-    <TextView
-        android:id="@+id/list_address"
-        android:layout_width="197dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/custom_adapter_title"
-        android:layout_alignEnd="@+id/list_start_time"
-        android:layout_alignBottom="@id/custom_adapter_title"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toEndOf="@+id/view_cover_image"
-        app:layout_constraintTop_toBottomOf="@+id/custom_adapter_title" />
+            <TextView
+                android:id="@+id/custom_adapter_title"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event Name" />
 
-    <TextView
-        android:id="@+id/list_others"
-        android:layout_width="260dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/custom_adapter_title"
-        android:layout_alignEnd="@+id/list_start_time"
-        android:layout_alignBottom="@id/custom_adapter_title"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="56dp"
-        app:layout_constraintStart_toStartOf="@+id/list_address"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/list_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/custom_adapter_title"
+                android:layout_marginTop="23dp"
+                android:text="Address" />
 
-    <TextView
-        android:id="@+id/list_active"
-        android:layout_width="64dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/custom_adapter_title"
-        android:layout_alignEnd="@+id/list_start_time"
-        android:layout_alignBottom="@id/custom_adapter_title"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/list_others"
-        app:layout_constraintTop_toBottomOf="@+id/list_start_time" />
+            <TextView
+                android:id="@+id/list_others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list_address"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Others" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/list_start_time"
-        android:layout_width="122dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_toRightOf="@+id/custom_adapter_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toEndOf="@+id/custom_adapter_title"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RelativeLayout
+            android:layout_width="223dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="198dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp">
 
-    <ImageView
-        android:id="@+id/view_cover_image"
-        android:layout_width="69dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:mipmap/sym_def_app_icon" />
+            <TextView
+                android:id="@+id/list_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list_start_time"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="9dp"
+                android:text="Active" />
+
+            <TextView
+                android:id="@+id/list_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                android:text="Start time" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="70dp"
+            android:layout_height="88dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="2dp">
+
+            <ImageView
+                android:id="@+id/view_cover_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@android:mipmap/sym_def_app_icon" />
+        </RelativeLayout>
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
