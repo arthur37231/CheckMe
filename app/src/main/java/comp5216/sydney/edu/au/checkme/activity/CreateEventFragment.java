@@ -375,9 +375,6 @@ public class CreateEventFragment extends Fragment {
 
     }
 
-
-
-
     private void onClickConfirmEventInfo(View view) {
         // TODO: create new event
         eventName = createName.getText().toString();

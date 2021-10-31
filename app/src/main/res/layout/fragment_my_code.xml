@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <comp5216.sydney.edu.au.checkme.view.TitleBarLayout
         android:id="@+id/myCodeTitle"
         android:layout_width="match_parent"
@@ -16,15 +15,14 @@
 
     <ListView
         android:id="@+id/codeListView"
-        android:layout_width="399dp"
-        android:layout_height="427dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myCodeTitle"
-        app:layout_constraintVertical_bias="0.209" />
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/myCodeTitle"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/createNewEvent"
@@ -39,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.958"
         app:layout_constraintStart_toStartOf="@+id/codeListView"
-        app:layout_constraintTop_toBottomOf="@+id/codeListView"
+        android:layout_marginBottom="20dp"
         app:layout_constraintVertical_bias="0.483"
         app:rippleColor="@color/light_grey" />
 
