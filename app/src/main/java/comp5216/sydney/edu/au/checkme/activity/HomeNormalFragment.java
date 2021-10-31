@@ -21,7 +21,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -108,8 +110,7 @@ public class HomeNormalFragment extends Fragment {
         if(dataDownloadDate == null) {
             dataUpdatedTime.setText(Constants.NOTHING);
         } else {
-            dataUpdatedTime.setText(SimpleDateFormat.getDateTimeInstance()
-                    .format(dataDownloadDate.getDownloadDate()));
+            dataUpdatedTime.setText(DateTimeUtils.formatDate(dataDownloadDate.getDownloadDate()));
         }
     }
 
@@ -157,7 +158,7 @@ public class HomeNormalFragment extends Fragment {
             highRiskAreaData.setEventAddress(historyItem.getEventAddr());
             highRiskAreaData.setHighRiskDate(historyItem.getVisitingDate());
 
-            String documentPath = SimpleDateFormat.getDateInstance().format(new Date());
+            String documentPath = new SimpleDateFormat(Constants.HIGH_RISK_DATA_DATE_FORMAT).format(new Date());
             FirebaseFirestore.getInstance().collection(Constants.HIGH_RISK_DATA_COLLECTION)
                     .document(documentPath)
                     .update("data", FieldValue.arrayUnion(highRiskAreaData))
@@ -169,7 +170,7 @@ public class HomeNormalFragment extends Fragment {
                             } else {
                                 Log.d(TAG, "Data Upload: Failure");
                                 Map<String, Object> initData = new HashMap<>();
-                                initData.put("data", highRiskAreaData);
+                                initData.put("data", Collections.singletonList(highRiskAreaData));
                                 FirebaseFirestore.getInstance()
                                         .collection(Constants.HIGH_RISK_DATA_COLLECTION)
                                         .document(documentPath)
@@ -230,7 +231,7 @@ public class HomeNormalFragment extends Fragment {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) - i);
 
-            String queryDate = SimpleDateFormat.getDateInstance().format(calendar.getTime());
+            String queryDate = new SimpleDateFormat(Constants.HIGH_RISK_DATA_DATE_FORMAT).format(calendar.getTime());
             FirebaseFirestore.getInstance().collection(Constants.HIGH_RISK_DATA_COLLECTION)
                     .document(queryDate)
                     .get()

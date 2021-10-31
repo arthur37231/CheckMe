@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="my_code_title">My Code</string>
+    <string name="my_code_active_event">Active</string>
+    <string name="my_code_expired_event">Expired</string>
+    <string name="my_code_create_new_event_button">Create new event</string>
+
+    <string name="create_event_title">Create QR Code</string>
+    <string name="create_event_name">ACTIVITY NAME</string>
+    <string name="create_event_start_time">START TIME</string>
+    <string name="create_event_expire_time">EXPIRED TIME</string>
+    <string name="create_event_address">ADDRESS</string>
+    <string name="create_event_cover_image">COVER IMAGE</string>
+    <string name="create_event_button">CREATE</string>
+
+    <string name="view_event_code_title">Event QR Code</string>
+    <string name="view_event_name">Event:&#160;</string>
+    <string name="view_event_id">Event ID:&#160;</string>
+    <string name="view_event_start_time">Start Time:&#160;</string>
+    <string name="view_event_address">Address:&#160;</string>
+    <string name="view_event_expire_time">Expire At:&#160;</string>
+</resources>

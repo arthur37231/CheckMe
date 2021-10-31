@@ -93,6 +93,8 @@ public class CreateAccountActivity extends AuthActivity {
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 Log.d(TAG, "onVerificationCompleted: " + phoneAuthCredential);
                 signInWithPhoneAuthCredential(phoneAuthCredential);
+                Toast.makeText(getApplicationContext(), "Verification Code Sent",
+                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -107,7 +109,8 @@ public class CreateAccountActivity extends AuthActivity {
                 }
 
                 // Show a message and update UI
-                Toast.makeText(getApplicationContext(), "Verification Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Send Verification Code Failed",
+                        Toast.LENGTH_SHORT).show();
             }
 
             @Override

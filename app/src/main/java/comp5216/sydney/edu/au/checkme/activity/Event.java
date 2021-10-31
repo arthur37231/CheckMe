@@ -14,6 +14,7 @@ Represents a task with title and time
 public class Event implements Comparable<Event>{
     final String type = "checkMe";
     String eventId;
+    int generated_order;
     String eventName;
     LatLng latLng;
     Date startTime;
@@ -55,6 +56,14 @@ public class Event implements Comparable<Event>{
     {
         this.coverImage = coverImage;
     }
+    public int getGenerated_order()
+    {
+        return this.generated_order;
+    }
+    public void setGenerated_order(int generated_order)
+    {
+        this.generated_order = generated_order;
+    }
     /*
     return task's title
      */
@@ -94,10 +103,6 @@ public class Event implements Comparable<Event>{
     public int compareTo(Event task) {
         int result=0;
         //Log.i("fangpei",this.eventId+" "+task.getEventId()+" compare result: "+ result);
-        if (this.eventName.equals("3")&&task.getEventName().equals("2"))
-        {
-            boolean a = this.active!=task.getActive();
-        }
 
         if (this.active!=task.getActive())
         {
@@ -112,7 +117,7 @@ public class Event implements Comparable<Event>{
         }
         if (result==0)
         {
-            result = Integer.compare(Integer.valueOf(task.getEventId()),Integer.valueOf(this.eventId) );
+            result = Integer.compare(this.generated_order, task.generated_order);
         }
 
         Log.i("fangpei",this.eventName+" "+task.getEventName()+" compare result: "+ result);
