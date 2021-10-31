@@ -77,12 +77,14 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                if(position > 1) position++;
                 navigationBar.navigateTo(position);
             }
         };
     }
 
     public void navigateTo(int position) {
+        if(position > 1) position++;
         this.fragmentHolder.setCurrentItem(position, true);
     }
 
@@ -109,7 +111,7 @@ public class MainActivity extends FragmentActivity {
             this.fragments = new ArrayList<>();
             this.fragments.add(new HomeNormalFragment());
             this.fragments.add(new MyCodeContainerFragment());
-            this.fragments.add(new ScanFragment());
+//            this.fragments.add(new ScanFragment());
             this.fragments.add(new HistoryFragment());
             this.fragments.add(new AccountFragment());
         }

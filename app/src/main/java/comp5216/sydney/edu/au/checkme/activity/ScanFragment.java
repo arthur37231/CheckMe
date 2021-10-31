@@ -1,6 +1,5 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,17 +39,5 @@ public class ScanFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scan, container, false);
         return view;
-    }
-
-    /**
-     * Called when the fragment is visible to the user and actively running.
-     * This is generally
-     * tied to {Activity#onResume() Activity.onResume} of the containing
-     * Activity's lifecycle.
-     */
-    @Override
-    public void onResume() {
-        super.onResume();
-        startActivity(new Intent(getContext(), ScanActivity.class));
     }
 }
