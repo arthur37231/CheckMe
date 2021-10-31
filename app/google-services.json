@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "221785120122-5f4s818lntocotjt76mspjod0mptlj8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "comp5216.sydney.edu.au.checkme",
+            "certificate_hash": "0c175936ae772c8aa342f183a8a7546f009d8043"
+          }
+        },
+        {
+          "client_id": "221785120122-8mbgilklvb8oah6h2agnotmf1dauqnpr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "comp5216.sydney.edu.au.checkme",
+            "certificate_hash": "990d80ab4ebe1bbf97592a061b7681b0660fda29"
+          }
+        },
+        {
           "client_id": "221785120122-8qr53t0trb8ol67lpmemo0urulpm036s.apps.googleusercontent.com",
           "client_type": 3
         }
