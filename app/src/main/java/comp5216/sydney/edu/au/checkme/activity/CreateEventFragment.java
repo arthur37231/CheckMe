@@ -395,10 +395,7 @@ public class CreateEventFragment extends Fragment {
         String timestamp = String.valueOf(new Date().getTime()).substring(3);
         Log.d(TAG, "onClickConfirmEventInfo: 时间戳" + timestamp);
         code.setEventId(Tools.getId() + timestamp);
-<<<<<<< HEAD
         code.setGenerated_order(Tools.getId());
-=======
->>>>>>> 3a1592e67bb1c8063ed8c5c3bcb7d9dbff33aac1
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
         String ser_code = Tools.taskToString(code);
         QRGEncoder qrgEncoder = new QRGEncoder(ser_code, null, QRGContents.Type.TEXT, 1);
