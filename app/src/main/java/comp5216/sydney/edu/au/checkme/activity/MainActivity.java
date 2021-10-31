@@ -84,7 +84,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void navigateTo(int position) {
-        if(position > 1) position++;
+        if(position > 2) position--;
         this.fragmentHolder.setCurrentItem(position, true);
     }
 

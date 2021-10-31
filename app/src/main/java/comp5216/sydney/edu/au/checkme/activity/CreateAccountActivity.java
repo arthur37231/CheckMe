@@ -30,6 +30,7 @@ import java.util.concurrent.TimeUnit;
 import comp5216.sydney.edu.au.checkme.R;
 import comp5216.sydney.edu.au.checkme.entity.User;
 import comp5216.sydney.edu.au.checkme.utils.CommonUtils;
+import comp5216.sydney.edu.au.checkme.utils.Constants;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
 public class CreateAccountActivity extends AuthActivity {
@@ -200,7 +201,8 @@ public class CreateAccountActivity extends AuthActivity {
     }
 
     private void onClickCreateAccountSendCode(View view) {
-        String phoneNumber = "+86 " + signupPhoneNumber.getText().toString();
+        String phoneNumber = Constants.CountryCode
+                .getFullPhoneNumber(signupPhoneNumber.getText().toString());
         sendVerificationCode(phoneNumber);
         createAccountSendCode.setText(R.string.verification_code_resend);
     }
