@@ -117,7 +117,7 @@ public class Event implements Comparable<Event>{
         }
         if (result==0)
         {
-            result = Integer.compare(this.generated_order, task.generated_order);
+            result = Integer.compare(task.generated_order,this.generated_order);
 
         }
 
