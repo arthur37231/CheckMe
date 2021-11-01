@@ -363,6 +363,15 @@ public class CreateEventFragment extends Fragment {
         code.setEventId(Integer.toString(eventId) + new Date().getTime());
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
         String ser_code = Tools.taskToString(code);
+        if(!Tools.expireChekcer(endTime, startTime).equals("Expired"))
+        {
+
+            code.setActive(true);
+        }
+        else
+        {
+            code.setActive(false);
+        }
         QRGEncoder qrgEncoder = new QRGEncoder(ser_code, null, QRGContents.Type.TEXT, 1);
         // Getting QR-Code as Bitmap
         qrCode = qrgEncoder.getBitmap();
@@ -370,15 +379,8 @@ public class CreateEventFragment extends Fragment {
         code.setQrCode(ser_bitmap);
         code.setCoverImage(ser_coverImage);
         code.setCreatedOrder(eventId);
-        
-        if(!Tools.expireChekcer(endTime, startTime).equals("Expired"))
-        {
-            code.setActive(true);
-        }
-        else
-        {
-            code.setActive(false);
-        }
+
+
 
         // Setting Bitmap to ImageView
         saveTasksToDatabase(code);

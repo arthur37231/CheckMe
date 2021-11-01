@@ -80,7 +80,7 @@ public class CustomArrayAdapter extends ArrayAdapter {
 
         TextView list_active = (TextView) listItem.findViewById(R.id.list_active);
         //String active = currentCode.getState();   // get the task's due date
-        if(timeDiffCalculator(endTime,current_time).equals("Expired"))
+        if(Tools.expireChekcer(endTime,current_time).equals("Expired"))
         {
             currentCode.setActive(false);
             list_active.setText("Expired");

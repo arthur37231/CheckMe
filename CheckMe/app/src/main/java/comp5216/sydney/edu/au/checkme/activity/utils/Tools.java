@@ -130,12 +130,12 @@ public class Tools {
     }
 
 
-    public static String expireChekcer(Date d1, Date d2)
+    public static String expireChekcer(Date end, Date start)
     {
-        Instant dateOneInstant = d1.toInstant();
+        Instant dateOneInstant = end.toInstant();
         ZonedDateTime zoneTimeOne = dateOneInstant.atZone(ZoneId.systemDefault());
 
-        Instant dateTwoInstant = d2.toInstant();
+        Instant dateTwoInstant = start.toInstant();
         ZonedDateTime zoneTimeTwo = dateTwoInstant.atZone(ZoneId.systemDefault());
 
 
@@ -145,7 +145,7 @@ public class Tools {
         The below if statement responsible for the case that
         the user input a date which is before the current date
          */
-        if (!d1.after(d2))
+        if (start.after(end))
         {
             duration = 0-duration;
             String remaintime = "Expired";
