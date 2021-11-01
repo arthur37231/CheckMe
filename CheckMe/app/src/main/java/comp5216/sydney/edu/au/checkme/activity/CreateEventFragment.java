@@ -454,7 +454,7 @@ public class CreateEventFragment extends Fragment {
 
     private void setupTitle() {
         TitleBarLayout titleBarLayout = view.findViewById(R.id.createEventTitle);
-        titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.create_event_title);
+        titleBarLayout.operateInvisible().setupTitle(R.string.create_event_title);
     }
 
 
