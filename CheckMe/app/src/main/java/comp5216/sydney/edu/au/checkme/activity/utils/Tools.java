@@ -95,9 +95,7 @@ public class Tools {
 
     public static HashMap<String, String> CoordinateToAddress(LatLng latLng, Context context)
     {
-//        WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-//        wifiManager.setWifiEnabled(false);
-//        wifiManager.setWifiEnabled(true);
+
         List<Address> addresses;
         HashMap<String,String> addressBook = new HashMap<String,String>();
         Geocoder geocoder;
@@ -105,20 +103,15 @@ public class Tools {
 
         try {
             addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-            //String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
             String address = addresses.get(0).getAddressLine(0).split(",")[0];
-            //String others = addresses.get(0).getAddressLine(0).split(",")[1];
 
             String city = addresses.get(0).getLocality();
             String state = addresses.get(0).getAdminArea();
-            String country = addresses.get(0).getCountryName();
             String postalCode = addresses.get(0).getPostalCode();
             String others = city+", "+state +", "+postalCode;
             addressBook.put("address", address);
             addressBook.put("others", others);
-            String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
 
-            //createAddress.setText(address);
             return addressBook;
         } catch (IOException e) {
             e.printStackTrace();
@@ -136,24 +129,6 @@ public class Tools {
 
     }
 
-    public static long timeDiffCalculator(Date d1, Date d2)
-    {
-        Instant dateOneInstant = d1.toInstant();
-        ZonedDateTime zoneTimeOne = dateOneInstant.atZone(ZoneId.systemDefault());
-
-        Instant dateTwoInstant = d2.toInstant();
-        ZonedDateTime zoneTimeTwo = dateTwoInstant.atZone(ZoneId.systemDefault());
-
-
-        long duration = 0;
-        duration= Duration.between(zoneTimeTwo, zoneTimeOne).toMinutes();
-        return duration;
-        /*
-        The below if statement responsible for the case that
-        the user input a date which is before the current date
-         */
-
-    }
 
     public static String expireChekcer(Date d1, Date d2)
     {

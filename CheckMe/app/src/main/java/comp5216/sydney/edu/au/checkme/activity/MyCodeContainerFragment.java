@@ -59,9 +59,7 @@ public class MyCodeContainerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //container = R.id.my_code_container;
         view = inflater.inflate(R.layout.my_code_container, container, false);
-        Button backButton = view.findViewById(R.id.activityBack);
         FragmentManager f = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = f.beginTransaction();
         MyCodeFragment m = new MyCodeFragment();
@@ -69,10 +67,7 @@ public class MyCodeContainerFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
 
         fragmentTransaction.commit();
-        //FragmentManager manager = getFragmentManager();
-        //FragmentTransaction ft = manager.beginTransaction();
-        //Fragment bottomFragment = manager.findFragmentById(this.getId());
-        //ft.hide(this)
+
 
         return view;
     }

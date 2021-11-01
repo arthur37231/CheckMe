@@ -408,15 +408,10 @@ public class CreateEventFragment extends Fragment {
         saveTasksToDatabase(code);
         MyCodeFragment myCodeFragment = new MyCodeFragment();
         FragmentManager fragmentManager= getFragmentManager();
-        //fragmentManager.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
-        //int id = createEventFragment.getId();
 
-        //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
         fragmentTransaction.replace(R.id.my_code_container1,myCodeFragment);
-        //fragmentTransaction.addToBackStack("MyCodeFragment");
-
         fragmentTransaction.commit();
     }
 
@@ -443,15 +438,9 @@ public class CreateEventFragment extends Fragment {
             public void onClick(DialogInterface dialogInterface, int i) {
                 MyCodeFragment myCodeFragment = new MyCodeFragment();
                 FragmentManager fragmentManager= getFragmentManager();
-                //fragmentManager.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
-                //int id = createEventFragment.getId();
-
-                //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
                 fragmentTransaction.replace(R.id.my_code_container1,myCodeFragment);
-                //fragmentTransaction.addToBackStack("MyCodeFragment");
-
                 fragmentTransaction.commit();
             }
         });
@@ -477,10 +466,10 @@ public class CreateEventFragment extends Fragment {
                 .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         if (cursor.moveToFirst()) {
             String s = cursor.getString(column_index);
-            // cursor.close();
+
             return s;
         }
-        // cursor.close();
+
         return null;
     }
 
@@ -490,26 +479,7 @@ public class CreateEventFragment extends Fragment {
         titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.create_event_title);
     }
 
-    private void readTasksFromDatabase(ArrayList<Event> codes) {
-        try{
-            CompletableFuture<Void> future = CompletableFuture.runAsync(new Runnable() {
-                @Override
-                public void run() {
-                    List<ToDoTask> taskFromDB = toDoTaskDao.listAll();
-                    if (taskFromDB != null & taskFromDB.size()>0){
-                        for (ToDoTask task : taskFromDB){
-                            codes.add(Tools.stringToTask(task.getToDoTaskContent()));
-                        }
-                    }
-                }
-            });
 
-            future.get();
-        }
-        catch (Exception ex) {
-            Log.e("readItemsFromDatabase", ex.getStackTrace().toString());
-        }
-    }
     /*
     save task data to local databse
      */
@@ -518,7 +488,6 @@ public class CreateEventFragment extends Fragment {
             CompletableFuture<Void> future = CompletableFuture.runAsync(new Runnable() {
                 @Override
                 public void run() {
-//                  ToDoTask content = new ToDoTask(taskToString(task));
                     ToDoTask content = new ToDoTask(Tools.taskToString(code));
                     toDoTaskDao.insert(content);
 
