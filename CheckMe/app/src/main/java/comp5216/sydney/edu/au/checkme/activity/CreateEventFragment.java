@@ -121,10 +121,6 @@ public class CreateEventFragment extends Fragment {
                 public void onActivityResult(Boolean result) {
                     if(result) {
                         permission = result;
-//                        WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-//
-//                        wifiManager.setWifiEnabled(false);
-//                        wifiManager.setWifiEnabled(true);
                         Intent intent = new Intent(getActivity(),MapActivity.class);
                         mapLauncher.launch(intent);
                         Log.e(TAG, "onActivityResult: PERMISSION GRANTED");
@@ -169,9 +165,6 @@ public class CreateEventFragment extends Fragment {
             }
     );
 
-
-    //Actitivity actitivity = this;
-
     /**
      * Called to have the fragment instantiate its user interface view.
      * This is optional, and non-graphical fragments can return null. This will be called between
@@ -199,7 +192,6 @@ public class CreateEventFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_create_event, container, false);
         setupTitle();
         db = ToDoTaskDB.getDatabase(getActivity().getApplicationContext());
-        //Button backButton;
         toDoTaskDao = db.toDoTaskDao();
         String dt = timeToString(date);
         startTime = new Date();
@@ -233,38 +225,21 @@ public class CreateEventFragment extends Fragment {
     private void onImageClick (View view) {
 
         mPermissionResult.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
-//        if(permission==true)
-//        {
-//            Intent intent = new Intent(Intent.ACTION_PICK);
-//            intent.setType("image/*");
-//            mLaucher.launch(intent);
-//        }
 
     }
     private void onCLickCreateEventAddress(View view)
     {
         mPermissionResultMap.launch(Manifest.permission.ACCESS_FINE_LOCATION);
-//        if(permission==true)
-//        {
-//            Intent intent = new Intent(getActivity(),MapActivity.class);
-//            mapLauncher.launch(intent);
-//        }
     }
     private void onCreateStartTime(View view) {
         Calendar c = Calendar.getInstance();
-        // if the activity is not stated for creating new task,
-        // then set calendar as the task's date
-        // get time infomration from calendar
         int year = c.get(Calendar.YEAR);
         int day = c.get(Calendar.DAY_OF_MONTH);
         int month = c.get(Calendar.MONTH);
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
-        // get time from calendar
         Date d = c.getTime();
-        // convert the date into string
         String d1 = timeToString(d);
-        // set up time picker dialogue
         new TimePickerDialog(getActivity(), AlertDialog.THEME_HOLO_LIGHT,
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
@@ -388,8 +363,6 @@ public class CreateEventFragment extends Fragment {
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
         String ser_code = Tools.taskToString(code);
         QRGEncoder qrgEncoder = new QRGEncoder(ser_code, null, QRGContents.Type.TEXT, 1);
-        //qrgEncoder.setColorBlack(Color.BLACK);
-        //qrgEncoder.setColorWhite(Color.WHITE);
         // Getting QR-Code as Bitmap
         qrCode = qrgEncoder.getBitmap();
         String ser_bitmap = BitMapToString(qrCode);

@@ -98,8 +98,6 @@ public class MyCodeFragment extends Fragment{
         tasks = new ArrayList<Event>();
         db = ToDoTaskDB.getDatabase(getActivity().getApplication().getApplicationContext());
         toDoTaskDao = db.toDoTaskDao();
-        //toDoTaskDao.deleteAll();
-        //saveTasksToDatabase();
         readTasksFromDatabase(tasks);   // read existing tasks from local database
         Tools.setId(tasks.size()-1);
         Collections.sort(tasks);    // sort tasks accoding to date
