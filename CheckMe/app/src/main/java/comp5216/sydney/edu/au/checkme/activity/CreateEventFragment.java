@@ -362,7 +362,6 @@ public class CreateEventFragment extends Fragment {
         int eventId = Tools.getId();
         code.setEventId(Integer.toString(eventId) + new Date().getTime());
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
-        String ser_code = Tools.taskToString(code);
         if(!Tools.expireChekcer(endTime, startTime).equals("Expired"))
         {
 
@@ -372,6 +371,8 @@ public class CreateEventFragment extends Fragment {
         {
             code.setActive(false);
         }
+        String ser_code = Tools.taskToString(code);
+
         QRGEncoder qrgEncoder = new QRGEncoder(ser_code, null, QRGContents.Type.TEXT, 1);
         // Getting QR-Code as Bitmap
         qrCode = qrgEncoder.getBitmap();
