@@ -20,6 +20,7 @@ public class Event implements Comparable<Event>{
     Date endTime;
     String qrCode;
     String coverImage;
+    int createdOrder;
     boolean active;
 
 
@@ -28,8 +29,10 @@ public class Event implements Comparable<Event>{
         this.latLng = latLng;
         this.startTime = startTime;
         this.endTime = endTime;
-        //this.coverImage = coverImage;
+
     }
+    public int getCreatedOrder(){return this.createdOrder;}
+    public void setCreatedOrder(int createdOrder) {this.createdOrder = createdOrder;}
     public boolean getActive(){return this.active;}
     public void setActive(boolean state){this.active=state;}
     public Date getEndTime(){return this.endTime;}
@@ -104,12 +107,7 @@ public class Event implements Comparable<Event>{
         }
         if (result==0)
         {
-           if(this.startTime.after(task.getStartTime()))
-           {
-               return -1;
-           }
-           return 1;
-
+            result = Integer.compare(task.getCreatedOrder(),this.createdOrder);
         }
 
         Log.i("fangpei",this.eventName+" "+task.getEventName()+" compare result: "+ result);
