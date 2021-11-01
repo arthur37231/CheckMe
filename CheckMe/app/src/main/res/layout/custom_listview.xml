@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/list_address"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="Others" />
         </RelativeLayout>
@@ -63,8 +63,8 @@
                 android:layout_below="@+id/list_start_time"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="69dp"
-                android:layout_marginEnd="3dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="9dp"
                 android:text="Active" />
 
             <TextView
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="1dp"
+                android:layout_marginEnd="15dp"
                 android:text="Start time" />
 
         </RelativeLayout>

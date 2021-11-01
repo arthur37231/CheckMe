@@ -93,6 +93,10 @@ public class Event implements Comparable<Event>{
     public int compareTo(Event task) {
         int result=0;
         //Log.i("fangpei",this.eventId+" "+task.getEventId()+" compare result: "+ result);
+        if (this.eventName.equals("3")&&task.getEventName().equals("2"))
+        {
+            boolean a = this.active!=task.getActive();
+        }
 
         if (this.active!=task.getActive())
         {
@@ -107,7 +111,11 @@ public class Event implements Comparable<Event>{
         }
         if (result==0)
         {
+<<<<<<< HEAD
             result = Integer.compare(task.getCreatedOrder(),this.createdOrder);
+=======
+            result = Integer.compare(Integer.valueOf(task.getEventId()),Integer.valueOf(this.eventId) );
+>>>>>>> parent of 6d933be (update ui and event compare to)
         }
 
         Log.i("fangpei",this.eventName+" "+task.getEventName()+" compare result: "+ result);
