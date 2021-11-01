@@ -65,6 +65,8 @@ public class Tools {
         }
     }
 
+
+
     public static String taskToString (Event task)
     {
         Gson gson = new GsonBuilder().setDateFormat(EVENT_TIME_FORMAT).create();
@@ -72,18 +74,24 @@ public class Tools {
         return  serializeTask;
     }
     public static Bitmap getResizedBitmap(Bitmap image, int maxSize) {
-        int width = image.getWidth();
-        int height = image.getHeight();
+        float width = Float.valueOf(image.getWidth());
+        float height = Float.valueOf(image.getHeight());
 
-        float bitmapRatio = (float)width / (float) height;
-        if (bitmapRatio > 1) {
-            width = maxSize;
-            height = (int) (width / bitmapRatio);
-        } else {
-            height = maxSize;
-            width = (int) (height * bitmapRatio);
+        float ratio = width/height;
+        Bitmap bitmap;
+        if(ratio<=1)
+        {
+            int h = maxSize;
+            int w = Math.round(height*ratio);
+            bitmap = Bitmap.createScaledBitmap(image, w, h, true);
+            return bitmap;
         }
-        return Bitmap.createScaledBitmap(image, width, height, true);
+
+        int h = Math.round(width/ratio);
+        int w = maxSize;
+        bitmap = Bitmap.createScaledBitmap(image, w, h, true);
+        return  bitmap;
+
     }
     /*
     A static method transforms received String to Task object
@@ -108,12 +116,10 @@ public class Tools {
 
             String city = addresses.get(0).getLocality();
             String state = addresses.get(0).getAdminArea();
-            String country = addresses.get(0).getCountryName();
             String postalCode = addresses.get(0).getPostalCode();
             String others = city+", "+state +", "+postalCode;
             addressBook.put("address", address);
             addressBook.put("others", others);
-            String knownName = addresses.get(0).getFeatureName();
             // Only if available else return NULL
 
             //createAddress.setText(address);
@@ -146,10 +152,6 @@ public class Tools {
         long duration = 0;
         duration= Duration.between(zoneTimeTwo, zoneTimeOne).toMinutes();
         return duration;
-        /*
-        The below if statement responsible for the case that
-        the user input a date which is before the current date
-         */
 
     }
 

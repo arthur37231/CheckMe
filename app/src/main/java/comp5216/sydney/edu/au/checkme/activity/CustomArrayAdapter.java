@@ -61,13 +61,11 @@ public class CustomArrayAdapter extends ArrayAdapter {
         String startTime = Tools.timeToString(currentCode.startTime);
         String endTimeStr = Tools.timeToString(currentCode.endTime);
 
-        TextView t = (TextView) listItem.findViewById(R.id.textView);
 
         ImageView viewCoverImage = (ImageView)listItem.findViewById(R.id.view_cover_image) ;
         viewCoverImage.setImageBitmap(coverImage);
 
         TextView title = (TextView) listItem.findViewById(R.id.custom_adapter_title);
-        //title.setText(currentCode.getEventName());
         title.setText(currentCode.getEventName());
 
         TextView list_address = (TextView) listItem.findViewById(R.id.list_address);

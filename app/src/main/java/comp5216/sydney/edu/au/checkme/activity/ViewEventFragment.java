@@ -75,7 +75,7 @@ public class ViewEventFragment extends Fragment {
         Bitmap b = Tools.StringToBitMap(event.getQrCode());
 
         HashMap<String, String> address = Tools.CoordinateToAddress(event.getLatLng(),getActivity());
-        String addressString = address.get("address")+", "+address.get("others");
+        String addressString = address.get("address");
 
         view_event_id.setText(event.getEventId());
         view_event_name.setText(event.getEventName());
@@ -86,13 +86,6 @@ public class ViewEventFragment extends Fragment {
         return view;
     }
 
-    public String BitMapToString(Bitmap bitmap){
-        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
-        byte [] b=baos.toByteArray();
-        String temp= Base64.encodeToString(b, Base64.DEFAULT);
-        return temp;
-    }
 
     public void onBackCLick(View v) {
         MyCodeFragment myCodeFragment = new MyCodeFragment();
@@ -105,20 +98,6 @@ public class ViewEventFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
-    /**
-     * @param encodedString
-     * @return bitmap (from given string)
-     */
-    public Bitmap StringToBitMap(String encodedString) {
-        try {
-            byte [] encodeByte=Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        } catch(Exception e) {
-            e.getMessage();
-            return null;
-        }
-    }
 
     private void setupTitle() {
         TitleBarLayout titleBarLayout = view.findViewById(R.id.myEventTitle);
