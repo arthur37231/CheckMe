@@ -278,7 +278,7 @@ public class CaptureActivity extends BaseActivity implements DecoratedBarcodeVie
         this.getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_container, new CheckInFailFragment(reason), null)
-                .addToBackStack(null)
+//                .addToBackStack(null)
                 .commit();
     }
 
@@ -288,7 +288,7 @@ public class CaptureActivity extends BaseActivity implements DecoratedBarcodeVie
         this.getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_container, new CheckInSuccessFragment(startTime, endTime, eventId, eventName, latLng), null)
-                .addToBackStack(null)
+//                .addToBackStack(null)
                 .commit();
     }
 

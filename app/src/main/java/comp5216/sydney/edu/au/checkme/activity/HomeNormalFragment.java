@@ -82,7 +82,6 @@ public class HomeNormalFragment extends Fragment {
         TitleBarLayout titleBarLayout = view.findViewById(R.id.normalHomeTitle);
         titleBarLayout.backInvisible().operateInvisible().setupTitle(R.string.home_title);
 
-        loadVisitCountNumber();
         loadDataDownloadTime();
 
         LinearLayout downloadData = view.findViewById(R.id.downloadData);
@@ -92,6 +91,18 @@ public class HomeNormalFragment extends Fragment {
         reportPositive.setOnClickListener(this::onClickReportPositive);
 
         return view;
+    }
+
+    /**
+     * Called when the fragment is visible to the user and actively running.
+     * This is generally
+     * tied to { Activity#onResume() Activity.onResume} of the containing
+     * Activity's lifecycle.
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadVisitCountNumber();
     }
 
     private void loadDataDownloadTime() {

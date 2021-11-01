@@ -45,9 +45,9 @@ public class CheckInFailFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), MainActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent();
+//        intent.setClass(getActivity(), MainActivity.class);
+//        startActivity(intent);
         getActivity().findViewById(R.id.fragment_container).setVisibility(View.GONE);
         getActivity().findViewById(R.id.capture_container).setVisibility(View.VISIBLE);
     }

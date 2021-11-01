@@ -70,6 +70,19 @@ public class HistoryFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Called when the fragment is visible to the user and actively running.
+     * This is generally
+     * tied to {Activity#onResume() Activity.onResume} of the containing
+     * Activity's lifecycle.
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        readItemsFromDatabase();
+        setupListViewListener();
+    }
+
     private void setupListViewListener() {
         historyList.setOnItemClickListener((parent, view, position, id) -> {
             AlertDialog.Builder normalDialog = new AlertDialog.Builder(getContext());
