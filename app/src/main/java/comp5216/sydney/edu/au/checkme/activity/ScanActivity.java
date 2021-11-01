@@ -55,7 +55,7 @@ public class ScanActivity extends BaseActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         String barcode = result.getContents();
         if (barcode == null){
-            Toast.makeText(this, "QR code scanning cancelled", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "QR code scanning cancelled", Toast.LENGTH_SHORT).show();
             finish();
         }
         else {
