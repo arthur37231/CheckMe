@@ -74,13 +74,14 @@ public class Tools {
         int width = image.getWidth();
         int height = image.getHeight();
 
-        float bitmapRatio = (float)width / (float) height;
-        if (bitmapRatio > 1) {
-            width = maxSize;
-            height = (int) (width / bitmapRatio);
-        } else {
+        float bitmapRatio = Float.valueOf(width) / Float.valueOf(height);
+
+        width = maxSize;
+        height = (int) (width / bitmapRatio);
+        if (bitmapRatio <= 1) {
             height = maxSize;
             width = (int) (height * bitmapRatio);
+
         }
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
@@ -95,7 +96,6 @@ public class Tools {
 
     public static HashMap<String, String> CoordinateToAddress(LatLng latLng, Context context)
     {
-
         List<Address> addresses;
         HashMap<String,String> addressBook = new HashMap<String,String>();
         Geocoder geocoder;
