@@ -112,7 +112,6 @@ public class HistoryFragment extends Fragment {
             itemAdapter.notifyDataSetChanged();
         }
         catch(Exception ex) {
-//            Log.e("readItemsFromDatabase", ex.getStackTrace().toString());
             ex.printStackTrace();
         }
     }

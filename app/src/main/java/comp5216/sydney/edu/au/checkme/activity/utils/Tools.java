@@ -5,9 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
-import android.net.wifi.WifiManager;
 import android.util.Base64;
-import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
@@ -98,19 +96,15 @@ public class Tools {
 
     public static HashMap<String, String> CoordinateToAddress(LatLng latLng, Context context)
     {
-//        WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-//        wifiManager.setWifiEnabled(false);
-//        wifiManager.setWifiEnabled(true);
         List<Address> addresses;
         HashMap<String,String> addressBook = new HashMap<String,String>();
         Geocoder geocoder;
         geocoder = new Geocoder(context.getApplicationContext(), Locale.getDefault());
 
         try {
-            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-            //String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+            // Here 1 represent max location result to returned, by documents it recommended 1 to 5
             String address = addresses.get(0).getAddressLine(0).split(",")[0];
-            //String others = addresses.get(0).getAddressLine(0).split(",")[1];
 
             String city = addresses.get(0).getLocality();
             String state = addresses.get(0).getAdminArea();
@@ -119,7 +113,8 @@ public class Tools {
             String others = city+", "+state +", "+postalCode;
             addressBook.put("address", address);
             addressBook.put("others", others);
-            String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+            String knownName = addresses.get(0).getFeatureName();
+            // Only if available else return NULL
 
             //createAddress.setText(address);
             return addressBook;

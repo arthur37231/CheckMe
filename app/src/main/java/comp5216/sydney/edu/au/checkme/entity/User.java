@@ -1,6 +1,5 @@
 package comp5216.sydney.edu.au.checkme.entity;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 

@@ -111,7 +111,6 @@ public class MainActivity extends FragmentActivity {
             this.fragments = new ArrayList<>();
             this.fragments.add(new HomeNormalFragment());
             this.fragments.add(new MyCodeContainerFragment());
-//            this.fragments.add(new ScanFragment());
             this.fragments.add(new HistoryFragment());
             this.fragments.add(new AccountFragment());
         }

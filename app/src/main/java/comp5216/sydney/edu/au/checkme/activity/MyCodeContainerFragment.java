@@ -1,31 +1,18 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
-import android.app.Activity;
-import org.apache.commons.io.FileUtils;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-//import com.google.android.material.floatingactionbutton.FloaT;
-
-
 import comp5216.sydney.edu.au.checkme.R;
-import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,7 +46,6 @@ public class MyCodeContainerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //container = R.id.my_code_container;
         view = inflater.inflate(R.layout.my_code_container, container, false);
         Button backButton = view.findViewById(R.id.activityBack);
         FragmentManager f = getChildFragmentManager();
@@ -69,10 +55,6 @@ public class MyCodeContainerFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
 
         fragmentTransaction.commit();
-        //FragmentManager manager = getFragmentManager();
-        //FragmentTransaction ft = manager.beginTransaction();
-        //Fragment bottomFragment = manager.findFragmentById(this.getId());
-        //ft.hide(this)
 
         return view;
     }

@@ -38,7 +38,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
 
 import android.Manifest;
 
@@ -53,7 +52,6 @@ import java.util.concurrent.CompletableFuture;
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 import comp5216.sydney.edu.au.checkme.R;
-import comp5216.sydney.edu.au.checkme.activity.database.DB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTask;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDao;
@@ -121,10 +119,6 @@ public class CreateEventFragment extends Fragment {
                 public void onActivityResult(Boolean result) {
                     if(result) {
                         permission = result;
-//                        WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-//
-//                        wifiManager.setWifiEnabled(false);
-//                        wifiManager.setWifiEnabled(true);
                         Intent intent = new Intent(getActivity(),MapActivity.class);
                         mapLauncher.launch(intent);
                         Log.e(TAG, "onActivityResult: PERMISSION GRANTED");
@@ -168,9 +162,6 @@ public class CreateEventFragment extends Fragment {
                 }
             }
     );
-
-
-    //Actitivity actitivity = this;
 
     /**
      * Called to have the fragment instantiate its user interface view.
@@ -217,39 +208,23 @@ public class CreateEventFragment extends Fragment {
         createImage.setOnClickListener(this::onImageClick);
         confirmButton = view.findViewById(R.id.confirmEventInformation);
 
-
         ExtendedFloatingActionButton confirmEventInfo = view.findViewById(R.id.confirmEventInformation);
         confirmEventInfo.setOnClickListener(this::onClickConfirmEventInfo);
         Button backButton = view.findViewById(R.id.activityBack);
         backButton.setOnClickListener(this::onBackCLick);
 
-
         createAddress.setOnClickListener(this::onCLickCreateEventAddress);
-
-        Button submitButton = view.findViewById(R.id.confirmEventInformation);
         return view;
     }
 
     private void onImageClick (View view) {
-
         mPermissionResult.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
-//        if(permission==true)
-//        {
-//            Intent intent = new Intent(Intent.ACTION_PICK);
-//            intent.setType("image/*");
-//            mLaucher.launch(intent);
-//        }
+    }
 
-    }
-    private void onCLickCreateEventAddress(View view)
-    {
+    private void onCLickCreateEventAddress(View view) {
         mPermissionResultMap.launch(Manifest.permission.ACCESS_FINE_LOCATION);
-//        if(permission==true)
-//        {
-//            Intent intent = new Intent(getActivity(),MapActivity.class);
-//            mapLauncher.launch(intent);
-//        }
     }
+
     private void onCreateStartTime(View view) {
         Calendar c = Calendar.getInstance();
         // if the activity is not stated for creating new task,
@@ -275,11 +250,11 @@ public class CreateEventFragment extends Fragment {
                         c.set(Calendar.MILLISECOND, 0);
                         startTime = c.getTime();
                         String d3= timeToString(startTime);
-                /*
-                check if the user picks a new time.
-                if so, update the textview to show
-                new time
-                 */
+                        /*
+                        check if the user picks a new time.
+                        if so, update the textview to show
+                        new time
+                         */
                         if (d1.compareTo(d3)!=0){
                             date = startTime;
                             creatStartTime.setText(d3);
@@ -337,11 +312,11 @@ public class CreateEventFragment extends Fragment {
                         c.set(Calendar.MILLISECOND, 0);
                         endTime = c.getTime();
                         String d3= timeToString(endTime);
-                /*
-                check if the user picks a new time.
-                if so, update the textview to show
-                new time
-                 */
+                        /*
+                        check if the user picks a new time.
+                        if so, update the textview to show
+                        new time
+                         */
                         if (d1.compareTo(d3)!=0){
                             date = endTime;
                             createEndTime.setText(d3);
@@ -371,8 +346,6 @@ public class CreateEventFragment extends Fragment {
 
                     }
                 }, year, month, day).show();
-
-
     }
 
     private void onClickConfirmEventInfo(View view) {
@@ -381,16 +354,13 @@ public class CreateEventFragment extends Fragment {
         Toast.makeText(view.getContext(), "Created a new event", Toast.LENGTH_SHORT).show();
         String ser_coverImage = Tools.BitMapToString(coverImage);
         Event code = new Event(eventName,latLng,startTime, endTime);
-        if(!Tools.expireChekcer(endTime, startTime).equals("Expired"))
-        {
+        if(!Tools.expireChekcer(endTime, startTime).equals("Expired")) {
             code.setActive(true);
-        }
-        else
-        {
+        } else {
             code.setActive(false);
         }
         String timestamp = String.valueOf(new Date().getTime()).substring(3);
-        Log.d(TAG, "onClickConfirmEventInfo: 时间戳" + timestamp);
+        Log.d(TAG, "onClickConfirmEventInfo: " + timestamp);
         code.setEventId(Tools.getId() + timestamp);
         code.setGenerated_order(Tools.getId());
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
@@ -403,7 +373,6 @@ public class CreateEventFragment extends Fragment {
         String ser_bitmap = BitMapToString(qrCode);
         code.setQrCode(ser_bitmap);
         code.setCoverImage(ser_coverImage);
-
 
         // Setting Bitmap to ImageView
         saveTasksToDatabase(code);
@@ -420,7 +389,6 @@ public class CreateEventFragment extends Fragment {
 
         fragmentTransaction.commit();
     }
-
 
     public void onBackCLick(View v) {
         // create dialog
@@ -452,21 +420,20 @@ public class CreateEventFragment extends Fragment {
                 //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
                 fragmentTransaction.replace(R.id.my_code_container1,myCodeFragment);
                 //fragmentTransaction.addToBackStack("MyCodeFragment");
-
                 fragmentTransaction.commit();
             }
         });
 
         cancelAlertDialog.show();
     }
-    public static CreateEventFragment newInstance(String text)
-    {
+    public static CreateEventFragment newInstance(String text) {
         CreateEventFragment c = new CreateEventFragment();
         Bundle args = new Bundle();
         args.putString("param", text);
         c.setArguments(args);
         return c;
     }
+
     public String getRealPathFromURI(Uri contentURI, Activity context) {
         String[] projection = { MediaStore.Images.Media.DATA };
         @SuppressWarnings("deprecation")
@@ -484,7 +451,6 @@ public class CreateEventFragment extends Fragment {
         // cursor.close();
         return null;
     }
-
 
     private void setupTitle() {
         TitleBarLayout titleBarLayout = view.findViewById(R.id.createEventTitle);
@@ -511,18 +477,17 @@ public class CreateEventFragment extends Fragment {
             ex.printStackTrace();
         }
     }
-    /*
-    save task data to local databse
-     */
-    private void saveTasksToDatabase(Event code){
+
+    /**
+     * save task data to local databse
+     **/
+    private void saveTasksToDatabase(Event code) {
         try{
             CompletableFuture<Void> future = CompletableFuture.runAsync(new Runnable() {
                 @Override
                 public void run() {
-//                  ToDoTask content = new ToDoTask(taskToString(task));
                     ToDoTask content = new ToDoTask(Tools.taskToString(code));
                     toDoTaskDao.insert(content);
-
                 }
             });
             future.get();
@@ -536,6 +501,4 @@ public class CreateEventFragment extends Fragment {
         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), uri);
         return bitmap;
     }
-
-
 }

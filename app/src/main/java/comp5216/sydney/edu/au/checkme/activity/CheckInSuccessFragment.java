@@ -1,6 +1,5 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -115,11 +114,8 @@ public class CheckInSuccessFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        Intent intent = new Intent();
-//        intent.setClass(getActivity(), MainActivity.class);
-//        startActivity(intent);
         getActivity().findViewById(R.id.fragment_container).setVisibility(View.GONE);
         getActivity().findViewById(R.id.capture_container).setVisibility(View.VISIBLE);
+        getActivity().finish();
     }
-
 }

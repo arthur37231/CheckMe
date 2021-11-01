@@ -5,17 +5,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.zxing.ChecksumException;
-import com.google.zxing.FormatException;
-import com.google.zxing.NotFoundException;
-import com.google.zxing.Result;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -55,7 +50,6 @@ public class ScanActivity extends BaseActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         String barcode = result.getContents();
         if (barcode == null){
-//            Toast.makeText(this, "QR code scanning cancelled", Toast.LENGTH_SHORT).show();
             finish();
         }
         else {
@@ -104,7 +98,8 @@ public class ScanActivity extends BaseActivity {
         findViewById(R.id.capture_container).setVisibility(View.GONE);
         this.getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.fragment_container, new CheckInSuccessFragment(startTime, endTime, eventId, eventName, latLng), null)
+                .add(R.id.fragment_container, new CheckInSuccessFragment(startTime,
+                        endTime, eventId, eventName, latLng), null)
                 .addToBackStack(null)
                 .commit();
     }
@@ -122,7 +117,7 @@ public class ScanActivity extends BaseActivity {
         }
     }
 
-    private void getDevicePosition(){
+    private void getDevicePosition() {
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)

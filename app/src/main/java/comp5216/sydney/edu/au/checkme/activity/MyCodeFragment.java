@@ -1,12 +1,10 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-//import com.google.android.material.floatingactionbutton.FloaT;
-
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -35,7 +30,6 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import comp5216.sydney.edu.au.checkme.R;
-import comp5216.sydney.edu.au.checkme.activity.database.DB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTask;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDB;
 import comp5216.sydney.edu.au.checkme.activity.database.ToDoTaskDao;
@@ -77,28 +71,20 @@ public class MyCodeFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //container = R.id.my_code_container;
         view = inflater.inflate(R.layout.fragment_my_code, container, false);
         setupTitle();
 
         newCodeButton = (FloatingActionButton) view.findViewById(R.id.createNewEvent);
-        //FragmentManager manager = getFragmentManager();
-        //FragmentTransaction ft = manager.beginTransaction();
-        //Fragment bottomFragment = manager.findFragmentById(this.getId());
-        //ft.hide(this)
 
         newCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CreateEventFragment createEventFragment = new CreateEventFragment();
-                //createEventFragment.getView().setId(View.generateViewId());
-                //Fragment fragment =  new CreateEventFragment();
                 FragmentManager fragmentManager= getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
-                //int id = createEventFragment.getId();
+                fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide,
+                        R.anim.right_to_left_slide);
 
-                //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
                 fragmentTransaction.replace(R.id.my_code_container1,createEventFragment);
                 fragmentTransaction.addToBackStack("MyCodeFragment");
 
@@ -109,13 +95,12 @@ public class MyCodeFragment extends Fragment{
         tasks = new ArrayList<Event>();
         db = ToDoTaskDB.getDatabase(getActivity().getApplication().getApplicationContext());
         toDoTaskDao = db.toDoTaskDao();
-        //toDoTaskDao.deleteAll();
-        //saveTasksToDatabase();
-        readTasksFromDatabase(tasks);   // read existing tasks from local database
+        readTasksFromDatabase(tasks);
+        // read existing tasks from local database
 
         Tools.setId(tasks.size()-1);
-        Collections.sort(tasks);    // sort tasks accoding to date
-
+        Collections.sort(tasks);
+        // sort tasks accoding to date
 
         taskArrayAdapter = new CustomArrayAdapter(getActivity(), tasks);
         taskListView.setAdapter(taskArrayAdapter);
@@ -136,7 +121,6 @@ public class MyCodeFragment extends Fragment{
                     List<ToDoTask> taskFromDB = toDoTaskDao.listAll();
                     if (taskFromDB != null & taskFromDB.size()>0){
                         for (ToDoTask task : taskFromDB){
-                            //task.getToDoTaskID();
                             try {
                                 codes.add(stringToTask(task.getToDoTaskContent()));
                             } catch (JsonSyntaxException e) {
@@ -150,13 +134,13 @@ public class MyCodeFragment extends Fragment{
             future.get();
         }
         catch (Exception ex) {
-//            Log.e("readItemsFromDatabase", ex.getStackTrace().toString());
             ex.printStackTrace();
         }
     }
-    /*
-    save task data to local databse
-     */
+
+    /**
+     * save task data to local databse
+     **/
     private void saveTasksToDatabase(){
         try{
             CompletableFuture<Void> future = CompletableFuture.runAsync(new Runnable() {
@@ -164,7 +148,6 @@ public class MyCodeFragment extends Fragment{
                 public void run() {
                     toDoTaskDao.deleteAll();
                     for (Event code : tasks) {
-//                        ToDoTask content = new ToDoTask(taskToString(task));
                         ToDoTask content = new ToDoTask(taskToString(code));
                         toDoTaskDao.insert(content);
                     }
@@ -176,21 +159,23 @@ public class MyCodeFragment extends Fragment{
 
         }
     }
+
     public String taskToString (Event task)
     {
         return Tools.taskToString(task);
     }
-    /*
-    A static method transforms received String to Task object
-     */
+
+    /**
+     * A static method transforms received String to Task object
+     **/
     public Event stringToTask (String serializeTask)
     {
         return Tools.stringToTask(serializeTask);
     }
 
-    /*
-setup the long click listener and click listener on licview.
- */
+    /**
+     * setup the long click listener and click listener on licview.
+     **/
     public void setUpListViewLisener(){
         taskListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -220,15 +205,18 @@ setup the long click listener and click listener on licview.
                 return true;
             }
         });
-        /*
-        if user click any of the task, then jump to
-        TaskEdit view and pass the current task information
-         */
+
+        /**
+         * if user click any of the task, then jump to
+         * TaskEdit view and pass the current task information
+         **/
         taskListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Event clickedEvent = taskArrayAdapter.getItem(position);   // get the clicked task
-                String ser_task = Tools.taskToString(clickedEvent);    // serialize the task to string
+                Event clickedEvent = taskArrayAdapter.getItem(position);
+                // get the clicked task
+                String ser_task = Tools.taskToString(clickedEvent);
+                // serialize the task to string
                 ViewEventFragment viewEventFragment = new ViewEventFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("event", ser_task);
@@ -236,40 +224,14 @@ setup the long click listener and click listener on licview.
                 FragmentManager fragmentManager= getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
-                //int id = createEventFragment.getId();
 
-                //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
                 fragmentTransaction.replace(R.id.my_code_container1,viewEventFragment);
-                //fragmentTransaction.addToBackStack("MyCodeFragment");
 
                 fragmentTransaction.commit();
             }
         });
     }
 
-//    public void setUpListViewLisener(){
-//        taskListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//                Event clickedEvent = taskArrayAdapter.getItem(position);   // get the clicked task
-//                String ser_task = Tools.taskToString(clickedEvent);    // serialize the task to string
-//                ViewEventFragment viewEventFragment = new ViewEventFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putString("event", ser_task);
-//                viewEventFragment.setArguments(bundle);
-//                FragmentManager fragmentManager= getFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
-//                //int id = createEventFragment.getId();
-//
-//                //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
-//                fragmentTransaction.replace(R.id.my_code_container1,viewEventFragment);
-//                //fragmentTransaction.addToBackStack("MyCodeFragment");
-//
-//                fragmentTransaction.commit();
-//            }
-//        });
-//    }
     public String BitMapToString(Bitmap bitmap){
         ByteArrayOutputStream baos=new  ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);

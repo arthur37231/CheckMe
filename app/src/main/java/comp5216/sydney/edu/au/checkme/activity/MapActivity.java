@@ -29,7 +29,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
-
     Button btn;
     private final static int PLACE_PICKER_REQUEST = 999;
     private final static int LOCATION_REQUEST_CODE = 23;
@@ -45,15 +44,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
-
     @Override
     public void onMapReady(GoogleMap map) {
 
         LatLng sydney = new LatLng(-33.867, 151.206);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
@@ -70,13 +66,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .position(sydney));
         map.getUiSettings().setZoomControlsEnabled(true);
         map.setOnMapLongClickListener(this);
-
     }
-
-
-
-
-
 
     @Override
     public void onMapLongClick(LatLng latLng) {
@@ -86,14 +76,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         geocoder = new Geocoder(this.getApplicationContext(), Locale.getDefault());
 
         try {
-            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+            // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            String address = addresses.get(0).getAddressLine(0);
+            // If any additional address line present than only, check with max available address
+            // lines by getMaxAddressLineIndex()
             String city = addresses.get(0).getLocality();
             String state = addresses.get(0).getAdminArea();
             String country = addresses.get(0).getCountryName();
             String postalCode = addresses.get(0).getPostalCode();
-            String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
-            Toast.makeText(this,address+" "+city,Toast.LENGTH_SHORT).show();
+            String knownName = addresses.get(0).getFeatureName();
+            // Only if available else return NULL
+            Toast.makeText(this, address + " " + city, Toast.LENGTH_SHORT).show();
             Intent data = new Intent();
             data.putExtra("Latlng", latLng);
             setResult(RESULT_OK, data);
@@ -101,6 +95,5 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

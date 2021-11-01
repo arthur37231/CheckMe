@@ -1,6 +1,5 @@
 package comp5216.sydney.edu.au.checkme.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,17 +24,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 import comp5216.sydney.edu.au.checkme.R;
-import comp5216.sydney.edu.au.checkme.activity.database.DB;
-import comp5216.sydney.edu.au.checkme.activity.database.HistoryItem;
-import comp5216.sydney.edu.au.checkme.activity.database.HistoryItemDao;
 import comp5216.sydney.edu.au.checkme.view.TitleBarLayout;
 
 public class AccountFragment extends Fragment {

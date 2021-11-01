@@ -1,7 +1,6 @@
 package comp5216.sydney.edu.au.checkme.activity.utils;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,8 +55,6 @@ public class HistoryItemAdapter extends ArrayAdapter<HistoryItem> {
                 break;
         }
 
-//        ImageView imageView = view.findViewById(R.id.item_img);
-//        imageView.setImageResource(item.getImgId());
         return view;
     }
 }

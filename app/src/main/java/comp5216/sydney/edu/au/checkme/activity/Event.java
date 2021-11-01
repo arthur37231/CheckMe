@@ -8,9 +8,9 @@ import java.util.Date;
 
 import comp5216.sydney.edu.au.checkme.activity.utils.Tools;
 
-/*
-Represents a task with title and time
- */
+/**
+ * Represents a task with title and time
+ **/
 public class Event implements Comparable<Event>{
     final String type = "checkMe";
     String eventId;
@@ -23,13 +23,11 @@ public class Event implements Comparable<Event>{
     String coverImage;
     boolean active;
 
-
     public Event(String eventName, LatLng latLng, Date startTime, Date endTime) {
         this.eventName = eventName;
         this.latLng = latLng;
         this.startTime = startTime;
         this.endTime = endTime;
-        //this.coverImage = coverImage;
     }
     public boolean getActive(){return this.active;}
     public void setActive(boolean state){this.active=state;}
@@ -64,65 +62,59 @@ public class Event implements Comparable<Event>{
     {
         this.generated_order = generated_order;
     }
-    /*
-    return task's title
-     */
+    /**
+     * return task's title
+     **/
     public String getEventName() {
         return this.eventName;
     }
-    /*
-    set task's title
-     */
+
+    /**
+     * set task's title
+     **/
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
-    /*
-    return task's date
-     */
+
+    /**
+     * return task's date
+     **/
     public String getEventId() {
         return this.eventId;
     }
-    /*
-    set task's date
-     */
+
+    /**
+     * set task's date
+     **/
     public void setEventId(String eventId) {
         this.eventId = eventId;
     }
     public String getState(){return Tools.expireChekcer(this.endTime, this.startTime);}
-    public long getRemainingTime()
-    {
+    public long getRemainingTime() {
         long remainingTime = Tools.timeDiffCalculator(this.endTime,this.startTime);
         return remainingTime;
     }
 
-    /*
-    override the compareTo method so when sort an arraylist<Task>,
-    the sorting will based on the date
-     */
+    /**
+     * override the compareTo method so when sort an arraylist<Task>,
+     * the sorting will based on the date
+     **/
     @Override
     public int compareTo(Event task) {
         int result=0;
-        //Log.i("fangpei",this.eventId+" "+task.getEventId()+" compare result: "+ result);
 
-        if (this.active!=task.getActive())
-        {
-            if(this.active==false)
-            {
+        if (this.active!=task.getActive()) {
+            if(this.active==false) {
                 result= 1;
-            }
-            else if (task.getActive()==false)
-            {
+            } else if (task.getActive()==false) {
                 result= -1;
             }
         }
-        if (result==0)
-        {
+        if (result==0) {
             result = Integer.compare(task.generated_order,this.generated_order);
-
         }
 
         Log.i("fangpei",this.eventName+" "+task.getEventName()+" compare result: "+ result);
         return result;
     }
-
 }

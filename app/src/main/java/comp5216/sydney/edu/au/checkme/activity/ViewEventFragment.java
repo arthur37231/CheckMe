@@ -57,7 +57,6 @@ public class ViewEventFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //container = R.id.my_code_container;
         view = inflater.inflate(R.layout.fragment_view_created_event, container, false);
         setupTitle();
         ImageView QRcode = view.findViewById(R.id.imageView);
@@ -73,10 +72,6 @@ public class ViewEventFragment extends Fragment {
         Button backButton = view.findViewById(R.id.activityBack);
         backButton.setOnClickListener(this::onBackCLick);
 
-        //FragmentManager manager = getFragmentManager();
-        //FragmentTransaction ft = manager.beginTransaction();
-        //Fragment bottomFragment = manager.findFragmentById(this.getId());
-        //ft.hide(this)
         Bitmap b = Tools.StringToBitMap(event.getQrCode());
 
         HashMap<String, String> address = Tools.CoordinateToAddress(event.getLatLng(),getActivity());
@@ -102,14 +97,10 @@ public class ViewEventFragment extends Fragment {
     public void onBackCLick(View v) {
         MyCodeFragment myCodeFragment = new MyCodeFragment();
         FragmentManager fragmentManager= getFragmentManager();
-        //fragmentManager.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.right_to_left_slide, R.anim.right_to_left_slide);
-        //int id = createEventFragment.getId();
 
-        //fragmentTransaction.add(R.id.myCodeLayout,createEventFragment);
         fragmentTransaction.replace(R.id.my_code_container1,myCodeFragment);
-        //fragmentTransaction.addToBackStack("MyCodeFragment");
 
         fragmentTransaction.commit();
     }
@@ -118,7 +109,7 @@ public class ViewEventFragment extends Fragment {
      * @param encodedString
      * @return bitmap (from given string)
      */
-    public Bitmap StringToBitMap(String encodedString){
+    public Bitmap StringToBitMap(String encodedString) {
         try {
             byte [] encodeByte=Base64.decode(encodedString,Base64.DEFAULT);
             Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);

@@ -15,8 +15,6 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -128,14 +126,12 @@ public class SignInActivity extends AuthActivity {
     }
 
     private void onClickForgotPassword(View view) {
-        // TODO: handle if user forgot password
         Intent intent = new Intent(this, ForgotPasswordActivity.class);
         startActivity(intent);
         finish();
     }
 
     private void onClickPrivacyPolicy(View view) {
-        // TODO: display a page contains User's Privacy Policy
         startActivity(new Intent(this, UserPrivacyActivity.class));
         finish();
     }
